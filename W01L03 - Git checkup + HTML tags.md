@@ -115,7 +115,7 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
 * other comonly used tags
     * a - for links to inner ot outer sources
     * img - for image handling
-    * div - just a blovk wrapper
+    * div - just a block wrapper
     * span - just a inline wrapper
     * br -  self closing new line tag
     * <!--...--> comment tag (not displayed in browser)
