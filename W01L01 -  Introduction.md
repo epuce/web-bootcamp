@@ -8,4 +8,4 @@
 * Darba vides uzstādīšana
 
 ### Presentation
-https://docs.google.com/presentation/d/1tbdE5NJyi7jSiIoKFAdoAl2oMrBsqzFy7fwR9vo0Tqo/edit?usp=sharing
+[link](https://docs.google.com/presentation/d/1tbdE5NJyi7jSiIoKFAdoAl2oMrBsqzFy7fwR9vo0Tqo/edit?usp=sharing)
