@@ -1,6 +1,6 @@
-### HTML atributes
+### HTML attributes
 ```HTML
-<tag attribut="value" attibute2="othervalue" attribute3>
+<tag attribute="value" attribute2="other-value" attribute3>
   Content
 </tag>
 ````
@@ -10,7 +10,7 @@
     * global
     * tag specific
     * custom (also global) - data-your-attribute
-    * event spacific (on visible elements)
+    * event specific (on visible elements)
 * attributes change the way elements are displayed and handled in the browser
 * some of the attribute added effects can be handled with css or the effect can't be styled with css
 
@@ -29,10 +29,10 @@
 ### Tag specific
 
 * value (button, input, li, option, meter, progress, param) - describes elements value, usually not the same as visible part
-* required (input, select, textarea) - refering to form, if this imput is required (filled) for the form to be valid
+* required (input, select, textarea) - referring to form, if this input is required (filled) for the form to be valid
 * readonly (input, textarea) - data can be only seen not edited, but the input is shown as an input
 * placeholder (input, textarea) - text that shows visually before the input has been filled
-* pattern (input) - specifie input validation
+* pattern (input) - specify input validation
 * min, max (input) - sets the min/max value for the input
 * disabled -  if the input is disabled, similar to read only with some specific changes
 
@@ -49,7 +49,7 @@ https://html-css-js.com/html/tutorial/html-tag-attributes.php
 https://www.cs.princeton.edu/courses/archive/fall07/cos109/labs/html/tags.html
 
 ### HTML check up task
-create page using only html and it's atributes based on the image under your usernam.github.io project and push it to github.
+create page using only html and it's attributes based on the image under your username.github.io project and push it to github.
 
 ![Example to aim for](img/W01L04.png)
 
