@@ -1,6 +1,6 @@
 ### Git Work flow
 
-* Download git localy on your machine
+* Download git locally on your machine
 
 * Set up git account @ github.com
 
@@ -9,7 +9,7 @@
     * git config --global user.email e-pasts@domēns.com
 
 * Create github page https://pages.github.com/
-    * Repository name - usernam.github.io
+    * Repository name - username.github.io
 
 * Clone repository - git clone https://github.com/username/usernam.github.io.git
 
@@ -33,13 +33,13 @@
     * resolve conflicts if needed
 
 * Other commands
-    * git log (looks at commit hostory on current branch)
+    * git log (looks at commit history on current branch)
     * git reflog (changes made on branch)
     * git diff (not staged file changes)
     * git status (look at files that hav changed)
     * git reset HEAD~1 (1 - commits to be reset, can use hash instead)
     * git checkout ./path/to/file.html (revert changes that are made to file)
-    * git fetch (sync shange references with origin)
+    * git fetch (sync change references with origin)
     * git branch -d branch-name (use "origin branch-name" to delete git branch or "branch-name" to delete local one)
 
 * Get latest changes
@@ -55,6 +55,6 @@
     * Git actions can trigger different functions (builds, tests, audits, notifications)
 
 * Articles / blog posts
-    * git cheatsheet - https://www.git-tower.com/blog/git-cheat-sheet/
-    * good work flow example - https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc
-    * github page possibilities - https://pages.github.com/
+    * git cheatsheet - [link](https://www.git-tower.com/blog/git-cheat-sheet/)
+    * good work flow example - [link](https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc)
+    * github page possibilities - [link](https://pages.github.com/)
