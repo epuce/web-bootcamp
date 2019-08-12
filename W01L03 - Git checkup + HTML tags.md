@@ -89,7 +89,7 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
 </form>
 ```
 
-* list and it's childs
+* list and it's child's
 ```html
 <ol>
     <li>
@@ -112,7 +112,7 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
 </ol>
 ``
 
-* other comonly used tags
+* other commonly used tags
     * a - for links to inner ot outer sources
     * img - for image handling
     * div - just a block wrapper
