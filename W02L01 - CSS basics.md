@@ -107,3 +107,5 @@
 8. Style all selected elements that don't use a class
 9. Add style to an element when it's hovered
 10. Use a state selector that is not mentioned in this file, choose from [link]
+
+[solution](extra-resources/W02L01-solution.css)
