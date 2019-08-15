@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+
+</html>
+
+<style>
+    .container {
+        width: 500px;
+        height: 500px;
+        display: grid;
+        background: red;
+        grid-template-columns: 40px 10% 50% 10% 40px;
+        grid-template-rows: 25% 25% 25% 25%;
+        justify-content: end;
+    }
+
+    .item:nth-child(1) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        background: black;
+    }
+
+    .item:nth-child(2) {
+        grid-column-start: 3;
+        grid-column-end: 6;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        background: green;
+    }
+
+    .item:nth-child(3) {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        background: white;
+    }
+
+    .item:nth-child(4) {
+        grid-column-start: 5;
+        grid-column-end: 6;
+        grid-row-start: 3;
+        grid-row-end: 5;
+        background: #654321;
+    }
+
+    .item:nth-child(5) {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        background: #123456;
+    }
+
+    .item:nth-child(6) {
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        background: #123;
+    }
+
+    .item:nth-child(7) {
+        grid-column-start: 5;
+        grid-column-end: 6;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        background: white;
+    }
+</style>
