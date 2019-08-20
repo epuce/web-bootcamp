@@ -8,4 +8,5 @@
 * [CSS deep dive](W02L02&#32;-&#32;CSS&#32;deep&#32;dive.md)
 * [CSS flex & grid $ media queries](W02L03&#32;-&#32;CSS&#32;flex&#32;&&#32;grid&#32;$&#32;media&#32;queries.md)
 * [CSS frameworks](W02L04&#32;-&#32;CSS&#32;frameworks.md)
-* [JavaScript data types, variables](W03L01&#32;-&#32;JavaScript&#32;data&#32;types,&#32;variables.md)
+* [JavaScript data types, variables](W03L01&#32;-&#32;JavaScript&#32;data&#32;types,&#32;variables,&#32;conditions.md)
+* [JavaScript looping & functions & prototypes.md](W03L02&#32;-&#32;JavaScript&#32;looping&#32;&&#32;functions&#32;&&#32;prototypes.md)

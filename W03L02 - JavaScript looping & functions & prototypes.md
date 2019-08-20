@@ -188,3 +188,17 @@ let userNr1 = new User("Ed", "edm.puce@gmail.com", "qwerty");
 userNr1.getPassword();
 // This will console log the password: qwerty
 ```
+
+### Checkup
+1. create a loop that prints every second number starting from 10 and ending with 20
+2. loop thru an array and print out it's content
+3. modify array of numbers by multiplying the numbers by itself
+4. Declare a function that can be called even if it's defined after it is called
+5. define a function that can be called only after it has been declared
+6. create an arrow function with two or more parameters
+7. create a function with unknown amount of parameters
+8. create a function that accepts object as an parameters and reads assigns it's key/value pairs to function variables
+9. Use two of built in prototype functions
+10. Create your own prototype
+    1. create new instance
+    2. call a function from it 
