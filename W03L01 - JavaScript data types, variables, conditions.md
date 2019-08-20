@@ -150,3 +150,68 @@ console.log(typeof variable) // logs the type of the variable to the console
 console.log(typeof Math.PI) // logs "number" to the console
 ```
  
+ ### Conditions
+
+* if/else is/else
+```JavaScript
+if (true) {
+    // Run this code if the condition is tru
+} else if (true) {
+    // Run this code if the first is false and the second is true
+} else {
+    // Run this in any other case when the first two are falss
+}
+
+// Shorthand for if/else
+true ? "If true, execute this code" : "If false, execute this code";
+
+// One line if statement with no {}
+if (true) "Do something";
+```
+
+* switch
+```JavaScript
+switch(item) {
+    case "this_value":
+    // Do something
+    break;
+    case "other_value":
+    // Do this
+    break;
+    default:
+    // Do this if no exact item
+    break;
+}
+```
+
+* AND / OR / reverse conditioning / comparison
+```JavaScript
+// comparison (strict)
+true === true // Yes (true); === tests if values and data types are equal
+true !== true // No (false); !== tests if values and data types are not equal
+
+// comparison (not-strict)
+true == true // Yes (true); == tests if values are equal
+true == "true" // No (false);
+100 == "100" // Yes (true)es;
+
+// number1 > number1
+100 > 90 // Yes (true); > tests if one number is bigger than the other
+// number1 <= number1
+90 <= 90 // Yes (true); <= or >= tests if on number is bigger or the same as the other one
+
+// AND statement: &&
+true && true // Yes (true)
+true && false // No (false)
+false && false // No (false)
+
+// OR statement: ||
+true || true // Yes (true)
+true || false // Yes (true)
+false || false // No (false)
+
+// reverse conditioning
+!true // No (false)
+!false // Yes (true)
+!(10 > 0 && 10 < 15) //No (false); the inner is true && true === true and then we reverse the true result and get false in the end
+```
