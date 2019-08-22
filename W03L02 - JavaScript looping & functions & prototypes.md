@@ -170,6 +170,7 @@ myData({name: 'Ed', surname: 'Pūce', isActive:true});
   * Array
   * Function
   * Number
+  * Date
 
 * Create your own
 ```JavaScript
