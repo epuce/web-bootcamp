@@ -1,7 +1,7 @@
 ## Crate a landing page based on these rules
 1. Create a button that shows a form (it can slid from the side, be shown in the main html or as a popup)
 2. Add minimum 4 different form fields, make one be visible only on some type of conditions (if one form field has been filled, checkbox selected, select field appropriate value selected)
-3. Validate minimum two of the fields (on button click pont nr.4), show a visual representation if fields ar not valid
+3. Validate minimum two of the fields (on button click point nr.4), show a visual representation if fields ar not valid
     * Error messages for not valid fields will be treated as a **bonus**
 4. Add a button that triggers the validation
     * If you find out a way how to save the data somewhere - it will be treated as a **bonus**
