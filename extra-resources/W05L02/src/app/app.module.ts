@@ -7,7 +7,9 @@ import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AccessControlService } from './access-control.service';
-import { UserModule } from './user/user.module';
+import { StoreModuleNgRedux } from './app-store.module';
+import { AppActions } from './app.actions';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule,
+    StoreModuleNgRedux,
+    HttpClientModule
   ],
   providers: [
-    AccessControlService
+    AccessControlService,
+    AppActions
   ],
   bootstrap: [AppComponent]
 })

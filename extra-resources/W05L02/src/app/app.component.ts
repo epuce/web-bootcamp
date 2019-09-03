@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppActions } from './app.actions';
+import { select } from '@angular-redux/store';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @select() request$;
+
+  response: any;
+
+  constructor(
+    private appActions: AppActions
+  ){}
 
   ngOnInit() {
-    // this.calculateData();
+    this.appActions.request()
+
+    this.request$.subscribe((response) => {
+      this.response = response;
+    })
   }
 
   async calculateData() {
@@ -23,10 +36,6 @@ export class AppComponent implements OnInit {
     const number3 = new Promise((resolve, reject) => {
       setTimeout(() => resolve(Math.random() * 100), 2500);
     });
-
-    // const awaitValue1 = await number1;
-    // const awaitValue2 = await number2;
-    // const awaitValue3 = await number3;
 
     console.log(await number1, new Date());
     console.log(await number2, new Date());
