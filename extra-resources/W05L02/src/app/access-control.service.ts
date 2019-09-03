@@ -15,7 +15,13 @@ export class AccessControlService implements CanActivate {
         if (localStorage.loggedIn === "true") {
             return true;
         }
+        this.router.navigate(['login']);
+    }
 
+    canLoad() {
+        if (localStorage.loggedIn === "true") {
+            return true;
+        }
         this.router.navigate(['login']);
     }
 }

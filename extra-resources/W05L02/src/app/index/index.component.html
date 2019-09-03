@@ -1,1 +1,16 @@
-<div>You can see me</div>
+<table>
+    <thead>
+        <tr>
+            <th *ngFor="let th of response[0] | keyvalue">
+                {{ th.key }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tr of response">
+            <td *ngFor="let td of tr | keyvalue">
+                {{ td.value }}
+            </td>
+        </tr>
+    </tbody>
+</table>

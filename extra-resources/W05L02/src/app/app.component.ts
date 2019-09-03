@@ -8,20 +8,11 @@ import { select } from '@angular-redux/store';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @select() request$;
-
-  response: any;
-
   constructor(
-    private appActions: AppActions
   ){}
 
   ngOnInit() {
-    this.appActions.request()
-
-    this.request$.subscribe((response) => {
-      this.response = response;
-    })
+    this.calculateData();
   }
 
   async calculateData() {

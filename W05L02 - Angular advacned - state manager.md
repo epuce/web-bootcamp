@@ -14,3 +14,7 @@ dependencies: {
     "redux-devtools-extension": "^2.13.8"
 }
 ```
+* Create a default state
+* Add reducers
+* Add actions to handle the reducers
+* Subscribe to the reducers when needed

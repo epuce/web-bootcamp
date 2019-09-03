@@ -11,6 +11,7 @@ const routes: Routes = [
     }, {
         path: 'user',
         loadChildren: './user/user.module#UserModule',
+        canLoad: [AccessControlService]
     }, {
         path: '',
         component: IndexComponent,
