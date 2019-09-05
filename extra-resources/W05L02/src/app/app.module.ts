@@ -10,6 +10,11 @@ import { AccessControlService } from './access-control.service';
 import { StoreModuleNgRedux } from './app-store.module';
 import { AppActions } from './app.actions';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatInputModule, MatCheckboxModule, MatFormFieldModule, MatFormFieldControl, MatButtonModule, MatTableModule,
+} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,14 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     StoreModuleNgRedux,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatTableModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AccessControlService,

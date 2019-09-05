@@ -10,7 +10,13 @@ import { AppActions } from '../app.actions';
 export class IndexComponent implements OnInit {
   @select() request$;
 
-  response: any;
+  columnDef: string[] = [
+    'id',
+    'title',
+    'details'
+  ]
+
+  response: any = [];
 
   constructor(
     private appActions: AppActions
