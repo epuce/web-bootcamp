@@ -28,18 +28,27 @@ export class AppRoutingModule {
 
 ```JavaScript
 export class AccessControlService implements CanLoad {
-
     constructor(
         private router: Router
     ) {
     }
-
-    canLoad() {
-        if (sessionStorage.login) {
+    
+    // For component handling
+    canActivate() {
+        if (localStorage.loggedIn === "true") {
             return true;
         }
 
-        return false;
+        this.router.navigate(['login']);
+    }
+
+    // For child lazy loading
+    canLoad() {
+        if (localStorage.loggedIn === "true") {
+            return true;
+        }
+
+        this.router.navigate(['login']);
     }
 }
 ```
