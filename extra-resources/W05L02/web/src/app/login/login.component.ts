@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
       active: new FormControl(''),
   };
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
     this.form = new FormGroup(this.controls);
@@ -26,6 +29,11 @@ export class LoginComponent implements OnInit {
 
   onClick() {
     console.log(this.form)
+
     localStorage.loggedIn = localStorage.loggedIn !== "true";
+
+    this.http.get('../be/get.php').toPromise().then((response) => {
+
+    })
   }
 }
