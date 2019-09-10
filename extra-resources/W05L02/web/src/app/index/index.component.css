@@ -1,10 +1,7 @@
 :host {
     padding-top: 70px;
-    min-height: 100vh;
+    display: block;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 table {

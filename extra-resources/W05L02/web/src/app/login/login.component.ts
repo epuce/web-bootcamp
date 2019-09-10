@@ -28,11 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   onClick() {
-    console.log(this.form)
-
     localStorage.loggedIn = localStorage.loggedIn !== "true";
 
-    this.http.get('../be/get.php').toPromise().then((response) => {
+    this.http.get('/api/get.php').toPromise().then((response) => {
 
     })
   }
