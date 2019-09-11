@@ -34,7 +34,7 @@ echo shell_exec("cd ../; npm install --prefix $folderName/extra-resources/W05L02
 // title('npm start ng server');
 // echo shell_exec("cd ../; npm run start --prefix $folderName/extra-resources/W05L02/web").PHP_EOL;
 title('ng build');
-echo shell_exec("cd ../; npm run start --prefix $folderName/extra-resources/W05L02/web").PHP_EOL;
+echo shell_exec("cd ../; npm run dev --prefix $folderName/extra-resources/W05L02/web").PHP_EOL;
 
 echo PHP_EOL;
 echo ' *********'.PHP_EOL;

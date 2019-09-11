@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    max-height: 100vh;
+    font-family: sans-serif;
+}
+
+.aside-backdrop {
+    transition: width 0.3s;
+    flex-shrink: 0;
+}
+
+.aside-backdrop.close {
+    width: 0;
+}
+
+.aside-backdrop.open {
+    width: 300px;
+}
+
+#aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background: #525252;
+    transition: transform 0.3s;
+}
+
+#aside.open {
+    transform: translateX(0);
+}
+
+#aside.close {
+    transform: translateX(-100%);
+}
+
+#aside .form-wrapper {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+}
+
+
+#aside .form-wrapper label {
+    padding-bottom: 10px;
+    display: block;
+}
+
+#aside .form-wrapper label span {
+    display: inline-block;
+    color: #FFFFFF;
+}
+
+#aside .form-wrapper input:not([type=checkbox]) {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    line-height: 30px;
+    background: #FFFFFF;
+}
+
+
+#aside .form-wrapper .error-box {
+    font-size: 11px;
+    color: #f44336;
+    line-height: 1.4;
+    height: 10px;
+}
+
+
+#aside .form-wrapper input.error {
+    border: 1px solid #f44336;
+}
+
+#aside .form-wrapper select {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 4px;
+    line-height: 30px;
+    background: #FFFFFF;
+}
+
+#aside .form-wrapper .extra-fields {
+    display: none;
+}
+
+.toggle-sidebar {
+    position: absolute;
+    top: 10%;
+    right: -50px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    width: 50px;
+    height: 150px;
+    background: rgba(170, 25, 25, 0.9);
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.toggle-sidebar span {
+    font-size: 18px;
+    font-weight: 700;
+    writing-mode: vertical-rl;
+}
+
+#subscribe-btn {
+    margin: auto;
+    width: 50%;
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    display: block;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    background: rgba(25, 170, 25, .5)
+}
+
+#content {
+    padding: 50px 20px 0;
+    width: 100%;
+}
+
+.list-table {
+    margin: auto;
+    width: 100%;
+    max-width: 1024px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
+
+.list-table th,
+.list-table td {
+    padding: 0.75rem;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, .25);
+    color: #212529;
+}
+
+.list-table td.actions {
+    width: 51px;
+}
+
+.list-table td.actions .delete {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    color: rgba(200, 20, 10, .55);
+    cursor: pointer;
+}
+
+.list-table th {
+    color: #212529;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.list-table tbody tr:hover td {
+    background: rgba(0, 0, 0, .08);
+}
+
+.popup-wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#popup {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .5)
+}
+
+#popup .content-wrapper {
+    padding: 10px;
+    width: 400px;
+    height: 150px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-rows: auto 40px;
+    background: #ffffff;
+    box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, .4);
+}
+
+#popup .content-wrapper .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#popup .content-wrapper .actions button {
+    height: 100%;
+    padding: 10px;
+    float: right;
+    cursor: pointer;
+}
