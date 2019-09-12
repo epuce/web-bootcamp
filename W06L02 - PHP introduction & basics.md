@@ -120,9 +120,9 @@ title('Git clone');
 echo shell_exec("cd ../; git clone $git $folderName");
 
 title('npm install');
-echo shell_exec("cd ../; npm install --prefix $folderName/extra-resources/W05L02/web").PHP_EOL;
+echo shell_exec("cd ../; npm install --prefix $folderNameAngular-project").PHP_EOL;
 title('npm start ng server');
-echo shell_exec("cd ../; npm run start --prefix $folderName/extra-resources/W05L02/web").PHP_EOL;
+echo shell_exec("cd ../; npm run start --prefix $folderNameAngular-project").PHP_EOL;
 
 echo PHP_EOL;
 echo ' *********'.PHP_EOL;
