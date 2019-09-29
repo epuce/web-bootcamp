@@ -1,4 +1,4 @@
-<form id="form" action="<?php $_ENV["HOSTNAME"] . 'users/add' ?>" method="post">
+<form id="form" action="<?php echo $_ENV["HOSTNAME"] . 'users/add' ?>" method="post">
 	<div class="form-group">
 		<lable>
 			User
@@ -12,6 +12,14 @@
 			Profession
 
 			<input class="form-control" name="profession">
+		</label>
+	</div>
+
+	<div class="form-group">
+		<label>
+			Password
+
+			<input class="form-control" name="password">
 		</label>
 	</div>
 

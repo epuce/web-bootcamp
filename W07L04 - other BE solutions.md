@@ -61,8 +61,15 @@ describe('Users', () => {
 
 * NoSQL data handling
     * MongoDB - JSON like structure
+    * [All commands](https://docs.mongodb.com/manual/reference/method/js-collection/)
     ```mongodb
-        
+        db.users.insertMany([{name: "Ed", profession: "Programmer"}, {name: "Jim", age: 10}])
+        db.users.find({}) // Get all
+        db.users.find({name: "Ed"}); // Get all with condition
+        db.users.findOneAndUpdate(
+              { "name" : "Ed" },
+              { $set: { "name" : "Alex", new_field: "Value of new field"}
+        );  
     ```
     * Others:
         * Cassandra - developed by Facebook, created for large data structuring

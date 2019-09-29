@@ -16,4 +16,10 @@ class UserModel
 	{
 		return $this->db->execute("INSERT INTO Users (name, profession) VALUES ('" . $user->name. "', '" . $user->profession . "')");
 	}
+
+	public function getUser($user) {
+		return $this->db->execute("
+			SELECT * FROM Users WHERE name='". $user['name'] ."'
+		");
+	}
 }
