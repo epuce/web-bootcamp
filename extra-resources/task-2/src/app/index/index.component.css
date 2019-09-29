@@ -1,0 +1,8 @@
+table {
+    margin: auto;
+    width: 80%;
+}
+
+table .flag-cell img { 
+    width: 150px;
+}

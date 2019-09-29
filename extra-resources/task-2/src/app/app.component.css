@@ -1,0 +1,12 @@
+:host {
+    height: 100%;
+}
+
+mat-card {
+    min-height: 100%;
+}
+
+mat-card-content {
+    padding-top: 70px;
+    height: 100%;
+}

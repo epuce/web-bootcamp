@@ -12,6 +12,8 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM Users WHERE id=$id";
 
     $database->execute($sql);
+
+    $database->closeDatabaseConnection();
 }
 
 header("Location: index.php");

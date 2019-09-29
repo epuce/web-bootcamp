@@ -6,15 +6,17 @@ $database = new DatabaseWrapper();
 
 $database->openDatabaseConnection('web-bootcamp');
 
-//$sql = "CREATE DATABASE IF NOT EXISTS `web-bootcamp`");
+// $sql = "CREATE DATABASE IF NOT EXISTS `web-bootcamp`";
 
-//$sql = "
-//CREATE TABLE IF NOT EXISTS Users
-//(
-//    name varchar(20),
-//    profession varchar(20)
-//)";
+$sql = "CREATE TABLE IF NOT EXISTS Users
+(
+   name varchar(20),
+   profession varchar(20),
+   id int NOT NULL AUTO_INCREMENT,
+   PRIMARY KEY (id)
+)";
 
+$database->execute($sql);
 
 $users = [
     [
@@ -29,13 +31,13 @@ $users = [
     ]
 ];
 
-//foreach ($users as $item) {
+foreach ($users as $item) {
 //    $sql = "INSERT INTO Users (name, profession) VALUES ('" . $item['name'] . "', '" . $item['profession'] . "')";
-//    // OR
-//    $sql = sprintf("INSERT INTO Users (name, profession) VALUES ('%s', '%s')", $item['name'], $item['profession']);
-//
-//    $database->execute($sql);
-//}
+   // OR
+   $sql = sprintf("INSERT INTO Users (name, profession) VALUES ('%s', '%s')", $item['name'], $item['profession']);
+
+   $database->execute($sql);
+}
 
 //$sql = "UPDATE Users
 //SET name='not Jim', profession='Not a programmer'

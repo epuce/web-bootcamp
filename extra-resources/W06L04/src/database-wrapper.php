@@ -4,12 +4,14 @@ class DatabaseWrapper {
 
     public function openDatabaseConnection($dbname = NULL)
     {
-        $dbhost = "localhost";
+        $dbhost = "104.248.125.41:3306";
         $dbuser = "root";
         $dbpass = "root_password";
 
         if ($dbname) {
             $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+//            $dsn = "mysql:host=$dbhost;dbname=$dbname";
+//            $this->connection = new PDO($dsn, $dbuser, $dbpass);
         } else {
             $this->connection = new mysqli($dbhost, $dbuser, $dbpass);
         }
@@ -29,6 +31,10 @@ class DatabaseWrapper {
         $response = $this->connection->query($sql);
 
         if ($response) {
+//            while ($row = $response->fetch()) {
+//                echo serialize($row);
+//            }
+
             return $response;
         } else {
             die("SQL error: " . $this->connection->error . "</br>");

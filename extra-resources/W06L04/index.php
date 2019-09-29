@@ -38,7 +38,7 @@ $database->closeDatabaseConnection();
 
         <table class="table">
             <thead>
-            <tr bgcolor='#CCCCCC'>
+            <tr>
                 <th>Name</th>
                 <th>Profession</th>
                 <th></th>
@@ -48,8 +48,8 @@ $database->closeDatabaseConnection();
             <?php
             while($row = mysqli_fetch_array($response)) {
                 echo "<tr>";
-                echo "<td>".$row['NAME']."</td>";
-                echo "<td>".$row['PROFESSION']."</td>";
+                echo "<td>".$row['name']."</td>";
+                echo "<td>".$row['profession']."</td>";
                 echo "<td>
                         <a class=\"btn btn-primary\" href=\"edit.php?id=$row[id]\">Edit</a> 
                         <a class=\"btn btn-danger\" href=\"delete.php?id=$row[id]\">Delete (PHP)</a>

@@ -12,7 +12,7 @@
 
         $database->closeDatabaseConnection();
 
-        header("Location: index.php");
+        // header("Location: index.php");
     }
 ?>
 
@@ -30,18 +30,19 @@
 <div class="d-flex justify-content-center p-3">
     <form id="form" action="add.php" method="post">
         <div class="form-group">
-            <lable>
+            <label>
                 User
 
-                <input class="form-control" name="name" />
-            </lable>
+                <input class="form-control" name="name" value=""/>
+            </label>
         </div>
 
         <div class="form-group">
             <label>
                 Profession
 
-                <input class="form-control" name="profession">
+                <?php $_POST['age'] ?>
+                <input class="form-control" name="age" type="number" >
             </label>
         </div>
 

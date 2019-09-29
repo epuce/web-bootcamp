@@ -1,0 +1,58 @@
+<table mat-table 
+       [dataSource]="list$ | async">
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+
+            Name
+        </th>
+
+        <td mat-cell *matCellDef="let item">
+
+            {{ item.name }}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currencies">
+        <th mat-header-cell *matHeaderCellDef>
+
+            Currencies
+        </th>
+
+        <td mat-cell *matCellDef="let item">
+
+          <span *ngFor="let curr of item.currencies; last as last">
+            {{ curr.code }}{{ curr.code && !last ? ', ': ''}}
+          </span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="flag">
+        <th mat-header-cell *matHeaderCellDef>
+
+            Flag
+        </th>
+
+        <td class="flag-cell" mat-cell *matCellDef="let item">
+            <img src="{{item.flag}}" alt="">
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+
+        <td mat-cell *matCellDef="let item; let index = index">
+          <button mat-raised-button color="primary" (click)="copyRow(index)">
+            Copy
+          </button>
+
+          <button mat-raised-button color="warn" (click)="deleteRow(index)">
+            Delete
+          </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnDef"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: columnDef"></tr>
+</table>

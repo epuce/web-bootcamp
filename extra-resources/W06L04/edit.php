@@ -5,6 +5,12 @@ $database = new DatabaseWrapper();
 
 $database->openDatabaseConnection('web-bootcamp');
 
+$arr = isset($_POST['arr']) ? $_POST['arr'] : [];
+
+// $arr[] = "test";
+
+var_dump($arr);
+
 if(isset($_POST['update']))
 {
     $id = $_POST['id'];
@@ -26,8 +32,8 @@ if(isset($_POST['update']))
 
     while($res = mysqli_fetch_array($response))
     {
-        $name = $res['NAME'];
-        $profession = $res['PROFESSION'];
+        $name = $res['name'];
+        $profession = $res['profession'];
     }
 } else {
     header("Location: index.php");
@@ -49,11 +55,11 @@ $database->closeDatabaseConnection();
 <div class="d-flex justify-content-center p-3">
     <form id="form" action="edit.php" method="post">
         <div class="form-group">
-            <lable>
+            <label>
                 User
 
                 <input class="form-control" name="name" value="<?php echo $name ?>"/>
-            </lable>
+            </label>
         </div>
 
         <div class="form-group">
@@ -65,6 +71,7 @@ $database->closeDatabaseConnection();
         </div>
 
         <input type="hidden" name="id" value="<?php echo $id ?>">
+        <input type="hidden" name="arr" value="<?php echo $arr ?>">
 
         <div class="form-group d-flex justify-content-center">
             <button class="btn btn-primary" type="submit" name="update">Update user (PHP)</button>

@@ -4,11 +4,12 @@ class DatabaseWrapper {
 
     public function openDatabaseConnection($dbname = NULL)
     {
-        $dbhost = "localhost";
+        $dbhost = "104.248.125.41:3306";
         $dbuser = "root";
         $dbpass = "root_password";
 
         if ($dbname) {
+            //mysqli_connect
             $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
         } else {
             $this->connection = new mysqli($dbhost, $dbuser, $dbpass);
@@ -16,6 +17,8 @@ class DatabaseWrapper {
 
         if ($this->connection->connect_error) {
             die("Connection failed: " . $this->connection->connect_error);
+        } else {
+            echo "All good!!!";
         }
     }
 
@@ -31,7 +34,7 @@ class DatabaseWrapper {
         if ($response) {
             return $response;
         } else {
-            die("SQL error: " . $this->connection->error);
+            die("SQL error: " . $this->connection->error . "</br>");
         }
     }
 
