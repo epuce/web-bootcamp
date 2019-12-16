@@ -1,0 +1,33 @@
+table {
+  table-layout: fixed;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.drag {
+  width: 50px;
+  font-size: 24px;
+  text-align: center;
+  cursor: move;
+  color: rgba(0, 0, 0, .24);
+}
+
+.check {
+  width: 40px;
+  text-align: center;
+}
+
+.actions {
+  width: 160px;
+  text-align: right;
+}
+
+.actions .btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.line-trough {
+  text-decoration: line-through;
+}

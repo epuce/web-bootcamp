@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit {z
   form: FormGroup;
   controls: any = {
       name: new FormControl('', [Validators.required]),

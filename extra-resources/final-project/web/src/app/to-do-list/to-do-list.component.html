@@ -1,0 +1,81 @@
+<div class="row p-4">
+  <div class="col-2"></div>
+
+  <div class="row col-8">
+    <div class="col-6">
+      <textarea class="w-100"
+                required
+                [(ngModel)]="model.description"></textarea>
+
+      <button class="btn btn-primary"
+              *ngIf="model.description"
+              (click)="save()">
+
+        {{ model.id ? 'Update' : 'Save' }}
+      </button>
+    </div>
+
+    <div class="col-6">
+      <table cdkDropList
+             (cdkDropListDropped)="updateOrder($event)"
+             class="table">
+
+        <tr cdkDrag *ngFor="let item of list.noCheck">
+          <td class="drag"
+              cdkDragHandle>
+
+            <i class="fa fa-arrows-v"></i>
+          </td>
+
+          <td class="check">
+
+            <input type="checkbox"
+                   (change)="onCheck(item)" />
+          </td>
+
+          <td class="description">
+            {{ item.description }}
+          </td>
+
+          <td class="actions">
+            <button class="btn btn-primary"
+                    (click)="edit(item.id)">
+
+              Edit
+            </button>
+
+            <button class="btn btn-warning"
+                    (click)="delete(item)">
+
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+
+      <table class="table">
+        <tr *ngFor="let item of list.check">
+          <td class="drag"></td>
+
+          <td class="check">
+            <input type="checkbox"
+                   checked
+                   (change)="onCheck(item)" />
+          </td>
+
+          <td class="description line-trough">
+            {{ item.description }}
+          </td>
+
+          <td class="actions">
+            <button class="btn btn-warning"
+                    (click)="delete(item)">
+
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
