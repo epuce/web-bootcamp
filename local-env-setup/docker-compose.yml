@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  web-bootcamp:
+    container_name: apache_php
+    image: web-bootcamp
+    build:
+      context: ./
+    volumes:
+      - /home/epuce/Public/web-bootcamp/local-env-setup/extra-resources:/var/www/html/
+    ports:
+      - 8000:80
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-server-80
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=web-bootcamp-db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root_password
+    ports:
+      - "8082:3306"

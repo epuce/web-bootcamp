@@ -1,3 +1,12 @@
+### Docker setup
+Under docker-compose.yml, if using linux, change to local ip under xdebug.remote_host
+* Navigate to folder docker-env-setup
+* "docker-compose up -d --build"
+* get PHP debug extention for vscode
+* add PHP configuartion file for vscode under debug section, settings, php
+* access docker container console " docker exec -it apache_php bash -l"
+
+* Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-docker/)
 ### Git Work flow
 
 * Download git locally on your machine
@@ -23,9 +32,9 @@
 
 * Forking
     * choose the repository to get a private clone - fork button in GUI
+
 * Team work
-    * git clone https://github.com/epuce/web-bootcamp.git
-    * open web-bootcamp.md
+    * cd to the project folder
     * git checkout -b your branch name
     * perform steps from - Get local changes to master
     * open github.com, navigate to newly created branch
