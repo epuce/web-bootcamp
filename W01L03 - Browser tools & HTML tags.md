@@ -1,17 +1,4 @@
-### Git checkup
-* Create new project
-* Get it locally on your machine
-* Create a new file
-* Push two different commits to origin/master
-* Create new branch based on current master
-* Add one commit to newly created branch
-* Push to newly created branch
-* Create pull (merge) request and merge the changes
-* Switch back to local master branch
-* Get newly merged changes
-* Push new commit to origin/master
-
-### Browser based services
+### Browser tools
 https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5rpw/edit?usp=sharing
 
 ### HTML basics - tags
