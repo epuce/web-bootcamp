@@ -108,4 +108,4 @@
 9. Add style to an element when it's hovered
 10. Use a state selector that is not mentioned in this file, choose from [link]
 
-[solution](extra-resources/W02L01-solution.css)
+[solution](local-env-setup/src/W02L01-solution.css)

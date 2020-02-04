@@ -17,7 +17,7 @@
 * [Modern JavaScript frameworks & Angular introduction](W04L03&#32;-&#32;Modern&#32;JavaScript&#32;frameworks&#32;&&#32;Angular&#32;intro.md)
 * [Angular advanced - async data handling, typescript](W04L04&#32;-&#32;Angular&#32;advanced&#32;-&#32;async&#32;data&#32;handling,&#32;typescript.md)
 * [ Angular advanced - angular routing.md](W05L01&#32;-&#32;Angular&#32;advanced&#32;-&#32;angular&#32;routing.md)
-* [Angular advacned - state manager.md](W05L02&#32;-&#32;Angular&#32;advacned&#32;-&#32;state&#32;manager.md)
+* [Angular advanced - state manager.md](W05L02&#32;-&#32;Angular&#32;advacned&#32;-&#32;state&#32;manager.md)
 * [Angular material & form handling.md](W05L03&#32;-&#32;Angular&#32;material&#32;&&#32;form&#32;handling.md)
 * [React & Vue & others.md](W05L04&#32;-&#32;React&#32;&&#32;Vue&#32;&&#32;others.md)
 * [Advanced FE project.md](W06L01&#32;-&#32;Advanced&#32;FE&#32;project.md)

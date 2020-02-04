@@ -42,7 +42,8 @@
 * src (audio, embed, iframe, img, input, script, source, track, video) - sets the URL of the media file to use
 * href (a, area, base, link) - sets the URL that the page goes to when used
 * alt (area, img, input)- alternate text when the original element fails to display (if input type is outdated, media does not load)
-
+* action
+* 
 ### List of all attributes, the usage and description
 
 https://html-css-js.com/html/tutorial/html-tag-attributes.php
@@ -53,4 +54,4 @@ create page using only html and it's attributes based on the image under your us
 
 ![Example to aim for](img/W01L04.png)
 
-[Solution](extra-resources/index.html)
+[Solution](local-env-setup/src/W01L04/solution.7z)

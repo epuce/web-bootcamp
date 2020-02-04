@@ -1,0 +1,131 @@
+<style>
+    .table td {
+        height: 100px;
+    }
+</style>
+<table class="table" width="100%" border="1px solid" style="border-collapse: collapse;">
+    <tr>
+        <th>A</th>
+        <th colspan="2">B</th>
+        <th colspan="2">C</th>
+    </tr>
+    <tr>
+        <td>ROW 1 COL 1</td>
+        <td rowspan="3" colspan="2">ROW 1 COL 2</td>
+        <td rowspan="5" colspan="2">ROW 1 COL 3</td>
+    </tr>
+    <tr>
+        <th>D</th>
+    </tr>
+    <tr>
+        <td rowspan="5">ROW 4 COL 1</td>
+    </tr>
+    <tr>
+        <th colspan="2">E</td>
+    </tr>
+    <tr>
+        <td colspan="2">ROW 6 COL 1</td>
+    </tr>
+    <tr>
+        <th>F</th>
+        <th colspan="2">G</th>
+        <th>H</th>
+    </tr>
+    <tr>
+        <td>ROW 8 COL 1</td>
+        <td colspan="2">ROW 8 COL 2</td>
+        <td>ROW 8 COL 3</td>
+    </tr>
+</table>
+
+<form action="link-to-action.html">
+    <table>
+        <tr>
+            <td>
+                <label for="username">Username</label>
+            </td>
+            <td>
+                <input id="username" name="username" min="8">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Subscribe to newsletter</span>
+            </td>
+            <td>
+                <label>
+                    Yes
+            
+                    <input type="radio" value="true" name="subscribe">
+                </label>
+            
+                <label>
+                    No
+            
+                    <input type="radio" value="false" name="subscribe">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="comment">
+                    Comment
+                </label>
+            </td>
+            <td>
+                <textarea id="comment" name="comment">This is a pre set text</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="color">Select your favorite color</label>
+                
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="color">
+                    Select your favorite color
+                </label>
+            </td>
+            <td>
+                <input id="color" type="color" name="color">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="range">
+                    How happy are you
+                </label>
+            </td>
+            <td>
+                <input id="range" type="range" min="0" max="10">
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <button type="submit">Save</button>
+            </th>
+            <th>
+                <button type="reset">Reset</button>
+            </th>
+        </tr>
+    </table>
+</form>
+
+<ol>
+    <li>
+        The image is also a link
+
+        <a href="#link">
+            <img width="25px" src="https://lh3.googleusercontent.com/proxy/ROBn8r2qgWYQt0VimYD1vf7-T_hclpqtKVPa9SAH_khqoYA3WyMHyMrHjhPWrZvKk282MI3hY9qn0PakfKhzCZwY4oJHmNl6jJZvlrBwp1AGBSk">
+        </a>
+    </li>
+    <li>List element</li>
+    <li>
+        <img alt="picture not loaded">
+    </li>
+</ol>
+
+<h1 id="link" style="margin-top: 3000px;">This is hidden text</h1>

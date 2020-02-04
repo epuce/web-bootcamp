@@ -72,6 +72,15 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
     <label for="age">Age</label>
     <input id="age" type="number">
 
+    <label>Gender</label>
+    <select>
+        <option value="m">male</option>
+        <option value="f">female</option>
+    </select>
+
+    <label>Comment</label>
+    <textarea></textarea>
+
     <button type="submit">Save</button>
 </form>
 ```
