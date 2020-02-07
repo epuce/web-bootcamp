@@ -6,42 +6,75 @@ body {
     margin: 0;
 }
 
-nav {
-    position: fixed;
-    height: 50px;
+.table-wrapper {
+    padding-top: 40px;
+    width: 80%;
+    margin: auto;
+}
+
+table {
     width: 100%;
-    padding: 0 10%;
-    background: rgba(99, 99, 180, .4)
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 4px;
 }
 
-nav .logo img {
-    height: 100%;
+td, th {
+    padding: 10px;
+    border: 1px solid;
 }
 
-nav .menu {
-    position: relative;
-    display: inline-block;
-    float: right;
-    font-size: 24px;
-    line-height: 50px;
-    text-transform: uppercase;
-    color: rgba(0, 0, 0, .5);
+th {
+    background: rgba( 60, 60, 160, 0.1);
 }
 
-nav .menu:hover > ul {
-    display: block;
+td.cell-id {
+    min-width: 30px;
+    text-align: center;
 }
 
-ul {
-    position: absolute;
-    right: 50%;
-    margin: 0;
-    padding: 0 20px;
-    display: none;
-    list-style: none;
-    font-size: 16px;
-    font-weight: 700;
+.actions {
+    text-align: center;
     white-space: nowrap;
-    background: rgba(99, 99, 180, .4);
-    transform: translateX(50%);
+}
+
+.actions button {
+    padding: 0.5em 3em;
+    border: 0.16em solid #000;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px; 
+    text-transform: uppercase;
+    background:#FFFFFF;
+    cursor: pointer;
+}
+
+.actions button.edit {
+    color: rgb(60, 60, 160);
+}
+
+.actions button.delete {
+    color: rgb(160, 60, 60);
+}
+
+td .check:after {
+    display: inline-block;
+    padding: 2px 4px;
+    border: 3px solid;
+}
+
+.cell-check {
+    text-align: center;
+}
+
+td .check.yes:after {
+    border-color: rgb(60, 160, 60);
+    color: rgb(60, 160, 60);
+    content: "Yes";
+}
+
+td .check.no:after {
+    border-color: rgb(160, 60, 60);
+    color: rgb(160, 60, 60);
+    content: "No";
 }
