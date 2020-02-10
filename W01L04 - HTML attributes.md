@@ -54,4 +54,4 @@ create page using only html and it's attributes based on the image under your us
 
 ![Example to aim for](img/W01L04.png)
 
-[Solution](local-env-setup/src/W01L04/solution.7z)
+[Solution](local-env-setup/src/W01L04/solution.html)

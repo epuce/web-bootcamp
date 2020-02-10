@@ -15,7 +15,7 @@
 ``` html
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+</head>
 
 <style>
     .container {
@@ -70,5 +70,7 @@ result:
 * [HTML5 Boilerplate](https://html5boilerplate.com/)
 * [YUI](https://yuilibrary.com/)
 
-### Bootstrap checkup - create a page using only html you created and bootstrap classes
-![Bootstrap task](img/W02L04-bootstrap-task.png)
+### Bootstrap checkup
+* Using this file as the html structure, fill out all the empty classes (class="") with a correct bootstrap or font-awesome class or class combination to get the result in the picture
+* [task template](local-env-setup/src/W02L04/template.html)
+![Bootstrap task](img/W02L04.png)
