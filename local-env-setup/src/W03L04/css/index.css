@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+}
+
+.request-wrapper,
+.progress-wrapper {
+    margin: auto;
+    padding-top: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.make-request {
+    padding: 3px 6px;
+    height: 30px;
+    background: #ffffff;
+    border: 1px solid #123456;
+    border-radius: 4px;
+}
+
+#data-table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+#data-table td, 
+#data-table th {
+    border: 1px solid #000000;
+}
+
+.input-wrapper input {
+    width: 100%;
+}
+
+.input-wrapper input.error {
+    border-color: red;
+}
+
+.error-box {
+    display: none;
+}
+
+.btn-wrapper {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-wrapper button {
+    height: 30px;
+    padding: 5px;
+    border: 1px solid;
+}
+
+.aside-left {
+    display: inline-block;
+    width: 40%;
+}
+
+.aside-right {
+    padding: 0 20px;
+    display: inline-block;
+    width: 80%;
+}
+
+.aside-right .progress {
+    height: 5px;
+    width: 0%;
+    background: gray;
+}
