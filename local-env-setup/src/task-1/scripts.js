@@ -44,12 +44,14 @@ $(function() {
         }
     });
 
-    $popupClose.on('click', function() {
+    $popupClose.on('click', closePopup);
+
+    function closePopup() {
         $popupWrapper.fadeOut();
 
         toggleForm();
         renderFormValues();
-    });
+    }
 
     $subscribeForm.find('input').on('focus', function() {
         var $this = $(this);
@@ -77,6 +79,12 @@ $(function() {
             $asideBackdrop.add($aside).removeClass('open').addClass('close');
         }
     }
+
+    document.addEventListener('keyup', function(event) {
+        if (document.getElementsByClassName('popup-wrapper')[0].style.display === "block" && event.keyCode === 27) {
+            closePopup();
+        }
+    })
 
     function renderFormValues() {
         var data = JSON.parse(window.localStorage.data || '{}');

@@ -188,6 +188,18 @@ let userNr1 = new User("Ed", "edm.puce@gmail.com", "qwerty");
 
 userNr1.getPassword();
 // This will console log the password: qwerty
+
+
+// Extend User class allows us to implement all the same things that are there
+function Admin() {
+    User.apply(this, arguments);
+
+    this.isAdmin = true;
+    
+    this.notifyAdmin = () => {
+        console.log("Hey " + this.username, " you " + this.isAdmin ? "" : "don't " + "have admin tights");
+    }
+}
 ```
 
 ### Checkup
