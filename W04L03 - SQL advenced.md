@@ -1,7 +1,7 @@
 ### SQL database advanced
 1. Joining tables
 ```sql
-CREATE TABLE Purchases
+CREATE TABLE purchases
     (
         purchase_time datetime,
         name varchar(20),
@@ -30,7 +30,7 @@ GROUP BY u.name
 ```sql
 SELECT *
 FROM Users as u
-GROUP BY u.id DESC --- Possible values DESC | ASC
+ORDER BY u.id DESC --- Possible values DESC | ASC
 ```
 
 4. Join types
@@ -39,8 +39,8 @@ GROUP BY u.id DESC --- Possible values DESC | ASC
     * Mathematical - [link](https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html)
     * Logical
     ```sql
-    INSERT INTO Purchases AS p (user_id, name, purchase_time) VALUES
-    SELECT u.id, "Product name", NOW() FROM Users AS u
+    INSERT INTO purchases (user_id, name, purchase_time)
+    SELECT u.id, "Product name", NOW() FROM users AS u
     ```
 6. Complex queries
 ```sql
