@@ -1,5 +1,5 @@
 ### SQL database basics
-1. Install mysql server locally (if not using docker)
+* Install mysql server locally (if not using docker)
     * unix 
         - sudo apt-get install mysql-server
         - sudo mysql
@@ -7,12 +7,12 @@
         - mysql -u root -p
     * windows
         - [step by step instructions](https://mid.as/kb/00145/install-configure-mysql-on-windows)
-2. Get "SQL Tools" and "SQL server" extension or any other SQL tool (DBeaver, MySql Workbench)
-3. Log in with a SQL tool or create a php file that manages the connection (database-wrapper.php)
+* Get "SQL Tools" and "SQL server" extension or any other SQL tool (DBeaver, MySql Workbench)
+* Log in with a SQL tool or create a php file that manages the connection (database-wrapper.php)
     * host: localhost:8082 (8082 port is the one we exposed in docker-compose.yml file)
     * username: root (from docker-compose.yml file)
     * password: root_password (from docker-compose.yml file)
-4. Execute the commands in the tool or create a php file that executes the scripts
+* Execute the commands in the tool or create a php file that executes the scripts
     * Create a database
     ```sql
     "CREATE DATABASE IF NOT EXISTS `web-bootcamp`"
@@ -27,7 +27,7 @@
             email varchar(20)
         );
     ```
-5. SQL data types
+* SQL data types
     * Numeric
         * bit: 0 till 1
         * tinyint: 0 till 255
@@ -58,16 +58,16 @@
         * XML -stores xml data
         * JSON - stores JSON data
         
-6. Creating/updating records
-```sql
-INSERT INTO TableName (column1, column2, ...) VALUES (value1, value2, ...), (other_value1, other_value2, ...)
-```
-```sql
-UPDATE TableName
-SET column1 = value1, column2 = value2, ...
-WHERE condition;
-```
-7. Retrieving records
+* Creating/updating records
+    ```sql
+    INSERT INTO TableName (column1, column2, ...) VALUES (value1, value2, ...), (other_value1, other_value2, ...)
+    ```
+    ```sql
+    UPDATE TableName
+    SET column1 = value1, column2 = value2, ...
+    WHERE condition;
+    ```
+* Retrieving records
     * All data from table
     ```sql
     SELECT * FROM Users
@@ -82,19 +82,19 @@ WHERE condition;
     ```sql
     SELECT name FROM Users WHERE profession='Programmer'
     ```
-8. Modify table
-```sql
-ALTER TABLE Users ADD (
-    id int NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (id)
-);
-// OR
-ALTER TABLE Users
-DROP COLUMN name;
-// OR
- ALTER TABLE Users 
- MODIFY profession varchar(30);
-```
+* Modify table
+    ```sql
+    ALTER TABLE Users ADD (
+        id int NOT NULL AUTO_INCREMENT,
+        PRIMARY KEY (id)
+    );
+    // OR
+    ALTER TABLE Users
+    DROP COLUMN name;
+    // OR
+    ALTER TABLE Users 
+    MODIFY profession varchar(30);
+    ```
 
 ### Other commands
 [SQL commands codeacademy](https://www.codecademy.com/articles/sql-commands)

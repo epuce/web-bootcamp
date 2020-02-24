@@ -1,14 +1,14 @@
 <!-- TODO setup/introduce to xdebug -->
-### Back end technologies
+### PHP basics
 1. What do we need?
    1. Web server
    2. Back End language/technologies
    3. Data base
 
-2. Check if PHP has been installed if not install it - globally on your machine
-3. Check if mysql has bene installed if not install it - globally on your machine
+2. Check if PHP has been installed if not install it - globally on your machine (if not using docker)
+3. Check if mysql has bene installed if not install it - globally on your machine (if not using docker)
 
-4. Start a web server
+4. Start a web server (if not using docker)
 ```PHP
 // Run the command in terminal
 // The localhost:8000 can be any link that is used to access the server
@@ -16,7 +16,7 @@
 php -S localhost:8000 router.php
 ```
 ```PHP
-// router.php - not mandatory
+// router.php - not mandatory, is needed to ask for hte correct file, based on requested URL
 <?php
 if (preg_match('/^\/api/', $_SERVER["REQUEST_URI"])) {
     $path = substr($_SERVER["REQUEST_URI"], 4);
@@ -30,109 +30,102 @@ if (preg_match('/^\/api/', $_SERVER["REQUEST_URI"])) {
 ?>
 ```
 
+### Debugger - xdebug
+* Listens to all the requests to the server and stops the scrip execution where the breaking point in the file was set
+* vscode setup:
+    * in project root folder, under .vscode create a file *launch.json* with this content
+    ```JavaScript
+    {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Listen for XDebug",
+                "type": "php",
+                "request": "launch",
+                "port": 9000
+            },
+            {
+                "name": "Launch currently open script",
+                "type": "php",
+                "request": "launch",
+                "program": "${file}",
+                "cwd": "${fileDirname}",
+                "port": 9000
+            }
+        ]
+    }
+    ```
+    * get "PHP debug" extension
+    * start the debugger by clicking F5 or under the debug extension section
+    * add a breaking point (red dot) in an php file to test if the debugger work
+
+### PHP usage
 * Most of BE technologies can be implemented directly in HTML
-```HTML
-<form action="get.php" method="get">
-    <div>Name: <input type="text" name="name"></div>
-    <div>E-mail: <input type="email" name="email">
-</div>
-<button type="submit">Save User</button>
-```
+    ```HTML
+    <form action="get.php" method="get">
+        <div>Name: <input type="text" name="name"></div>
+        <div>E-mail: <input type="email" name="email">
+    </div>
+    <button type="submit">Save User</button>
+    ```
 
-```PHP
-// get.php
-Hi <?php echo $_GET["name"]; ?><br>
-You have subscribed with e-mail: <?php echo $_GET["email"]; ?>
-```
-* [documentation](https://www.w3schools.com/php/)
-* Conditioning - almost the same a in  JavaScript
-```PHP
-<?php
-if ($condition) {
-   ?>
-   <b>This is true.</b>
-   <?php
-} else {
-   ?>
-   <b>This is false.</b>
-   <?php
-}?>
-```
-* Concatenation
-```PHP
-<?php
-$name = "Edmunds";
-$profession = "programmer";
+    ```PHP
+    // get.php
+    Hi <?php echo $_GET["name"]; ?><br>
+    You have subscribed with e-mail: <?php echo $_GET["email"]; ?>
+    ```
+    * [documentation](https://www.w3schools.com/php/)
+    * Conditioning - almost the same a in  JavaScript
+    ```PHP
+    <?php if ($condition) { ?>
+        <b>This is true</b>
+    <?php } else { ?>
+        <b>This is false</b>
+    <?php } ?>
+    ```
+    * Concatenation
+    ```PHP
+    <?php
+    $name = "Edmunds";
+    $profession = "programmer";
 
-"Hi, my nam is " . $name . ", I'm a " . $profession;
+    echo "Hi, my nam is " . $name . ", I'm a " . $profession;
 
-// Result: Hi, my nam is Edmunds, I'm a programmer;
-?>
-```
+    // Result: Hi, my nam is Edmunds, I'm a programmer;
+    ?>
+    ```
 * Data types:
-  * boolean
-  * integer
-  * float
-  * string
-  * array
-  * object
-  * NULL
+    * boolean
+    * integer
+    * float
+    * string
+    * array
+    * object
+    * NULL
 
 * Commands
-  * print/println
-  * echo
-  * array_pop/array_push/array_search
-  * fopen/fclose/file_get_contents/etc. - file reading, [link](https://teamtreehouse.com/library/reading-files-into-a-string-or-array)
-  * serialize/unserialize
-  * require/require_once/include
-  * etc.
+    * print/println
+    * echo
+    * array_pop/array_push/array_search
+    * fopen/fclose/file_get_contents/etc. - file reading, [link](https://teamtreehouse.com/library/reading-files-into-a-string-or-array)
+    * serialize/unserialize
+    * require/require_once/include
+    * etc.
 
-* Command line script
-```PHP
-<?php
-function xTime($starttime) {
-    // Get the difference between start and end in microseconds, as a float value
-    $diff = microtime(true) - $starttime;
-
-    // Break the difference into seconds and microseconds
-    $sec = intval($diff);
-    $micro = $diff - $sec;
-
-    // result will look like "00:00:02.452"
-    return strftime('%T', mktime(0, 0, $sec)) . str_replace('0.', '.', sprintf('%.3f', $micro));
-}
-
-function title(string $title) {
-    global $start;
-    echo PHP_EOL;
-    echo ' -> '.$title.' ('.xTime($start).')'.PHP_EOL;
-    echo PHP_EOL;
-}
-
-$folderName = "my-project";
-
-if (isset($argv[1]) && is_string($argv[1])) {
-    $folderName = strtolower($argv[1]);
-}
-
-$git  = 'https://github.com/epuce/web-bootcamp.git';
-
-title('Git clone');
-echo shell_exec("cd ../; git clone $git $folderName");
-
-title('npm install');
-echo shell_exec("cd ../; npm install --prefix $folderNameAngular-project").PHP_EOL;
-title('npm start ng server');
-echo shell_exec("cd ../; npm run start --prefix $folderNameAngular-project").PHP_EOL;
-
-echo PHP_EOL;
-echo ' *********'.PHP_EOL;
-echo ' ALL DONE!'.PHP_EOL;
-echo ' *********'.PHP_EOL;
-?>
-```
+* Writing to a file
+    ```PHP
+    $pointer = fopen($file, "w");
+    if(!empty($pointer)){
+        fwrite($pointer, $data);
+        fclose($pointer);
+    } else {
+        throw new Exception("Writing to ".$file." failed");
+    }
+    ```
 ### Checkup
 1. Create an array, loop thru it and print the values to the browser with some extra text for each value
 2. Create a form, trigger an action that sends the data to server and returns a modified value
-3. Create a script witch when run clones your angular project, and then builds it
-4. Create a script that writes the data you pass as arguments to a file
+3. Create a script that writes the data you pass as arguments to a file
