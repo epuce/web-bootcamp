@@ -45,7 +45,10 @@ if (preg_match('/^\/api/', $_SERVER["REQUEST_URI"])) {
                 "name": "Listen for XDebug",
                 "type": "php",
                 "request": "launch",
-                "port": 9000
+                "port": 9000,
+                "pathMappings": {
+                    "/var/www/html": "${workspaceFolder}/src"
+                },
             },
             {
                 "name": "Launch currently open script",
@@ -58,9 +61,24 @@ if (preg_match('/^\/api/', $_SERVER["REQUEST_URI"])) {
         ]
     }
     ```
-    * get "PHP debug" extension
-    * start the debugger by clicking F5 or under the debug extension section
+    * get "PHP debug" extension for chrome
+    * get the [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) extension 
+    * start the debugger by clicking F5 or under the debug extension section (if asked, select the "Listen for XDebug" option)
     * add a breaking point (red dot) in an php file to test if the debugger work
+
+* Troubleshooting
+    * Create a php file, like phpinfo.php that can be accessed by loclahost:8000/phpinfo.php, set the content to (open the link):
+        ```PHP
+        <?= phpinfo() >
+        ```
+        * find the xdebug header and look if the correct values are set
+            * xdebug.remote_port = 9000
+            * xdebug.remote_host = host.docker.internal
+            * xdebug.remote_enable = on
+            * xdebug.idekey = VSCODE
+    * In chrome, open this [link](chrome://settings/cookies/detail?site=localhost&search=cookies), if there is a cookie name "XDEBUG_SESSION" then everything is fine, if not, then [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) chrome plugin is not set up correctly or turned on
+    * 
+
 
 ### PHP usage
 * Most of BE technologies can be implemented directly in HTML
@@ -97,6 +115,19 @@ if (preg_match('/^\/api/', $_SERVER["REQUEST_URI"])) {
     // Result: Hi, my nam is Edmunds, I'm a programmer;
     ?>
     ```
+* Global arguments
+    ```PHP
+    $_GET // Data parameters sent via GET request
+    $_POST // Data parameters sent via POST request
+    $_SESSION // Session stored parameters
+    $_SERVER // Server related parameters
+    ```
+* Passing parameters:
+    * with GET (thru URL)
+    ```PHP
+    http://domain-name.com?param_1=value_1&params_2=value_2
+    ```
+    * with POST (as request body)
 * Data types:
     * boolean
     * integer
