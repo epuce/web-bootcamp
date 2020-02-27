@@ -43,16 +43,16 @@ $database->closeDatabaseConnection();
 </table>
 ```
 ### CRUD
-* [C - create](extra-resources/W06L04/add.php)
-* [R - read](extra-resources/W06L04/index.php)
-* [U - update](extra-resources/W06L04/edit.php)
-* [D - delete](extra-resources/W06L04/delete.php)
+* [C - create](local-env-setup/src/W05L01/add.php)
+* [R - read](local-env-setup/src/W05L01/index.php)
+* [U - update](local-env-setup/src/W05L01/edit.php)
+* [D - delete](local-env-setup/src/W05L01/delete.php)
 
 ### Data manipulation with API requests
-* [Requests with jQuery](extra-resources/W06L04/scripts.js)
-* [PUT - update](extra-resources/W06L04/src/put.php)
-* [POST - create](extra-resources/W06L04/src/post.php)
-* [DELETE](extra-resources/W06L04/src/delete.php)
+* [Requests with jQuery](local-env-setup/src/W05L01/scripts.js)
+* [PUT - update](local-env-setup/src/W05L01/src/put.php)
+* [POST - create](local-env-setup/src/W05L01//src/post.php)
+* [DELETE](local-env-setup/src/W05L01//src/delete.php)
 
 ### Checkup
 1. Create a new data table with minimum 2 fields
