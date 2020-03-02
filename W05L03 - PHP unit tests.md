@@ -4,10 +4,11 @@
 #### All commands have to be run in docker console
 * Composer (php package manager)
     1. php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    2. apt-get install wget
     2. HASH="$(wget -q -O - https://composer.github.io/installer.sig)"
     3. php -r "if (hash_file('SHA384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
         * This should return: `Installer verified`
-    4. sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+    4. php composer-setup.php --install-dir=/usr/local/bin --filename=composer
         * check if composer is installed by typing: `composer`
 * phpunit (php unit test library)
     1. composer require --dev phpunit/phpunit ^9
