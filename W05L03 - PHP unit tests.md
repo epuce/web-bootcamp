@@ -147,4 +147,4 @@ public function testGetMonthsSelectedCount() {
 ```
 ### Checkup 
 1. Create Product CRUD logic (DB + PHP) and one not database related function
-2. Create test for each of the CRUD logic and the extra function, test for valid and invalid response (9 tests together)
+2. Create test for each of the CRUD logic and the extra function, test for valid and invalid response
