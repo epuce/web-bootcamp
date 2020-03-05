@@ -1,27 +1,26 @@
 ### Other BE languages
-* NodeJs
-    * JavaScript based data handling engine
-```ecmascript 6
-const express = require('express'); // NodeJs framework
-const bodyParser = require('body-parser'); // Request / Response data parser
+* NodeJs (JavaScript based data handling engine)
+    ```javascript
+    const express = require('express'); // NodeJs framework
+    const bodyParser = require('body-parser'); // Request / Response data parser
 
-const user = require('./routes/user.route'); // For API routing (user created)
+    const user = require('./routes/user.route'); // For API routing (user created)
 
-const app = express(); // Create new app
+    const app = express(); // Create new app
 
-// Setup the data parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+    // Setup the data parser
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/api/users', user);// Add specific API routing for user
+    app.use('/api/users', user);// Add specific API routing for user
 
-// Create the NodeJs server
-app.listen(8000, () => {
-	console.log('Server is up and running on localhost:' + 8000);
-});
+    // Create the NodeJs server
+    app.listen(8000, () => {
+        console.log('Server is up and running on localhost:' + 8000);
+    });
 
-// run node app.js in the terminal to start the app
-```
+    // run node app.js in the terminal to start the app
+    ```
 * Others
     * Ruby
     * Java
@@ -56,13 +55,15 @@ describe('Users', () => {
     // Example: when user adds false data for login, the login does not happen 
 });
 ```
-# Look at the user that he could use your system like this
-![Testers VS Users gif](img/testers-VS-users.gif)
 
 * NoSQL data handling
     * MongoDB - JSON like structure
+    * Start the database server (in docker) - `mongod`
+    * Start the MongoDB shell - `mongo`
+    * Create database - `use your-db-name`
+    * Create database table - `db.createCollection("users")`
     * [All commands](https://docs.mongodb.com/manual/reference/method/js-collection/)
-    ```mongodb
+    ```javascript
         db.users.insertMany([{name: "Ed", profession: "Programmer"}, {name: "Jim", age: 10}])
         db.users.find({}) // Get all
         db.users.find({name: "Ed"}); // Get all with condition
@@ -77,6 +78,5 @@ describe('Users', () => {
         * HBase - Google developed, based on
         
 ### Checkup
-* Create all the functionality for TODO statements under extra-resources/W07L04/
-    * Create get/update/delete/ controller functions (user Postman for requests)
-    * Create tests for successful and failed login and user delete
+* Create CRUD functionality with nodejs
+* Create tests for successful and failed login and user delete
