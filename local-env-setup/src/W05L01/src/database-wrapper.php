@@ -1,43 +1,40 @@
 <?php
-class DatabaseWrapper {
-    private $connection;
 
-    public function openDatabaseConnection($dbname = NULL)
+// TODO re write all the sql::run to static logic
+class DatabaseWrapper {
+    private static $connection;
+
+    private static function openDatabaseConnection($dbname = NULL)
     {
         $dbhost = "104.248.125.41:3306";
         $dbuser = "root";
         $dbpass = "root_password";
+        $dbname = "web-bootcamp";
+        
+        static::$connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
-        if ($dbname) {
-            $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-//            $dsn = "mysql:host=$dbhost;dbname=$dbname";
-//            $this->connection = new PDO($dsn, $dbuser, $dbpass);
-        } else {
-            $this->connection = new mysqli($dbhost, $dbuser, $dbpass);
-        }
-
-        if ($this->connection->connect_error) {
-            die("Connection failed: " . $this->connection->connect_error);
+        if (static::$connection->connect_error) {
+            die("Connection failed: " . static::$connection->connect_error);
         }
     }
 
-    public function closeDatabaseConnection()
+    private static function closeDatabaseConnection()
     {
-        $this->connection->close();
+        static::$connection->close();
     }
 
-    public function execute($sql)
+    public static function run($sql)
     {
-        $response = $this->connection->query($sql);
+        if (!static::$connection) {
+            static::openDatabaseConnection();
+        }
+        $response = static::$connection->query($sql);
+        static::closeDatabaseConnection();
 
         if ($response) {
-//            while ($row = $response->fetch()) {
-//                echo serialize($row);
-//            }
-
             return $response;
         } else {
-            die("SQL error: " . $this->connection->error . "</br>");
+            die("SQL error: " . static::$connection->error . "</br>");
         }
     }
 

@@ -1,4 +1,3 @@
-<!-- TODO setup/introduce to xdebug -->
 ### PHP basics
 1. What do we need?
    1. Web server
@@ -18,6 +17,7 @@ php -S localhost:8000 router.php
 ```PHP
 // router.php - not mandatory, is needed to ask for hte correct file, based on requested URL
 <?php
+// Project specific routing
 if (preg_match('/^\/api/', $_SERVER["REQUEST_URI"])) {
     $path = substr($_SERVER["REQUEST_URI"], 4);
     include(__DIR__."/src/$path");
@@ -26,6 +26,21 @@ if (preg_match('/^\/api/', $_SERVER["REQUEST_URI"])) {
 } else {
     $path = $_SERVER["REQUEST_URI"];
     include(__DIR__."/public$path");
+}
+
+// Or global routing
+
+switch ($_SERVER["REQUEST_URI"]) {
+    case "/CRUD/":
+        require_once __DIR__ . "/CRUD/controllers/index.php";
+    break;
+    case "/CRUD/add":
+        require_once __DIR__ . "/CRUD/controllers/add.php";
+    break;
+    default:
+        echo "<h1 style='text-align: center'>404 page not found</h1>";
+        echo phpinfo();
+    break;
 }
 ?>
 ```

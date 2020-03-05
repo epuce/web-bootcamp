@@ -1,41 +1,33 @@
 <?php
 
-declare(strict_types=1);
-
 use PHPUnit\Framework\TestCase;
+use CRUD\entity\User;
 
 final class UserTest extends TestCase
 {
-    public function testGetAllUsers(): void
+    public function testGetAllUsers()
     {
-        $result = UserModel::getAllUsers();
-        $users = [];
+        $result = UserModel::getAllUsers(3);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            $users[] = $row;
-        }
-
-        $this->assertThat(5, $this->lessThan(count($users))); // Test if we have more than 5 users in the database
+        $this->assertEquals(3, $result->num_rows);
     }
-    
-    public function testAddAndGetUser(): void
-    {
+
+    public function testAddAndGetUser() {
         $data = [
             "name" => "Test name",
-            "password" => "Test password"
+            "password" => "Test pass"
         ];
-
-        $userId = UserModel::addUser($data);
-        $result = UserModel::getUserById($userId);
-        
-        var_dump($userId);
-
-        $this->assertEquals(1, $result->num_rows);
+        $user = new User($data);
+        $userId = UserModel::addUser($user);
         try {
-            while ($row = mysqli_fetch_assoc($result)) {
+            $response = UserModel::getUserById($userId);
+
+            $this->assertEquals(1, $response->num_rows);
+    
+            while ($row = mysqli_fetch_assoc($response)) {
+                $this->assertNotNull($row["name"]);
                 $this->assertNotNull($row["password"]);
-                $this->assertNotNull($row["password"]);
-                $this->assertEquals($data["name"], $row["name"]);
+                $this->assertEquals($user->getName(), $row["name"]);
                 $this->assertEquals($data["password"], $row["password"]);
             }
         } finally {

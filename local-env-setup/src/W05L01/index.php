@@ -1,15 +1,11 @@
 <?php
 require_once "src/database-wrapper.php";
 
-$database = new DatabaseWrapper();
-
-$database->openDatabaseConnection('web-bootcamp');
 
 $sql = "SELECT * FROM Users";
 
-$response = $database->execute($sql);
+$response = DatabaseWrapper::run($sql);
 
-$database->closeDatabaseConnection();
 ?>
 
 <!DOCTYPE html>
