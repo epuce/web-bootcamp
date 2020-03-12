@@ -20,12 +20,9 @@ module.exports = class User {
 	}
 
 	hashPassword() {
-		const _this = this;
+		hash = bcrypt.hash(this.password, 1, function (error, hash) {return hash});
+		console.log(hash);
 
-		bcrypt.hash(this.password, 1, function (error, hash) {
-			_this.password = hash;
-		});
-
-		console.log(_this, 1);
+		return hash;
 	}
 };

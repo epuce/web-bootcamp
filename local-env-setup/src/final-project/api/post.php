@@ -1,13 +1,11 @@
 <?php
 
-include_once "src/helpers/database-wrapper.php";
+require_once __DIR__ . "/helpers/database-wrapper.php";
 
-$database = new DatabaseWrapper();
+$requestPayload = json_decode(file_get_contents('php://input'),1);
 
-$database->openDatabaseConnection();
+$sql = sprintf("INSERT INTO list (description, checked, order_id) VALUES ('%s', '%s', '%s')", $requestPayload['description'], !!$requestPayload['checked'] ? 1 : 0, $requestPayload['order_id']);
 
-$sql = "";
+$id = DatabaseWrapper::execute($sql);
 
-$database->execute();
-
-$database->closeDatabaseConnection();
+echo DatabaseWrapper::getArrayResult("SELECT * FROM list ORDER BY id DESC LIMIT 1");

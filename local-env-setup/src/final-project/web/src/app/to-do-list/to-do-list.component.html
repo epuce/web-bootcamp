@@ -1,7 +1,7 @@
 <div class="row p-4">
-  <div class="col-2"></div>
+  <div class="col-1"></div>
 
-  <div class="row col-8">
+  <div class="row col-10">
     <div class="col-6">
       <textarea class="w-100"
                 required
@@ -17,6 +17,7 @@
 
     <div class="col-6">
       <table cdkDropList
+             [cdkDropListData]="list.noCheck"
              (cdkDropListDropped)="updateOrder($event)"
              class="table">
 

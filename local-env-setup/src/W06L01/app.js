@@ -6,6 +6,7 @@ const user = require('./routes/user.route');
 const login = require('./routes/login.route');
 
 const app = express();
+const PORT = 8002;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -15,10 +16,11 @@ app.use('/api/login', login);
 //app.use('/api/logout', logout);
 
 const connection = mysql.createConnection({
-	host: "104.248.125.41",
+	host: "127.0.0.1",
+	port: 8082,
 	user: "root",
 	password: "root_password",
-	database: "web-bootcamp"
+	database: "web-bootcamp-db"
 });
 
 connection.connect(function(error) {
@@ -27,8 +29,10 @@ connection.connect(function(error) {
 	console.log("Connected!");
 });
 
-exports.connection = connection;
 
-app.listen(8000, () => {
-	console.log('Server is up and running on localhost:' + 8000);
+app.listen(PORT, () => {
+	console.log('Server is up and running on localhost:' + PORT);
 });
+
+exports.connection = connection;
+exports.PORT = PORT;

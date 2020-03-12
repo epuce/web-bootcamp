@@ -11,11 +11,11 @@ const routes: Routes = [
     }, {
         path: 'user',
         loadChildren: './user/user.module#UserModule',
-        canLoad: [AccessControlService]
+        // canLoad: [AccessControlService]
     }, {
         path: '',
         component: IndexComponent,
-        canActivate: [AccessControlService]
+        // canActivate: [AccessControlService]
     },  {
         path: '**',
         redirectTo: 'login',

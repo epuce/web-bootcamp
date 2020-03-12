@@ -1,10 +1,6 @@
 <?php
 
-require_once "helpers/database-wrapper.php";
-
-$database = new DatabaseWrapper();
-
-$database->openDatabaseConnection();
+require_once __DIR__ ."/helpers/database-wrapper.php";
 
 $id = $_GET['id'];
 
@@ -14,4 +10,4 @@ $response = ['id' => $id];
 
 echo json_encode($response);
 
-$database->execute($sql);
+DatabaseWrapper::execute($sql);

@@ -1,11 +1,12 @@
 require('should');
 const http = require('http');
+const {PORT} = require('../app');
 const querystring = require('querystring');
 
 describe('Users', () => {
 	const options = {
 		host: 'localhost',
-		port: '8000',
+		port: PORT,
 		path: '/api/users/list',
 		method: 'GET',
 		headers: {
@@ -13,27 +14,25 @@ describe('Users', () => {
 		}
 	};
 
-	it('should show list of users', (done) => {
+	it('should show list of users', async () => {
 		const requestData = {
 			...options,
 			method: 'GET',
 			path: '/api/users/list',
 		};
 
-		const request = http.request(requestData, function(fullResponse) {
+		const request = await http.request(requestData, function(fullResponse) {
 			fullResponse.setEncoding('utf8');
 			fullResponse.on('data', function (data) {
 				data = data && JSON.parse(data);
 				data.should.be.Array();
 			});
-
-			done();
 		});
 
 		request.end();
 	});
 
-	it('should create an user', (done) => {
+	it('should create an user', async () => {
 		const requestBody = {
 			name: "puce.eee",
 			password: "password",
@@ -51,7 +50,7 @@ describe('Users', () => {
 			}
 		};
 
-		const request = http.request(requestData, function(fullResponse) {
+		const request = await http.request(requestData, function(fullResponse) {
 			fullResponse.setEncoding('utf8');
 			fullResponse.on('data', function (data) {
 				data = data && JSON.parse(data);
@@ -63,8 +62,6 @@ describe('Users', () => {
 					data[0].password.should.be.equal(requestBody.password);
 					data[0].profession.should.be.equal(requestBody.profession);
 				}
-
-				done();
 			});
 		});
 

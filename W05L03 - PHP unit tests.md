@@ -26,6 +26,9 @@
     3. run: `composer dump-autoload`
     4. to run the tests `./vendor/bin/phpunit --testdox tests` 
 
+# Look at the user that he could use your system like this
+![Testers VS Users gif](img/testers-VS-users.gif)
+
 ### Logic
 * We will specify a folder that will contain all the tests, only files that end with Test.php will be treated as tests
 * The tests are written so we imitate the function (or function group) by passing different parameters and expecting some specific result

@@ -1,17 +1,8 @@
 <?php
 
-include_once "helpers/database-wrapper.php";
-    
-$database = new DatabaseWrapper();
-
-$database->openDatabaseConnection();
+require_once __DIR__ . "/helpers/database-wrapper.php";
 
 $id = $_GET['id'];
 
 $sql = "SELECT * FROM list WHERE id='$id'";
-
-$result = $database->execute($sql);
-
-echo json_encode($result);
-
-$database->closeDatabaseConnection();
+echo DatabaseWrapper::getArrayResult($sql);

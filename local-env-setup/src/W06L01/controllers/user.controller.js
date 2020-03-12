@@ -2,7 +2,7 @@ const User = require('../models/user.model');
 const app = require('../app');
 
 exports.list = function (request, response) {
-	const sql = "SELECT * FROM Users";
+	const sql = "SELECT * FROM users";
 
 	app.connection.query(sql, function (error, result) {
 		if (error) throw error;
@@ -14,13 +14,17 @@ exports.list = function (request, response) {
 exports.add = function (request, response) {
 	console.log(request.body)
 
-	const user = new User(request.body);
-	const sql = `INSERT INTO Users (name, profession, password) VALUES ("${user.getName()}", "${user.getProfession()}", "${user.getPassword()}")`;
+	let user = new User(request.body);
+	user.hashPassword().then((hash) => {
+		console.log(hash)
+	})
+
+	const sql = `INSERT INTO users (name, password) VALUES ("${user.getName()}", "${user.getPassword()}")`;
 
 	app.connection.query(sql, function (error, result) {
 		if (error) throw error;
 
-		app.connection.query("SELECT * FROM Users ORDER BY ID DESC LIMIT 1", function (err, res) {
+		app.connection.query("SELECT * FROM users ORDER BY ID DESC LIMIT 1", function (err, res) {
 			if (err) throw err;
 
 			response.send(JSON.stringify(res));

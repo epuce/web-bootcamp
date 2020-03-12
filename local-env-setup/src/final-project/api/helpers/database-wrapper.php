@@ -2,36 +2,55 @@
 class DatabaseWrapper {
     private static $connection = null;
 
-    private static function openDatabaseConnection()
+    private static function openConnection($dbname = NULL)
     {
         $dbhost = "104.248.125.41:3306";
         $dbuser = "root";
         $dbpass = "root_password";
         $dbname = "final_project_epuce";
 
-        try {
-            static::$connection = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
-        } catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() .PHP_EOL;
-            die();
+        static::$connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+
+        if (static::$connection->connect_error) {
+            throw("Connection failed: " . static::$connection->connect_error);
         }
+    }
+
+    private static function closeConnection()
+    {
+        static::$connection->close();
+        static::$connection = null;
     }
 
     public static function execute($sql)
     {
-        if (is_null(static::$connection)) {
-            static::openDatabaseConnection();    
+        if(!static::$connection) {
+            static::openConnection();
         }
 
-        $response = static::$connection->query($sql)->fetchAll(\PDO::FETCH_ASSOC);            
+        $response = static::$connection->query($sql);
 
-        static::closeDatabaseConnection();
+        if ($response === TRUE) {
+            $response = static::$connection->insert_id;
+        }
+        
+        static::closeConnection();
 
-        echo json_encode($response);
+        if (static::$connection->error) {
+            throw("SQL error: " . static::$connection->error . "</br>");
+        } else {
+            return $response;
+        }
     }
 
-    private static function closeDatabaseConnection() {
-        static::$connection = null;
-    }
+    public static function getArrayResult($sql) {
+        $result = self::execute($sql);
+        $response = [];
 
+        while ($row = mysqli_fetch_assoc($result)) {
+            $response[] = $row;
+        }
+
+        return json_encode($response);;
+    }
 }

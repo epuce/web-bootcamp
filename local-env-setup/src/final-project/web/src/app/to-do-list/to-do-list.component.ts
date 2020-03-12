@@ -47,7 +47,7 @@ export class ToDoListComponent implements OnInit {
           this.list.noCheck[index] = content;
         }
 
-        this.model.description = '';
+        this.model = {};
       },
       (rejection) => {
         alert('There was an error saving the data!');

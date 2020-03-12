@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const app = require('../app');
 
 exports.login = function (request, response) {
-	const sql = `SELECT * FROM Users WHERE name='${request.body.name}'`;
+	const sql = `SELECT * FROM users WHERE name='${request.body.name}'`;
 
 	app.connection.query(sql, function (error, result) {
 		if (error) throw error;

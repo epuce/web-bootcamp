@@ -15,7 +15,8 @@
   },
   "devDependencies": {
     "mocha": "^6.2.0",
-    "should": "^13.2.3"
+    "should": "^13.2.3",
+    "nyc": "15.0.0"
   },
   "author": "Edmunds Puce",
   "license": "ISC"
