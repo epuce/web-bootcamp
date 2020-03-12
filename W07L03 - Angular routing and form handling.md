@@ -100,3 +100,11 @@ export class MyComponentName implements OnInit {
     }
 }
 ```
+
+### Checkup
+1. Create two different pages (components)
+2. Add a form to one of them with the possibility for a user to login
+    * Create form validation (can add some classes based on that)
+    * If the login has been successful (can imitate this) save some flag to localStorage and redirect to the other page
+3. Allow to access the second page only if the login has been successful
+    * redirect back to login if not

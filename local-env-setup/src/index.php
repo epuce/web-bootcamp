@@ -10,7 +10,6 @@
             echo file_get_contents(__DIR__."/final-project/public/".end($path));
         }
     } else {
-
         switch ($_SERVER["REQUEST_URI"]) {
             case "/CRUD/":
             case "/CRUD":
@@ -20,10 +19,13 @@
             case "/CRUD/add/":
                 require_once __DIR__ . "/examples/CRUD/controllers/add.php";
             break;
+            case preg_match('/^[^\examples]+$/', $_SERVER["REQUEST_URI"]):
+                require_once __DIR__ . "/examples/web-bootcamp-app/public/index.html";
+            break;
                 
             default:
                 echo "<h1 style='text-align: center'>404 page not found</h1>";
-                // echo phpinfo();
+                echo phpinfo();
             break;
         }
     }
