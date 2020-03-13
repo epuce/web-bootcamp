@@ -6,8 +6,10 @@
 
 ### Vue - Based on AngularJS/Angular
 * Installation
-  * direct link - ```<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>```
+  * direct link - `<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>`
   * node package manager - npm install vue
+    * import the file as you would any other. `node_modules/vue/dist/vue.js` file
+
 * vue specific commands start with "v-"
   * v-bind:title
   * v-on:click
@@ -66,6 +68,19 @@ new Vue({
 ```
 
 ### React - Facebook created
+* Installation
+  * direct link:
+  ```html
+  <!-- head -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- after body -->
+  <script type = "text/babel" src="./your-react-js-file.js"></script>
+  ```
+  * `npx create-react-app my-app-name` (npx is an npm package runner)
+    * This crates the full app structure and will behave different from just importing the files
 
 * Fiddle - [link](https://jsfiddle.net/reactjs/69z2wepo/)
 
@@ -104,8 +119,16 @@ new Vue({
 * Joomla
 * PrestaShop - A good setup for shop creation
 * etc.
+
+### Web based solutions
+* Wix
+* Squarespace
+* etc.
   
-### Other
+### Other JS framework
 * Ember
 * Backbone
 * etc.
+
+# React vs Vue vs Angular
+![React vs Vue vs Angular](img/W07L04.png)
