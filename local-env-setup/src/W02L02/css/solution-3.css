@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.table-wrapper {
+    padding-top: 40px;
+    width: 80%;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 4px;
+}
+
+td, th {
+    padding: 10px;
+    border: 1px solid;
+}
+
+th {
+    background: rgba( 60, 60, 160, 0.1);
+}
+
+td.cell-id {
+    min-width: 30px;
+    text-align: center;
+}
+
+.actions {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.actions button {
+    padding: 0.5em 3em;
+    border: 0.16em solid #000;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px; 
+    text-transform: uppercase;
+    background:#FFFFFF;
+    cursor: pointer;
+}
+
+.actions button.edit {
+    color: rgb(60, 60, 160);
+}
+
+.actions button.delete {
+    color: rgb(160, 60, 60);
+}
+
+td .check:after {
+    display: inline-block;
+    padding: 2px 4px;
+    border: 3px solid;
+}
+
+.cell-check {
+    text-align: center;
+}
+
+td .check.yes:after {
+    border-color: rgb(60, 160, 60);
+    color: rgb(60, 160, 60);
+    content: "Yes";
+}
+
+td .check.no:after {
+    border-color: rgb(160, 60, 60);
+    color: rgb(160, 60, 60);
+    content: "No";
+}

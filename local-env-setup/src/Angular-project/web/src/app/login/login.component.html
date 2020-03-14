@@ -1,0 +1,26 @@
+<div>
+    <div>
+        <mat-form-field>
+            <input matInput
+                   [formGroup]="form"
+                   [formControl]="controls.name"/>
+        </mat-form-field>
+    </div>
+
+
+    <div>
+		<input [(ngModel)]="mymodel">
+        <mat-checkbox [formGroup]="form"
+                      [formControl]="controls.active">
+                      
+            Active
+        </mat-checkbox>
+    </div>
+
+    
+    <button mat-raised-button
+            (click)="onClick()">
+
+        Press me
+    </button>
+</div>

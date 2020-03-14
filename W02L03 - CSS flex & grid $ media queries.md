@@ -165,7 +165,7 @@ body {
 
 ![grid task](img/W02L03-grid-task.png)
 
-[solution](extra-resources/grid.html)
+[solution](local-env-setup/src/grid.html)
 
 ### Media query checkup
 1. Create a media query that changes changes the default font size if the screen is smaller than 1024px;

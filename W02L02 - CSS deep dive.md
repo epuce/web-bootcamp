@@ -58,13 +58,13 @@
         ```
 ### Full property guideline and real life usage (only desktop based)
 
-1. fixed navigation bar at the top with extra buttons
+1. fixed navigation bar at the top with extra buttons [solution](local-env-setup/src/W02L02/solution-1.html)
     * some type of logo that leads to homepage
     * navigation element hover opens child menu
     * outer link(s)
     * inner link(s)
 
-2. Product registration form
+2. Product registration form [solution](local-env-setup/src/W02L02/solution-2.html)
     * Form heading
     * Name (text input), required
     * Category (select), required
@@ -74,9 +74,9 @@
     * can be sold (checkbox)
     * Submit, clear button
 
-3. Table based on form data
+3. Table based on form data [solution](local-env-setup/src/W02L02/solution-3.html)
     * Styled for better looks
     * ID colum
     * Action (edit, delete) column
 
-4. A popup that that asks us for delete confirmation
+4. A popup that that asks us for delete confirmation [solution](local-env-setup/src/W02L02/solution-4.html)

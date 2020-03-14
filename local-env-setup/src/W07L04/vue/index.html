@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="body-wrapper">
+        <h1>{{ heading }} {{ clickCount || ''}}</h1>
+      
+        <button v-on:click="addCount">Add one</button>
+      
+        <my-btn text="This is my btn"></my-btn>
+      </div>
+</body>
+
+<script src="./vue.js"></script>
+</html>

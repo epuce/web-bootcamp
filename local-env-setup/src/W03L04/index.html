@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+<body>
+    <div class="request-wrapper">
+        <button class="make-request">Make request</button>
+
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Last name</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="progress-wrapper">
+        <div class="aside-left">
+            <div class="input-wrapper">
+                <input id="cycle-interval" type="number">
+                <div class="error-box">
+                    Not a valid number
+                </div>
+            </div>
+            <div class="btn-wrapper">
+                <button class="start-action">Start</button>
+                <button class="stop-action">Stop</button>
+                <button class="reset-action">Reset</button>
+            </div>
+        </div>
+        <div class="aside-right">
+            <div class="progress"></div>
+        </div>
+    </div>
+</body>
+</html>

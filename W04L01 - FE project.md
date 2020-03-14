@@ -13,10 +13,10 @@
 8. Push the final product to github and post it in google classroom under the assignment
 
 ## Example (it's more like inspiration and visual task representation)
-![Opened form, filled](extra-resources/task-1/assets/open-form-filled.png)
-![Opened form, validation error](extra-resources/task-1/assets/open-form-validation-error.png)
-![Popup](extra-resources/task-1/assets/popup.png)
-![video](extra-resources/task-1/assets/W04L01-example.gif)
+![Opened form, filled](local-env-setup/src/task-1/assets/open-form-filled.png)
+![Opened form, validation error](local-env-setup/src/task-1/assets/open-form-validation-error.png)
+![Popup](local-env-setup/src/task-1/assets/popup.png)
+![video](local-env-setup/src/task-1/assets/W04L01-example.gif)
 
 ### What to take in account
 1. Clean code styling (spaces, new lines, variable placement, nesting, don't repeat yourself)

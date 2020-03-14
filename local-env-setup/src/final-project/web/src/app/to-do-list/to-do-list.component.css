@@ -1,0 +1,56 @@
+table {
+  table-layout: fixed;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.drag {
+  width: 50px;
+  font-size: 24px;
+  text-align: center;
+  cursor: move;
+  color: rgba(0, 0, 0, .24);
+}
+
+.check {
+  width: 40px;
+  text-align: center;
+}
+
+.actions {
+  width: 160px;
+  text-align: right;
+}
+
+.actions .btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.line-trough {
+  text-decoration: line-through;
+}
+
+/* .cdk-drag-preview {
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+} */
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

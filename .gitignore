@@ -2,3 +2,5 @@
 *node_modules
 *etc
 *public
+vendor
+*examples/
