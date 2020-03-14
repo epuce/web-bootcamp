@@ -4,7 +4,6 @@ $files = scandir('./');
 
 $readme = fopen('./README.md', 'w');
 
-
 fwrite($readme, '# Course structure' . PHP_EOL . PHP_EOL);
 foreach ($files as $file) {
     if (preg_match('/[\.md]d+$/', $file) && $file !== 'README.md') {

@@ -1,0 +1,26 @@
+name: Push to master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: run regenerate-README.php
+      run: php local-env-setup/src/regenerate-README.php
+    - name: commit changes
+      run: |
+        git config --local user.email "edm.puce@gmail.com"
+        git config --local user.name "epuce"
+        git add . 
+        git commit -m "update README.md"
+    - name: push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
