@@ -3,7 +3,7 @@
 FROM php:7.3-apache
 
 EXPOSE 80
-RUN mkdrir -p src
+RUN mkdir -p src
 COPY ./src /var/www/html
 RUN apt-get update
 RUN apt-get install -y git nano wget gnupg nodejs
@@ -27,6 +27,7 @@ RUN pecl install -f xdebug \
 
 # Install SQL db
 RUN docker-php-ext-install pdo pdo_mysql mysqli
+
+# Allow external user to be the owner
 RUN chmod -R 777 ./
 RUN a2enmod rewrite
-# RUN chown -R www-data:www-data ./ && a2enmod rewrite
