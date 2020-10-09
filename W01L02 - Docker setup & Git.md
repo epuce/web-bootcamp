@@ -2,14 +2,14 @@
 1. Download docker - [link](https://www.docker.com/products/docker-desktop)
     * For older operating systems, docker toolbox - [link](https://github.com/docker/toolbox/releases)
 
-2. Create a map that will hold the docker setup, something like "web_bootcamp_env" (try not to use spaces and separate words with _)
+2. Create a folder that will hold the docker setup, something like "web_bootcamp_env" (try not to use spaces and separate words with _)
     * Create an other folder under the one you just created now, something like "src"
 
 3. Create a file in the first folder you created named "Docker", copy the content from the [link](https://raw.githubusercontent.com/epuce/web-bootcamp/improvements/local-env-setup/Dockerfile)
     * Replace "COPY ./src /var/www/html" the ./src part with the name of the second folder you created under the first one (where this files are, like "./myFolderName")
 
-4. Create a file next to the first one named "docker-compose.yml", copy the content from [link](https://raw.githubusercontent.com/epuce/web-bootcamp/improvements/local-env-setup/docker-compose.yml)
-    * replace the line under "volumes:" with "-/full/path/to/the/secondFolder", like "- C:\edmunds\Public\Public\web_bootcamp_dev:/var/www/html/"
+4. Create a file next to the first one named `docker-compose.yml`, copy the content from [link](https://raw.githubusercontent.com/epuce/web-bootcamp/improvements/local-env-setup/docker-compose.yml)
+    * replace the line under `volumes:` with `-/full/path/to/the/secondFolder`, like `- C:\edmunds\Public\web_bootcamp_dev:/var/www/html/`
 
 5. Start the docker application by clicking on the icon of the program, if everything is ok then continue, if not, we are doomed :D (no, not for real)
 
@@ -17,9 +17,9 @@
 
 7. Open the terminal
 
-8. with terminal "cd function", navigate to the first folder we created, or open the vscode in that folder and open terminal
+8. with terminal "cd" function, navigate to the first folder we created, or open the vscode in that folder and open terminal
 
-9. Run "docker-compose up --build"
+9. Run `docker-compose up --build`
 
 10. If not installed get the docker extension form the left setting block with for squares
 
@@ -29,16 +29,16 @@
 
 13. Open "localhost:8000" in the browser if you see the content, everything is working
 
-14. access docker container console "docker exec -it apache_php bash -l"
+14. access docker container console `docker exec -it apache_php bash -l`
 
-15. run the command "ls", you should see index.html printed out, if not, something is not working
+15. run the command `ls`, you should see index.html printed out, if not, something is not working
 
 16. add PHP configuration file for vscode under debug section, settings, php (can be done later)
 
 ### Some know issues:
-* Windows setup shows "forbidden" in the browser - allow access to disk C: under docker program settings
+* Windows setup shows `forbidden` in the browser - allow access to disk C: under docker program settings
 
-* command "ls" does not show the index.html file - be sure that the paths you stated under point 3. and 4. are correct
+* command `ls` does not show the index.html file - be sure that the paths you stated under point 3. and 4. are correct
 
 Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-docker/)
 

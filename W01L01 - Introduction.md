@@ -7,5 +7,7 @@
 * Termini
 * Darba vides uzstādīšana
 
+## !!! Lielākā daļa nodarbību materiālu ir angļu valodā !!!
+
 ### Presentation
 [link](https://docs.google.com/presentation/d/1tbdE5NJyi7jSiIoKFAdoAl2oMrBsqzFy7fwR9vo0Tqo/edit?usp=sharing)

@@ -60,7 +60,7 @@ switch ($_SERVER["REQUEST_URI"]) {
                 "name": "Listen for XDebug",
                 "type": "php",
                 "request": "launch",
-                "port": 9000,
+                "port": 9001,
                 "pathMappings": {
                     "/var/www/html": "${workspaceFolder}/src"
                 },
@@ -71,7 +71,7 @@ switch ($_SERVER["REQUEST_URI"]) {
                 "request": "launch",
                 "program": "${file}",
                 "cwd": "${fileDirname}",
-                "port": 9000
+                "port": 9001
             }
         ]
     }

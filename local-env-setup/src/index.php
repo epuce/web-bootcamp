@@ -24,7 +24,8 @@
             break;
                 
             default:
-                echo "<h1 style='text-align: center'>404 page not found</h1>";
+                $path = $_SERVER["REQUEST_URI"];
+                echo "<h1 style='text-align: center'>404: The requested URL: $path can't be found</h1>";
                 echo phpinfo();
             break;
         }
