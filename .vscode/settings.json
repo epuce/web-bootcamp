@@ -1,0 +1,17 @@
+{
+    "files.exclude": {
+        "**/.git": false
+    },
+    "sqltools.connections": [
+        {
+            "database": "web-bootcamp-db",
+            "dialect": "MySQL",
+            "name": "web-bootcamp-sql",
+            "password": "root_password",
+            "port": 8082,
+            "server": "localhost",
+            "username": "root"
+        }
+    ],
+    "mochaExplorer.files": "**/W06L01/**/*_test.js"
+}

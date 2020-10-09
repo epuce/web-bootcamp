@@ -1,0 +1,12 @@
+<div>
+    <input [(ngModel)]="user.name" [formControl]="controls.name">
+
+    The value in the input is: {{user.name}}
+</div>
+<div>
+    <input type="checkbox" [(ngModel)]="user.isActive" [formControl]="controls.isActive">
+
+    Is active? {{user.isActive}}
+</div>
+
+<button [disabled]="!form.valid">Login</button>

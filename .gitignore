@@ -1,6 +1,7 @@
-/.*
+.*
+!.vscode
+!.github
 *node_modules
 *etc
 *public
-vendor
-*examples/
+*vendor

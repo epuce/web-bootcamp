@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="container">
+        <h2>Static text - {{ heading }}</h2>
+
+        <div>
+            <h3>You have clicked {{ clickCount }} times</h3>
+
+            <button v-on:click="addCount">Add +1 to count</button>
+            <button v-on:click="reduceCount">Reduce -1 to count</button>
+        </div>
+
+        <div style="padding-top: 20px;">
+            <vue-button text="Btn nr1"></vue-button>
+        </div>
+        <div style="padding-top: 20px;">
+            <vue-button text="Nr2 btn"></vue-button>
+        </div>
+    </div>
+
+    <h1>I'm a h1 tag</h1>
+</body>
+
+<script src="vue.js"></script>
+</html>

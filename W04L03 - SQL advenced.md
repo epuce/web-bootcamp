@@ -33,7 +33,7 @@
     ```
 
 4. Join types
-    ![SQL joins](local-env-setup/src/W04L03/img/sql-joins.jpg)
+    ![SQL joins](img/sql-joins.jpg)
 
 5. SQL functions
     * Mathematical - [link](https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html)
