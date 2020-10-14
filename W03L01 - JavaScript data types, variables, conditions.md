@@ -42,9 +42,9 @@ function sayHello() {
 }
 
 // Anonymous function
-function() { 
-    console.log("Im anonymous");
-}
+$('button').on('click', function() {
+    console.trace('Im anonymous');
+})
 ```
 
 * Boolean - describes positive (true) or negative (false) value (condition)
