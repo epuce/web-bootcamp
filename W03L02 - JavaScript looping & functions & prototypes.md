@@ -63,7 +63,7 @@ console.log(sqrtArray)
 // This will console log:
 // [1, 4, 9, 16]
 ```
-
+<!-- TODO add links -->
 * Other
   * for/in loop [link]()
   * for/of loop [link]()

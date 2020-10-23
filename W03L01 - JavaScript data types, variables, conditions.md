@@ -131,6 +131,7 @@ person.name = "Alex"
 
 4. While **var** and **let** can be declared without being initialized, **const** must be initialized during declaration.
 
+<!-- TODO improve, especially point 6 -->
 ### Checkup
 1. Create a variable and assign a **string** to it
 2. Create a variable and assign a **number** to it

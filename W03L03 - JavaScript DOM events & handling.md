@@ -25,6 +25,8 @@ window.innerWidth
   * resizeTo()
   * focus()
   * other - [link](https://www.w3schools.com/jsref/obj_window.asp)
+
+<!-- TODO add more detail to window open -->
 ```JavaScript
 // window.open(URL, name, specs, replace)
 var myWindow = window.open("https://google.com");
@@ -35,6 +37,13 @@ myWindow.(100, 100);
 myWindow.close();
 ```
 ### document - object describing the DOM (HTML)
+
+* write() & writeln()
+```JavaScript
+// Writes writes the newly stated content
+document.write('<p>This is a write document function test</p>');
+// writeln adds a newline at the end of written statement
+```
 
 * cookie
 ```JavaScript
@@ -69,13 +78,6 @@ document.getElementById('email').addEventListener('click', function(){})
 
 // Triggers a function when the element body is active and a keyup event is triggered
 document.getElementsByTagName('body')[0].addEventListener('keyup', function() {})
-```
-
-* write() & writeln()
-```JavaScript
-// Writes writes the newly stated content
-document.write('<p>This is a write document function test</p>');
-// writeln adds a newline at the end of written statement
 ```
 * others - [link](https://www.w3schools.com/js/js_htmldom_document.asp)
 

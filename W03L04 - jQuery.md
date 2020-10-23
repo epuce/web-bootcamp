@@ -37,7 +37,7 @@ $('.my-class') // similar to document.getElementsByClassName('my-class')
 
 $('.my-class, table') // no equivalent for plain JavaScript
 
-$('span.font-small') // combined selector
+$('span.font-small') // combined selector similar to document.querySelectorAll('span .font-small')
 ```
 
 ### Pseudo-selectors
@@ -140,7 +140,7 @@ $.ajax({
 });
 ```
 * good API for playing around - [link](https://reqres.in)
-* public API - [link](https://any-api.com)
+* public API - [link](https://github.com/public-apis/public-apis)
   
 ### All jQuery options: [cheat-sheet](https://oscarotero.com/jquery/)
 
