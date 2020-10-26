@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     var $asideBackdrop = $('.aside-backdrop');
     var $aside = $('#aside');
     var $subscribeBtn = $('#subscribe-btn');
@@ -15,33 +15,28 @@ $(function() {
     var $popupContent = $popup.find('.content');
 
 
-    $subscribeBtn.on('click', function() {
+    $subscribeBtn.on('click', function () {
         if (!isFormValid()) {
             return;
         }
 
-        var data = JSON.parse(window.localStorage.data || '{}');
-        var keys = Object.keys(data);
+        var data = localStorage.data ? JSON.parse(localStorage.data) : [];
         var form = $subscribeForm.serializeArray();
         var obj = formArrayToObject(form);
 
-        data[keys[keys.length - 1] ? Number(keys[keys.length-1]) + 1 : 0] = obj;
+        data.push(JSON.stringify(obj));
 
-        window.localStorage.data = JSON.stringify(data);
+        localStorage.data = JSON.stringify(data);
 
         openPopup(obj.username);
     });
 
-    $toggleSidebar.on('click', function() {
+    $toggleSidebar.on('click', function () {
         toggleForm();
     });
 
-    $specialDeals.on('click', function() {
-        if ($(this).find('input').is(':checked')) {
-            $extraFields.css('display', 'block')
-        } else {
-            $extraFields.css('display', 'none')
-        }
+    $specialDeals.on('click', function () {
+        $extraFields.toggle($(this).find('input').is(':checked'))
     });
 
     $popupClose.on('click', closePopup);
@@ -50,24 +45,25 @@ $(function() {
         $popupWrapper.fadeOut();
 
         toggleForm();
+        clearForm();
         renderFormValues();
     }
 
-    $subscribeForm.find('input').on('focus', function() {
+    $subscribeForm.find('input').on('focus', function () {
         var $this = $(this);
         $this.removeClass('error');
         $this.siblings('.error-box').text('');
     });
 
     function addDeleteBtnListener() {
-        $listTable.find('.delete').on('click', function() {
+        $listTable.find('.delete').on('click', function () {
             var $this = $(this);
             var index = $this.data('index') || $this.closest('td').data('index');
-            var data = JSON.parse(window.localStorage.data || '{}');
-    
-            delete data[index];
-        
-            window.localStorage.data = JSON.stringify(data);
+            var data = JSON.parse(localStorage.data);
+
+            data.splice(index, 1);
+
+            localStorage.data = JSON.stringify(data);
             renderFormValues();
         })
     }
@@ -80,33 +76,39 @@ $(function() {
         }
     }
 
-    document.addEventListener('keyup', function(event) {
-        if (document.getElementsByClassName('popup-wrapper')[0].style.display === "block" && event.keyCode === 27) {
+    function clearForm() {
+        $subscribeForm.trigger('reset');
+        $extraFields.toggle($(this).find('input').is(':checked'))
+    }
+
+    document.addEventListener('keyup', function (event) {
+        if ($('.popup-wrapper').is(':visible') && event.keyCode === 27) {
             closePopup();
         }
     })
 
     function renderFormValues() {
-        var data = JSON.parse(window.localStorage.data || '{}');
+        var data = localStorage.data ? JSON.parse(localStorage.data) : [];
         $listTable.find('tbody').html('');
 
-        Object.keys(data).forEach(function(key) {
+        data.forEach(function (row, index) {
+            const user = JSON.parse(row)
             var html = '<tr>'
-            +
-            '<td>' + key + '</td>'
-            +
-            '<td>' + (data[key].username || '') + '</td>'
-            +
-            '<td>' + (data[key].email || '') + '</td>'
-            +
-            '<td>' + (data[key].areSpecialDeals || '') + '</td>'
-            +
-            '<td>' + (data[key].areSpecialDeals ? data[key].specialDealsTimeCircle : '') + '</td>'
-            +
-            '<td data-index="'+key+'" class="actions"><i class="delete fa fa-times"></i></td>'
-            +
-            '</tr>';
-        
+                +
+                '<td>' + index + '</td>'
+                +
+                '<td>' + (user.username || '') + '</td>'
+                +
+                '<td>' + (user.email || '') + '</td>'
+                +
+                '<td>' + (user.areSpecialDeals || '') + '</td>'
+                +
+                '<td>' + (user.areSpecialDeals ? user.specialDealsTimeCircle : '') + '</td>'
+                +
+                '<td data-index="' + index + '" class="actions"><i class="delete fa fa-times"></i></td>'
+                +
+                '</tr>';
+
             $listTable.find('tbody').append(html);
         });
 
@@ -156,8 +158,8 @@ $(function() {
 
     function formArrayToObject(form) {
         var obj = {};
-        
-        Object.keys(form).forEach(function(key) {
+
+        Object.keys(form).forEach(function (key) {
             obj[form[key].name] = form[key].value
         });
 
@@ -167,7 +169,7 @@ $(function() {
     function validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
-      }
+    }
 
     renderFormValues();
 });

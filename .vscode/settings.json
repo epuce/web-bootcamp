@@ -13,5 +13,6 @@
             "username": "root"
         }
     ],
-    "mochaExplorer.files": "**/W06L01/**/*_test.js"
+    "mochaExplorer.files": "**/W06L01/**/*_test.js",
+    "open-in-browser.default": "Chrome",
 }
