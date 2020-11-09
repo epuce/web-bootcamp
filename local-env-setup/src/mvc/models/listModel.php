@@ -14,5 +14,26 @@
             $sql = "DELETE FROM products WHERE id=$id";
             DB::run($sql);
         }
+
+        public function getById($id) {
+            $sql = "SELECT * FROM products WHERE id=$id";
+            $response = DB::run($sql);
+
+            if ($response->num_rows === 0) {
+                return [];
+            } else {
+                return $response->fetch_assoc();
+            }
+        }
+
+        public function updateById($id, $name, $price) {
+            $sql = "UPDATE products SET name = '$name', price=$price WHERE id=$id";
+            DB::run($sql);
+        }
+
+        public function insertNew($name, $price) {
+            $sql = "INSERT INTO products (name, price) VALUES ('$name', $price)";
+            DB::run($sql);
+        }
     }
 ?>
