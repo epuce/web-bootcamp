@@ -1,0 +1,21 @@
+.input-wrapper {
+    max-width: 300px;
+}
+
+input {
+    width: 100%;
+    /* max-width: 300px; */
+    /* display: block; */
+    border: 1px solid #444;
+    border-radius: 4px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    outline: none;
+}
+
+.error-msg {
+    height: 12px;
+    font-size: 10px;
+    color: #AA0000;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <form id="user-form" novalidate>
+        <div class="input-wrapper">
+            <label>
+                Username:
+                <input name="username">
+            </label>
+            <div class="error-msg username"></div>
+        </div>
+        <div class="input-wrapper">
+            <label>
+                Email:
+                <input type="email" name="email">
+            </label>
+            <div class="error-msg email"></div>
+        </div>
+
+        <input type="hidden" name="user-id">
+
+        <button type="button" id="save-btn">Save</button>
+    </form>
+
+    <table id="users-table">
+        <thead>
+            <td>Username</td>
+            <td>Email</td>
+        </thead>
+        <tbody>
+            <tr style="display: none" class="tr-example">
+                <td class="username"></td>
+                <td class="email"></td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
