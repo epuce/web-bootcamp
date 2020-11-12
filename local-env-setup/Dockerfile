@@ -6,7 +6,7 @@ EXPOSE 80
 RUN mkdir -p src
 COPY ./src /var/www/html
 RUN apt-get update
-RUN apt-get install -y git nano wget gnupg nodejs
+RUN apt-get install -y git nano wget gnupg nodejs unzip
 RUN curl -L https://npmjs.org/install.sh | sh
 
 # Install mongodb
@@ -21,8 +21,8 @@ RUN pecl install -f xdebug \
 && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
 && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
 && echo "xdebug.remote_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini \
-# && echo "xdebug.remote_host=192.168.2.192" >> /usr/local/etc/php/conf.d/xdebug.ini \
-&& echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/xdebug.ini \
+&& echo "xdebug.remote_host=192.168.2.192" >> /usr/local/etc/php/conf.d/xdebug.ini \
+# && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/xdebug.ini \
 && echo "xdebug.idekey=VSCODE" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 # Install SQL db
