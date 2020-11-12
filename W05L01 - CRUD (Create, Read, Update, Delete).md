@@ -3,17 +3,9 @@
 ```php
 // index.php
 <?php
-require_once "src/database-wrapper.php";
+require_once __DIR__ . "/path-to/database-wrapper.php";
 
-$database = new DatabaseWrapper();
-
-$database->openDatabaseConnection('web-bootcamp');
-
-$sql = "SELECT * FROM Users";
-
-$response = $database->execute($sql);
-
-$database->closeDatabaseConnection();
+$response = DB::run($sql);
 ?>
 ```
 ```html

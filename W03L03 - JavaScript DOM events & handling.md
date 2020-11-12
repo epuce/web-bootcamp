@@ -6,6 +6,8 @@
 ```JavaScript
 window.location
 ```
+
+<!-- TODO add more info about localStorage with Array and Object examples -->
 * localStorage & sessionStorage - place to store browser related data
 ```JavaScript
 // Only first level objects can be stored in localStorage & sessionStorage

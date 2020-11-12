@@ -27,22 +27,17 @@ root_folder/
 ```PHP
 // UserModel.php
 <?php
+require_once __DIR__ . '/../../database-wrapper.php';
+
 class UserModel
 {
-	protected $db;
-
-	public function __construct(DatabaseWrapper $db)
-	{
-		$this->db = $db;
-	}
-
 	public function getAllUsers() {
-		return $this->db->execute('SELECT * FROM Users');
+		return DB::run('SELECT * FROM Users');
 	}
 
 	public function createUser(User $user)
 	{
-		return $this->db->execute("INSERT INTO Users (name, profession) VALUES ('" . $user->name. "', '" . $user->profession . "')");
+		return DB::run("INSERT INTO Users (name, profession) VALUES ('" . $user->name. "', '" . $user->profession . "')");
 	}
 }
 ```
@@ -69,20 +64,15 @@ class UserModel
 ```PHP
 controllers/users/index.php
 <?php
-include_once '../../helpers/database-wrapper.php';
-
-$db = new DatabaseWrapper();
-$db->openDatabaseConnection();
-
 // Make your model available
 include '../../models/UserModel.php';
 
 // Create an instance
-$userModel = new UserModel($db);
+$userModel = new UserModel();
 $users = $userModel->getAllUsers();
 
 // Show the view
-include '../../views/user-list.php';
+require_once __DIR__ . '/../../views/user-list.php';
 ```
 
 ### Entities
