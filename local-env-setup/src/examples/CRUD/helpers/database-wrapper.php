@@ -2,17 +2,25 @@
 class DB {
     private static $connection;
 
-    private static function openConnection($dbname = NULL)
+    private static function openConnection()
     {
         $dbhost = "mysql-server-80";
         $dbuser = "root";
         $dbpass = "root_password";
-        $dbname = "web-bootcamp-db";
+        $dbname = "shop";
 
-        static::$connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+        static::$connection = new mysqli(
+                                    $dbhost,
+                                    $dbuser,
+                                    $dbpass,
+                                    $dbname
+                                );
 
         if (static::$connection->connect_error) {
-            die("Connection failed: " . static::$connection->connect_error);
+            die(
+                "Connection failed: " . 
+                static::$connection->connect_error
+            );
         }
     }
 
@@ -34,12 +42,22 @@ class DB {
             $response = static::$connection->insert_id;
         }
         
-        static::closeConnection();
-
         if (static::$connection->error) {
             die("SQL error: " . static::$connection->error . "</br>");
         } else {
             return $response;
         }
+
+        static::closeConnection();
     }
 }
+
+// zend_extension = "C:/xampp/php/ext/php_xdebug.dll"
+// xdebug.remote_enable = 1
+// xdebug.remote_autostart = on
+
+// restart apache
+// add xdebug extension to VSCODE - "PHP debug"
+// add xdebug extension to Chrome - "Xdebug helper"
+
+// C:/xampp/php/php.ini

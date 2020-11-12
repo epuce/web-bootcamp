@@ -48,25 +48,12 @@ class DB {
 
     public static function getArrayResult($sql) {
         $response = self::run($sql);;
+        $response = $response->num_rows > 0 ? $response->fetch_all(MYSQLI_ASSOC) : [] ;
 
-        if ($response->row_count > 0) {
-            return $response->fetch_all(MYSQLI_ASSOC);
-        } else {
-            return [];
-        }
+        return json_encode($response);
     }
 
     public static function setDbName($dbname) {
         static::$dbname = $dbname;
     }
 }
-
-// zend_extension = "C:/xampp/php/ext/php_xdebug.dll"
-// xdebug.remote_enable = 1
-// xdebug.remote_autostart = on
-
-// restart apache
-// add xdebug extension to VSCODE - "PHP debug"
-// add xdebug extension to Chrome - "Xdebug helper"
-
-// C:/xampp/php/php.ini
