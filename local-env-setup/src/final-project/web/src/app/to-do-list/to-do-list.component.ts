@@ -22,20 +22,31 @@ export class ToDoListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.get('api/get-all.php').toPromise().then((response: any) => {
-      this.list.check = response.filter((row: any) => Number(row.checked));
-      this.list.noCheck = response.filter((row: any) => !Number(row.checked));
-    });
+    this.http.get(this.getApiBaseHref() + '/get-all.php').toPromise()
+    .then(
+      (response: any) => {
+        this.list.check = response.filter((row: any) => Number(row.checked));
+        this.list.noCheck = response.filter((row: any) => !Number(row.checked));
+      }, 
+      (reject) => {
+        console.log(reject)
+      }
+    );
 
     this.checkControl.valueChanges.subscribe((value) => {
       console.log(value);
     })
   }
 
+  getApiBaseHref() {
+    return location.origin + '/final-project/api';
+  }
+
   save() {
-    this.http.post(`api/${ this.model.id ? 'put' : 'post'}.php`, {
+    const order_id = this.list.noCheck.length ? Math.max(...[...this.list.noCheck].map((val) =>  Number(val.order_id))) : 1;
+    this.http.post(this.getApiBaseHref() + `/${ this.model.id ? 'put' : 'post'}.php`, {
       ...this.model,
-      order_id: Math.max(...[...this.list.noCheck].map((val) =>  Number(val.order_id))) + 1
+      order_id: order_id,
     }).toPromise().then(
       (response) => {
         const content = response[0];
@@ -55,7 +66,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   edit(id) {
-    this.http.get(`api/get.php?id=${id}`).toPromise().then((response) => {
+    this.http.get(this.getApiBaseHref() + `/get.php?id=${id}`).toPromise().then((response) => {
       this.model = response[0];
     });
   }
@@ -67,12 +78,7 @@ export class ToDoListComponent implements OnInit {
       this.list.check = this.list.check.filter((row) => row.id !== item.id);
     }
 
-    this.http.delete(`api/delete.php?id=${item.id}`).toPromise().then(
-      (response) => {},
-      (rejection) => {
-        // TODO reset to prev state
-      }
-      );
+    this.http.delete(this.getApiBaseHref() + `/delete.php?id=${item.id}`).toPromise()
   }
 
   onCheck(item) {
@@ -90,7 +96,7 @@ export class ToDoListComponent implements OnInit {
       this.list.check = this.list.check.filter((row) => row.id !== item.id);
     }
 
-    this.http.put('api/put.php', {
+    this.http.post(this.getApiBaseHref() + '/put.php', {
       ...item,
       checked: !Number(item.checked),
       order_id: Math.max(...this.list.noCheck.map((row) => Number(row.order_id))) + 1
@@ -112,7 +118,7 @@ export class ToDoListComponent implements OnInit {
       count --;
     });
 
-    this.http.put('api/update-list-order.php', this.list.noCheck).toPromise().then((response) => {
+    this.http.put(this.getApiBaseHref() + '/update-list-order.php', this.list.noCheck).toPromise().then((response) => {
       console.log(response);
     });
   }

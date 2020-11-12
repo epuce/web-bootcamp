@@ -1,16 +1,8 @@
 <?php
-include_once "api/helpers/database-wrapper.php";
-
-$database = new DatabaseWrapper();
-
-$database->openDatabaseConnection();
+require_once __DIR__ . "/../database-wrapper.php";
+DB::setDbName('final-project');
 
 $sqlArray =[
-    "0.0.1" => "CREATE TABLE IF NOT EXISTS db_schema
-    (
-        id varchar(10) NOT NULL,
-        PRIMARY KEY (id)
-    )",
     "1" => "CREATE TABLE IF NOT EXISTS list
     (
         description varchar(20),
@@ -21,18 +13,23 @@ $sqlArray =[
 		order_id int NOT NULL,
 		checked boolean DEFAULT FALSE
     )",
-    "1.0.3" => ""
 ];
 
+$createDdSchema = "CREATE TABLE IF NOT EXISTS db_schema
+(
+    id varchar(10) NOT NULL,
+    PRIMARY KEY (id)
+)";
+
+DB::run($createDdSchema);
+
 foreach($sqlArray as $id => $row) {
-    if ($database->execute("SELECT * FROM db_schema WHERE  id='$id'")) {
+    if (DB::run("SELECT * FROM db_schema WHERE  id='$id'")->num_rows !== 0) {
         echo "SQL with ID: $id already executed".PHP_EOL;
     } else {
-        $database->execute($row);
-        $database->execute("INSERT INTO db_schema (id) VALUES ('$id')");
+        DB::run($row);
+        DB::run("INSERT INTO db_schema (id) VALUES ('$id')");
 
         echo "Executing SQL with ID: $id".PHP_EOL;
     }
 }
-
-$database->closeDatabaseConnection();
