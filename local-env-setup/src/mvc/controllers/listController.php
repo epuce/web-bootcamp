@@ -3,6 +3,11 @@
     require_once __DIR__ . "/../models/listModel.php";
     require_once __DIR__ . "/../components/modifyForm.php";
 
+    if (isset($_POST["logOut"])) {
+        session_destroy();
+        Header("Location: /mvc/?page=login");
+    }
+
     $model = new listModel();
     $products = $model->getAll();
 

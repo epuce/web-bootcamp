@@ -1,15 +1,15 @@
 <?php
 class DB {
     private static $connection;
+    private static $dbname = "shop";
 
     private static function openConnection()
     {
         $dbhost = "mysql-server-80";
         $dbuser = "root";
         $dbpass = "root_password";
-        $dbname = "shop";
 
-        static::$connection = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
+        static::$connection = new mysqli($dbhost, $dbuser, $dbpass, static::$dbname);
 
         if (static::$connection->connect_error) {
             die(
@@ -44,6 +44,20 @@ class DB {
         }
 
         static::closeConnection();
+    }
+
+    public static function getArrayResult($sql) {
+        $response = self::run($sql);;
+
+        if ($response->row_count > 0) {
+            return $response->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return [];
+        }
+    }
+
+    public static function setDbName($dbname) {
+        static::$dbname = $dbname;
     }
 }
 
