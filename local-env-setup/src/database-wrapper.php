@@ -1,4 +1,8 @@
 <?php
+namespace DB;
+
+use mysqli;
+
 class DB {
     private static $connection;
     private static $dbname = "shop";
