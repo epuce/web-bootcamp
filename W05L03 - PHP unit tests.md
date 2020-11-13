@@ -10,6 +10,11 @@
         * This should return: `Installer verified`
     4. php composer-setup.php --install-dir=/usr/local/bin --filename=composer
         * check if composer is installed by typing: `composer`
+* XAMPP setup
+    * cd to server main folder (default: htcdocs)
+    * run: `php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"`
+    * run: `php composer-setup.php`
+    * run: `php composer.phar install`
 * phpunit (php unit test library)
     1. composer require --dev phpunit/phpunit ^9
     2. composer.json file and some others were generated in our project. Edit the composer.json file to look like:
@@ -19,12 +24,13 @@
                 "classmap": ["./"]
             },
             "require-dev": {
-                "phpunit/phpunit": "^9"
+                "phpunit/phpunit": "^9.4"
             }
         }
         ```
-    3. run: `composer dump-autoload`
-    4. to run the tests `./vendor/bin/phpunit --testdox tests` 
+    3. create a folder that will hold all the
+    4. run: `composer dump-autoload`
+    5. to run the tests `php ./vendor/phpunit/phpunit/phpunit --testdox tests` 
 
 # Look at the user that he could use your system like this
 ![Testers VS Users gif](img/testers-VS-users.gif)
