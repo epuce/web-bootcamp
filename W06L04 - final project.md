@@ -21,6 +21,19 @@
 3. Appropriate HTML tag and attribute usage, logical class, id, etc. naming
 4. Structured CSS
 5. Easy to read/understand PHP & SQL
+6. Include database structure as a separate file or note it down somewhere, like:
+```SQL
+CREATE TABLE list (
+    description varchar(20),
+    id int NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE users (
+    username varchar(255) NOT NULL,
+    password varchar(60) NOT NULL
+);
+```
 
 # You will show a working system in the last lesson by explaining/showing the "engine" under it
 # Say some words about challenges/obstacles on the way
