@@ -1,0 +1,13 @@
+<div id="navigation">
+  <div>
+    <a  [routerLink]="['/']"
+    [routerLinkActiveOptions]="{exact: true}"
+    routerLinkActive="active" >Home page</a>
+    
+    <a routerLink="/login" routerLinkActive="active" >Login</a>
+    <a routerLink="/register" routerLinkActive="active">Register</a>
+  </div>
+
+  <button (click)="logOut()">Log out</button>
+</div>
+<router-outlet></router-outlet>

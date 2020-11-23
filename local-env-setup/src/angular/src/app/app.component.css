@@ -1,0 +1,17 @@
+#navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#navigation a {
+    text-decoration: none;
+    color: #666666;
+    padding: 4px;
+    margin-right: 20px;
+}
+
+#navigation a.active {
+    color: #222222;
+    background: rgba(0, 0, 100, 0.1);
+}
