@@ -33,4 +33,5 @@
 * [W09L00 - (angular task) Advanced FE project](W09L00&#32;-&#32;(angular&#32;task)&#32;Advanced&#32;FE&#32;project.md)
 * [W09L00 - (extra topic) Angular advacned - state manager](W09L00&#32;-&#32;(extra&#32;topic)&#32;Angular&#32;advacned&#32;-&#32;state&#32;manager.md)
 * [W09L00 - (extra topic) Angular material & form handling](W09L00&#32;-&#32;(extra&#32;topic)&#32;Angular&#32;material&#32;&&#32;form&#32;handling.md)
+* [W09L00 - (extra topic) GraphQL](W09L00&#32;-&#32;(extra&#32;topic)&#32;GraphQL.md)
 * [W09L00 - (extra topic) Modern project setup](W09L00&#32;-&#32;(extra&#32;topic)&#32;Modern&#32;project&#32;setup.md)
