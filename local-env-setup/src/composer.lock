@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b3c34345202d01c814b5a45c8f5d208",
+    "content-hash": "48734aba16301608c01b25224e97f52c",
     "packages": [],
     "packages-dev": [
         {
@@ -78,16 +78,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5"
+                "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
-                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/776f831124e9c62e1a2c601ecc52e776d8bb7220",
+                "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.x"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.10.2"
             },
             "funding": [
                 {
@@ -132,7 +132,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-29T13:22:24+00:00"
+            "time": "2020-11-13T09:40:50+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -946,52 +946,6 @@
                 }
             ],
             "time": "2020-11-10T12:53:30+00:00"
-        },
-        {
-            "name": "polarising/bcrypt",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Polarising/bcrypt.git",
-                "reference": "247e1ac20f8ef86592f48172c9a3d352be4806fa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Polarising/bcrypt/zipball/247e1ac20f8ef86592f48172c9a3d352be4806fa",
-                "reference": "247e1ac20f8ef86592f48172c9a3d352be4806fa",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.7"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0|~5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bcrypt\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Yang Deng",
-                    "email": "d2894861@gmail.com"
-                }
-            ],
-            "description": "Customized Bcrypt for PHP",
-            "keywords": [
-                "bcrypt"
-            ],
-            "support": {
-                "issues": "https://github.com/Polarising/bcrypt/issues",
-                "source": "https://github.com/Polarising/bcrypt/tree/master"
-            },
-            "time": "2016-11-22T05:16:12+00:00"
         },
         {
             "name": "sebastian/cli-parser",

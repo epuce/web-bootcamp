@@ -1,5 +1,8 @@
-<?php 
-    require_once __DIR__ . "/../models/listModel.php";
+<?php
+
+use MVC\entity\Product;
+
+require_once __DIR__ . "/../models/listModel.php";
     $model = new listModel();
     if (!empty($_POST["id"])) {
         // Update
@@ -13,6 +16,7 @@
         $model->insertNew(
             $_POST["name"],
             $_POST["price"],
+            $_POST["category_id"],
         );
     }
 

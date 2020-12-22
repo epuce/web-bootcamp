@@ -1,37 +1,35 @@
 (function() {
-    class MyHTMLComponent extends React.Component {
+    class MyHTML extends React.Component {
 
-        constructor(props) {
-            super(props);
-            this.count = 0;
-            this.addOneOne = this.addOne.bind(this);
+        constructor(data) {
+            super(data);
+            this.clickCount = 0;
+            this.addOne = this.addOne.bind(this);
+            this.removeOne = this.removeOne.bind(this);
         }
 
         addOne() {
-            this.setState(() => this.count ++);
+            this.setState(() => this.clickCount++)
+        }
+
+        removeOne() {
+            this.setState(() => this.clickCount--)
         }
 
         render() {
-            return(
+            return (    
                 <div>
-                    <h1>Test title</h1>
-                    <button>Wooop</button>
-                    <h2>{this.props.extraText}</h2>
+                    <h1>{this.props.text}</h1>
 
-                    <button onClick={this.addOneOne}>Click to add one to the sum</button>
-                    Count: {this.count}
+                    <h2>You have clicked { this.clickCount } times</h2>
+
+                    <button onClick={this.addOne}>Add one</button>
+                    <button onClick={this.removeOne}>Remove one</button>
                 </div>
             );
         }
     }
 
-    ReactDOM.render(<MyHTMLComponent extraText="Some text added with attribute"></MyHTMLComponent>, document.getElementById('container'));
+    ReactDOM.render(<MyHTML text="Call to myHTML 1"/>, document.getElementById("react-wrapper"));
+    ReactDOM.render(<MyHTML text="Wooop"/>, document.getElementById("react-wrapper-one"));
 })();
-
-//
-
-function testFn() {
-
-}
-
-testFn()

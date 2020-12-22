@@ -1,5 +1,8 @@
 <?php
-    require_once __DIR__ . "/../../database-wrapper.php";
+
+require_once __DIR__ . "/../../vendor/autoload.php";
+use DB\DB;
+
 
     class listModel {
 
@@ -31,8 +34,8 @@
             DB::run($sql);
         }
 
-        public function insertNew($name, $price) {
-            $sql = "INSERT INTO products (name, price) VALUES ('$name', $price)";
+        public function insertNew($name, $price, $categoryId) {
+            $sql = "INSERT INTO products (name, price, category_id) VALUES ('$name', $price, $categoryId)";
             DB::run($sql);
         }
     }

@@ -24,6 +24,16 @@ services:
     ports:
       - "8082:3306"
 
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_DATABASE=web-bootcamp-db
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root_password
+    ports:
+      - "27017-27019:27017-27019"
+
   app:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin

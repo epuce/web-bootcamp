@@ -5,30 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-    <div id="container">
-        <h2>Static text - {{ heading }}</h2>
+    <div id="vue-wrapper">
+        <h1>{{ text }}</h1>
+        <h2>You have clicked {{ clickCount }} times</h2>
+        <button v-on:click="addOne">Add one</button>
+        <button v-on:click="removeOne">Remove one</button>
 
-        <div>
-            <h3>You have clicked {{ clickCount }} times</h3>
-
-            <button v-on:click="addCount">Add +1 to count</button>
-            <button v-on:click="reduceCount">Reduce -1 to count</button>
-        </div>
-
-        <div style="padding-top: 20px;">
-            <vue-button text="Btn nr1"></vue-button>
-        </div>
-        <div style="padding-top: 20px;">
-            <vue-button text="Nr2 btn"></vue-button>
-        </div>
+        <my-btn text="Button 1"></my-btn>
+        <my-btn text="Other btn"></my-btn>
     </div>
 
-    <h1>I'm a h1 tag</h1>
-</body>
+    <input id="text">
+    <input id="text">
 
-<script src="vue.js"></script>
+    <label for="text">click</label>
+</body>
+<script src="./vue.js"></script>
 </html>

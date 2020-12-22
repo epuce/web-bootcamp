@@ -1,42 +1,66 @@
-<?php 
-    require_once __DIR__ . "/../components/userForm.php";
-    require_once __DIR__ . "/../../database-wrapper.php";
+<?php
 
-    if (!empty($_POST["email"])) {
-        $email = $_POST["email"];
+namespace MVC\controllers;
 
-        $sql = "SELECT * FROM users WHERE email = '$email'";
+require_once __DIR__ . "/../../vendor/autoload.php";
 
-        $response = DB::run($sql)->fetch_assoc();
+use DB\DB;
+use MVC\components\UserForm;
 
-        if ($response) {
-            if (!empty($_POST["password"])) {
-                $salt = "#/A5ax%*9)&!@%asd";
-                $password = $_POST["password"];
+class loginController {
+    public function validateLogin() {
+        $error = null;
 
-                $password = $password . $salt;
-                
-                $isValidPassword = password_verify(
-                    $_POST["password"],
-                    $response["password"]
-                );
+        if (!empty($_POST["email"])) {
+            $email = $_POST["email"];
 
-                if ($isValidPassword) {
-                    session_start();
-                    $_SESSION["id"] = $response["email"];
-                    Header("Location: /mvc/?page=list");
+            $sql = "SELECT * FROM users WHERE email = '$email'";
+
+            $response = DB::run($sql)->fetch_assoc();
+
+            if ($response) {
+                if (!empty($_POST["password"])) {
+                    $isValidPassword = password_verify(
+                        $_POST["password"],
+                        $response["password"]
+                    );
+
+                    if (!$isValidPassword) {
+                        $error = "Invalid password";
+                    }
                 } else {
-                    echo "Invalid password";
+                    $error = "Password not set";
                 }
             } else {
-                echo "Password not set";
+                $error = "User with email: '$email' does not exist";
             }
         } else {
-            echo "User with email: '$email' does not exist";
+            $error = "Email not specified";
+        }
+
+        return $error;
+    }
+
+    public function login() {
+        $error = $this->validateLogin();
+
+        if (!$error) {
+            session_start();
+            $_SESSION["id"] = $_POST["email"];
+            Header("Location: /mvc/?page=list");
+        } else {
+            echo $error;
         }
     }
 
-    $form = new UserForm();
-    $form->setBtnText("Login");
-    $form->html();
-?>
+    public function html()
+    {
+        $this->login();
+
+        $form = new UserForm();
+        $form->setBtnText("Login");
+        $form->html();
+    }
+}
+
+(new loginController())->html();

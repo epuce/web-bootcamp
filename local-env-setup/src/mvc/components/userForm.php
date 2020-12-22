@@ -1,5 +1,5 @@
 <?php 
-
+    namespace MVC\components;
     class UserForm {
         private $btnText;
 

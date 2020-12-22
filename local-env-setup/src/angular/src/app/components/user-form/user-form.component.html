@@ -2,14 +2,14 @@
     <label>
         Username:
 
-        <input>
+        <input [(ngModel)]="user.username">
     </label>
 
     <label>
         Password:
 
-        <input>
+        <input [(ngModel)]="user.password">
     </label>
 
-    <button (click)="saveForm()">{{ data.buttonTitle }}</button>
+    <button (click)="saveForm(user)">{{ data.buttonTitle }}</button>
 </div>

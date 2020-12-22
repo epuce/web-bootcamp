@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div>
+        <label>
+            Pizza:
+            
+            <input name="pizza" type="number">
+        </label>
+        <label>
+            Hot dog:
+
+            <input name="pizza" type="number">
+        </label>
+        <label>
+            Burgers:
+
+            <input name="pizza" type="number">
+        </label>
+        <label>
+            Pasta:
+
+            <input name="pizza" type="number">
+        </label>
+    </div>
+</body>
+
+<script>
+    const canvas = document.getElementById("canvas");
+    canvas.width = 300;
+    canvas.height = 300;
+
+    const flatGraph = canvas.getContext("2d");
+
+    function drawLine(flatGraph, startX, startY, endX, endY, color) {
+        flatGraph.save();
+        flatGraph.strokeStyle = color;
+        flatGraph.beginPath();
+        flatGraph.moveTo(startX, startY);
+        flatGraph.lineTo(endX, endY);
+        flatGraph.stroke();
+        flatGraph.restore();
+    }
+
+    function drawBar(flatGraph, upperLeftCornerX, upperLeftCornerY, width, height, color) {
+        flatGraph.save();
+        flatGraph.fillStyle = color;
+        flatGraph.fillRect(upperLeftCornerX, upperLeftCornerY, width, height);
+        flatGraph.restore();
+    }
+
+    
+    const foods = {
+        "Pizza": 10,
+        "Hot dog": 8,
+        "Burgers": 14,
+        "Pasta": 4
+    };
+
+    const Chart = function (options) {
+        this.options = options;
+        this.canvas = options.canvas;
+        this.flatGraph = this.canvas.getContext("2d");
+        this.colors = options.colors;
+        this.data = {};
+
+        this.draw = function () {
+            this.flatGraph.clearRect(0, 0, canvas.width, canvas.height);
+            Object.values(document.getElementsByTagName('input')).forEach((input, index) => {
+                this.data[index] = input.value ? parseInt(input.value) : 0;
+            })
+    
+            let maxValue = 0;
+
+            for (let food in this.data) {
+                maxValue = Math.max(maxValue, this.data[food]);
+            }
+            
+            const canvasActualHeight = this.canvas.height - this.options.padding * 2;
+            const canvasActualWidth = this.canvas.width - this.options.padding * 2;
+
+            // Draw the grid lines
+            let gridValue = 0;
+
+            while (gridValue <= maxValue) {
+                const gridY = canvasActualHeight * (1 - gridValue / maxValue) + this.options.padding;
+                
+                drawLine(
+                    this.flatGraph,
+                    0,
+                    gridY,
+                    this.canvas.width,
+                    gridY,
+                    this.options.gridColor
+                );
+
+                this.flatGraph.save();
+                this.flatGraph.fillStyle = this.options.gridColor;
+                this.flatGraph.textBaseline = "bottom";
+                this.flatGraph.fillText(gridValue, 10, gridY - 2);
+                this.flatGraph.restore();
+
+                gridValue += this.options.gridScale;
+            }
+
+            // Draw the grid bars
+            let barIndex = 0;
+            const numberOfBars = Object.keys(this.data).length;
+            const barSize = canvasActualWidth / numberOfBars;
+
+            for (food in this.data) {
+                const val = this.data[food];
+                const barHeight = Math.round(canvasActualHeight * val / maxValue);
+                drawBar(
+                    this.flatGraph,
+                    this.options.padding + barIndex * barSize,
+                    this.canvas.height - barHeight - this.options.padding,
+                    barSize,
+                    barHeight,
+                    this.colors[barIndex % this.colors.length]
+                );
+
+                barIndex++;
+            }
+        }
+    }
+
+    const chartInstance = new Chart(
+        {
+            canvas: canvas,
+            padding: 20,
+            gridScale: 5,
+            gridColor: "#eeeeee",
+            colors: ["#a55ca5", "#67b6c7", "#bccd7a", "#eb9743"]
+        }
+    );
+
+    Object.values(document.getElementsByTagName('input')).forEach((input) => {
+        console.log(input)
+        input.addEventListener('change', () => {
+            chartInstance.draw();
+        })
+    })
+</script>
+
+</html>

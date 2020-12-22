@@ -14,7 +14,6 @@ $(function () {
     var $popupClose = $popup.find('button');
     var $popupContent = $popup.find('.content');
 
-
     $subscribeBtn.on('click', function () {
         if (!isFormValid()) {
             return;
@@ -90,6 +89,12 @@ $(function () {
     function renderFormValues() {
         var data = localStorage.data ? JSON.parse(localStorage.data) : [];
         $listTable.find('tbody').html('');
+
+        if (data.length) {
+            $listTable.show()
+        } else {
+            $listTable.hide()
+        }
 
         data.forEach(function (row, index) {
             const user = JSON.parse(row)

@@ -1,40 +1,36 @@
-Vue.component('vue-button', {
+Vue.component('my-btn', {
     props: {
         text: {
             type: String,
-            default: ''
+            default: 'Unspecified'
         }
     },
     methods: {
-        addTextToComponent: function() {
-            this.addedText = "You have clicked the button " + this.text;
-        }
-    },
-    data() {
-        return {
-            addedText: ""
+        clickBtn: function() {
+            console.log("You have clicked btn with text: " + this.text)
         }
     },
     template: `
-    <span>
-        <button v-on:click="addTextToComponent">{{ text }}</button>
-        {{ addedText }}
-    </span>
+        <span>
+            <button v-on:click="clickBtn">{{ text }}</button>
+        </span>
     `
-})
+});
 
 new Vue({
-    el: '#container',
+    el: '#vue-wrapper',
     data: {
-        heading: 'I\'m a Vue heading',
+        text: "This is text from vue instance",
         clickCount: 0
     },
     methods: {
-        addCount: function() {
-            this.clickCount ++;
+        addOne: function() {
+            this.clickCount++;
         },
-        reduceCount: function() {
-            this.clickCount --;
+        removeOne: function() {
+            this.clickCount--;
+            // this.clickCount -= 1;
+            // this.clickCount = this.clickCount -1;
         }
-    }
+    }, 
 })

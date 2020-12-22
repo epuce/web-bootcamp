@@ -11,8 +11,13 @@ export class UserFormComponent implements OnInit {
   @Input() data: any = {
     buttonTitle: '',
   };
+  
+  user = {
+    username: '',
+    password: '',
+  }
 
-  saveForm = () => {}
+  saveForm = (user: any) => {}
   constructor(
     private http: HttpClient,
     private router: Router

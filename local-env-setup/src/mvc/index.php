@@ -5,8 +5,10 @@
 
         if (file_exists($file)) {
             if ($_GET["page"] === 'login' || $_GET["page"] === 'register') {
+                require_once __DIR__ . '/helpers/header.php';
                 require_once $file;
             } else if (isset($_SESSION["id"])) {
+                require_once __DIR__ . '/helpers/header.php';
                 require_once $file;
             } else {
                 Header("Location: /mvc/?page=login");
