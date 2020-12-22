@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__ . "/../../database-wrapper.php";
+use DB\DB;
+
+require_once __DIR__ . "/../../vendor/autoload.php";
 DB::setDbName('final-project');
 
 $requestPayload = json_decode(file_get_contents('php://input'),1);

@@ -1,5 +1,10 @@
 <?php
-require_once __DIR__ . "/../database-wrapper.php";
+
+namespace finalProject;
+
+require_once __DIR__ . "/../vendor/autoload.php";
+
+use DB\DB;
 DB::setDbName('final-project');
 
 $sqlArray =[
@@ -12,6 +17,19 @@ $sqlArray =[
 	"1.0.1" => "ALTER TABLE list ADD (
 		order_id int NOT NULL,
 		checked boolean DEFAULT FALSE
+    )",
+	"1.0.4" => "CREATE TABLE users (
+		username varchar(255) NOT NULL,
+		password varchar(60) NOT NULL
+    )",
+	"1.0.5" => "ALTER TABLE users ADD (
+        id int NOT NULL AUTO_INCREMENT,
+        PRIMARY KEY (id)
+    )",
+	"1.0.6" => "ALTER TABLE users MODIFY COLUMN	username varchar(255) NOT NULL UNIQUE",
+    "1.0.7" => "ALTER TABLE list ADD (
+        user_id int NOT NULL DEFAULT 1,
+        FOREIGN KEY (user_id) REFERENCES users(id)
     )",
 ];
 

@@ -1,0 +1,13 @@
+<div class="wrapper">
+    <div id="formContent">
+
+        <a class="link-btn" routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Log in</a>
+        <a class="link-btn" [routerLink]="['/register']" routerLinkActive="active">Register</a>
+
+        <div>
+            <input type="text" [(ngModel)]="user.username" placeholder="Username">
+            <input type="password" [(ngModel)]="user.password" placeholder="Password">
+            <button (click)="saveForm()" class="save-btn">{{ buttonTitle }}</button>
+        </div>
+    </div>
+</div>
