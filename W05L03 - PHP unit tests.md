@@ -16,7 +16,7 @@
     * run: `php composer-setup.php`
     * run: `php composer.phar install`
 * phpunit (php unit test library)
-    1. composer require --dev phpunit/phpunit ^9
+    1. composer require --dev phpunit/phpunit ^11
     2. composer.json file and some others were generated in our project. Edit the composer.json file to look like:
         ```JSON
         {
@@ -24,13 +24,13 @@
                 "classmap": ["./"]
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.4"
+                "phpunit/phpunit": "^11.0"
             }
         }
         ```
-    3. create a folder that will hold all the
+    3. create a folder that will hold all the tests (e.g. `tests/`)
     4. run: `composer dump-autoload`
-    5. to run the tests `php ./vendor/phpunit/phpunit/phpunit --testdox tests` 
+    5. to run the tests: `./vendor/bin/phpunit --testdox tests`
 
 # Look at the user that he could use your system like this
 ![Testers VS Users gif](img/testers-VS-users.gif)
@@ -43,48 +43,45 @@
 
 ```PHP
 // file UserTest.php
+use PHPUnit\Framework\TestCase;
 
-use PHPUnit\Framework\TestCase; // Include the class to extend
+final class UserTest extends TestCase
+{
+    private PDO $pdo;
+    private UserModel $users;
 
-class userTest extends TestCase {
-    public function testGetAllUsers(): void
+    protected function setUp(): void
     {
-        $result = UserModel::getAllUsers();
-        $users = [];
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $users[] = $row;
-        }
-
-        $this->assertThat(5, $this->lessThan(count($users))); // Test if we have more than 5 users in the database
+        // Point tests at a dedicated TEST database, never the real one
+        $this->pdo = new PDO('mysql:host=localhost;dbname=web_bootcamp_test', 'root', 'root_password');
+        // Wrap each test in a transaction so tests can't affect one another...
+        $this->pdo->beginTransaction();
+        $this->users = new UserModel($this->pdo);
     }
-    
+
+    protected function tearDown(): void
+    {
+        // ...and undo it afterwards, leaving the database exactly as it was
+        $this->pdo->rollBack();
+    }
+
     public function testAddAndGetUser(): void
     {
-        $data = [
-            "name" => "Test name",
-            "password" => "Test password"
-        ];
+        $userId = $this->users->createUser(['name' => 'Test name', 'password' => 'secret']);
+        $user = $this->users->getUserById($userId);
 
-        $userId = UserModel::addUser($data);
-        $result = UserModel::getUserById($userId);
-        
-        var_dump($userId);
-
-        $this->assertEquals(1, $result->num_rows);
-        try {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $this->assertNotNull($row["password"]);
-                $this->assertNotNull($row["password"]);
-                $this->assertEquals($data["name"], $row["name"]);
-                $this->assertEquals($data["password"], $row["password"]);
-            }
-        } finally {
-            UserModel::deleteUserById($userId);
-        }
+        $this->assertNotNull($user);
+        $this->assertSame('Test name', $user['name']);
+        // Passwords are stored hashed, so the raw value must NOT appear in the row
+        $this->assertNotSame('secret', $user['password']);
+        $this->assertTrue(password_verify('secret', $user['password']));
     }
 }
 ```
+
+Two habits worth calling out: give tests their **own database** (or mock the data layer) so they never
+depend on production data, and for pure logic (no DB, no network, like the date helper below) no setup
+is needed at all, just call the function and assert.
 ### Example
 ```PHP
 // Function to test - get how many months are in use between two dates
