@@ -1,9 +1,11 @@
-### CSS basics
-    
+# 🎨 CSS basics
+
 * CSS provides the visual part of a web page
 
 * Structure
+
 ![css structure](img/W02L01-css_basics.png)
+
     * Selector: references the HTML element(s) that the style will be applied to
     * Property: the css description of the visual effect
     * Property value: visual description modifier (size, color, position,special value, etc.)
@@ -13,7 +15,7 @@
 
     [Full property list](https://www.w3schools.com/cssref/)
 * Include in HTML
-    
+
 ```HTML
 <head>
     <link rel="stylesheet" href="path/to/file.css">
@@ -54,14 +56,15 @@
     * Global values
         * inherit - value it's parent element has
         * initial - same as no value would be set
-    * Font related properties are given to their child elements 
+    * Font related properties are given to their child elements
         * font-size
         * text-align
         * line-hight
         * color
         * etc.
 
-### CSS selectors
+## CSS selectors
+
 | Selector | Example | Explanation |
 |----------|---------|-------------|
 | tag | h1 | Selects all elements with this tag name |
@@ -81,18 +84,21 @@
 | [attribute$=value] | [href$=".pdf"]| Selects all elements that have an attribute thats ends with the stated text |
 | [attribute*=value] | [href*=".com"] | Gets all elements with attribute that contains stated value
 
-### CSS state selectors (always together with a pre stated element)
+## CSS state selectors (always together with a pre stated element)
+
 | Selector | Example | Explanation |
 |----------|---------|-------------|
 | :focus | input:focus | Styles focused input element |
 | :hover | h1:hover | Styles level 1 heading tag when cursor moves in its' space |
 | :first-child :last-child | td:firs-child | Styles first or last same level element (last cell in row for example) |
-| :root | :root | As we can use component approach, there is a possibility that the higher level element is not html, so :root can style the parent element depending on scope | 
+| :root | :root | As we can use component approach, there is a possibility that the higher level element is not html, so :root can style the parent element depending on scope |
 | :not(element) | a:not(.noStyle) | Styles all elements except chosen ones |
 
-### Custom properties (CSS variables)
+## Custom properties (CSS variables)
+
 * Declare reusable values once (usually on `:root`) and reference them with `var()`. This is how
   themes and design tokens are built.
+
 ```css
 :root {
     --brand: #0066ff;
@@ -105,7 +111,8 @@
 }
 ```
 
-### Modern selectors
+## Modern selectors
+
 | Selector | Example | Explanation |
 |----------|---------|-------------|
 | :is() | `:is(h1, h2, h3)` | Matches any selector in the list, keeps rules short |
@@ -113,17 +120,19 @@
 | :has() | `label:has(input:checked)` | The "parent" selector, matches an element that contains a match |
 | :nth-child() | `tr:nth-child(even)` | Every even row, every third item, and so on |
 
-### Logical properties (direction-aware)
+## Logical properties (direction-aware)
+
 * Prefer `margin-inline`, `padding-block`, `inset` over the physical `left/right/top/bottom` so a
   layout adapts to right-to-left languages, e.g. `margin-inline: auto;` centres regardless of writing
   direction. [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
 
-### Full list of all CSS selectors
+## Full list of all CSS selectors
+
 [Link][link]
 
 [link]: https://www.w3schools.com/cssref/css_selectors.asp
 
-### Task - using previous lessons html select and style these elements
+## Task - using previous lessons html select and style these elements
 
 1. HTML element
 2. specific HTML child elements
