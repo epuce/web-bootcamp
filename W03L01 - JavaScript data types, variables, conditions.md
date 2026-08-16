@@ -7,13 +7,13 @@ All data types have their built in functions to convert them to a different type
 * String - any text that is defined as one, usually set a characters between "" or ''; 
 
 ```JavaScript
-var example = "This is a string";
+const example = "This is a string";
 ```
 
 * Number - integer of float type, positive or negative; 
 
 ```JavaScript
-var example = 3.14;
+const example = 3.14;
 ```
 
 * Array - data collection placed in a list
@@ -22,7 +22,7 @@ var example = 3.14;
     * The data is tracked by index, where the first one is 0
 
 ```JavaScript
-var example = ['test', true, [1, 2, 3], null];
+const example = ['test', true, [1, 2, 3], null];
 ```
 
 * Object - same as array, only the index is specified
@@ -30,7 +30,7 @@ var example = ['test', true, [1, 2, 3], null];
     * It's defined as the key -> value pairs between {}
 
 ```JavaScript
-var example = {key: "value", test: 123, another_object: {name: "Ed"}};
+const example = {key: "value", test: 123, another_object: {name: "Ed"}};
 ```
 
 * Function - not a static value, but an action group that executes some activities that return a value (if no return value stated, it is treated ad undefined). There can be defined or anonymous functions. 
@@ -41,10 +41,10 @@ function sayHello() {
     alert("Hello");
 }
 
-// Anonymous function
-$('button').on('click', function() {
-    console.trace('Im anonymous');
-})
+// Anonymous function (passed straight to an event listener)
+document.querySelector('button').addEventListener('click', function() {
+    console.trace("I'm anonymous");
+});
 ```
 
 * Boolean - describes positive (true) or negative (false) value (condition)
@@ -53,7 +53,7 @@ $('button').on('click', function() {
         * truly - not empty strings, all numbers except zero, arrays, objects, functions, etc.
 
 ```JavaScript
-var example = true;
+const example = true;
 ```
 
 * null, undefined, NaN - depending on the use all these values ar treated as false, so then what's the difference?
@@ -131,7 +131,8 @@ person.name = "Alex"
 
 4. While **var** and **let** can be declared without being initialized, **const** must be initialized during declaration.
 
-<!-- TODO improve, especially point 6 -->
+In practice: reach for **const** by default, **let** when you need to reassign, and avoid **var** in new code.
+
 ### Checkup
 1. Create a variable and assign a **string** to it
 2. Create a variable and assign a **number** to it
