@@ -1,4 +1,4 @@
-### Introduction
+# 👋 Introduction
 
 * Getting to know each other
 * Job market requirements
@@ -6,8 +6,6 @@
 * Where to start?
 * Terminology
 * Setting up the work environment
-
----
 
 ## Getting to know each other
 
@@ -47,8 +45,6 @@ Extra topics: GraphQL, Vue Material (Vuetify) & form handling, state management 
 
 By the end of the course you will be able to build a working web application from front to back.
 
----
-
 ## Job market requirements
 
 ### Front-end roadmap (2014)
@@ -75,8 +71,6 @@ By the end of the course you will be able to build a working web application fro
     * CSS
     * JavaScript
 * Everything else (frameworks, build tools, TypeScript, package managers…) sits on top of these three.
-
----
 
 ## About the internet
 
@@ -112,8 +106,6 @@ By the end of the course you will be able to build a working web application fro
 ![A rough history of web standards (HTML, CSS, JS)](img/W01L01-web-standards-history.png)
 
 * Today HTML is a "living standard" maintained by the WHATWG — there are no more numbered versions after HTML5, the spec is updated continuously.
-
----
 
 ## Where to start?
 
@@ -171,8 +163,6 @@ By the end of the course you will be able to build a working web application fro
 * Don't forget — don't lose your enthusiasm and be patient!
 * Don't be afraid to ask — Google, colleagues, me!
 
----
-
 ## Terminology
 
 ### Understand it? → Use it!
@@ -215,8 +205,6 @@ By the end of the course you will be able to build a working web application fro
 * **Builds** — generating the system.
 * **Frameworks** — coding-language frameworks that ease system development and set up its "skeleton".
 * **Interpreters** — convert programming languages to conform to older standards (e.g. in old browser versions).
-
----
 
 ## Setting up the work environment
 
@@ -265,8 +253,6 @@ By the end of the course you will be able to build a working web application fro
 * PHP
 * Vue (v3)
 * Overview of Angular, React, Node.js, GraphQL and MongoDB
-
----
 
 ## Resources
 
