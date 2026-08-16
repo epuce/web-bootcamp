@@ -3,28 +3,18 @@
 * Add the npm packages
 ```JavaScript
 "dependencies": {
-    "@angular/cdk": "^7.0.1",
-    "@angular/material": "^7.0.1",
+    "@angular/cdk": "^18.0.0",
+    "@angular/material": "^18.0.0",
 }
 ```
-* Add the component module import to app.module.ts
-```JavaScript
-"imports": [
-    ...
-    MatTableModule,
-    MatInputModule,
-    MatButtonModule,
-    ...
-]
-```
-* Add form control module import to app.module.ts
-```JavaScript
-"imports": [
-    ...
-    FormsModule,
-    ReactiveFormsModule,
-    ...
-]
+* Import the Material components you use directly in the standalone component's `imports` (Material is
+  standalone now, there is no app.module.ts):
+```TypeScript
+@Component({
+    standalone: true,
+    imports: [MatTableModule, MatInputModule, MatButtonModule, MatCheckboxModule, ReactiveFormsModule],
+    // ...
+})
 ```
 * Set up material component HTML & JS if needed
 ```HTML
@@ -70,10 +60,7 @@
 ```JavaScript
 // For table
 export class MyComponentName {
-    displayedColumns: string[]: [
-        'id',
-        'name'
-    ]
+    displayedColumns: string[] = ['id', 'name'];
 }
 ```
 ```HTML
@@ -90,25 +77,15 @@ export class MyComponentName {
 ```
 ```JavaScript
 // For input
-export class MyComponentName implements OnInit {
-    form: FormGroup;
-    controls: any = {
-        name: new FormControl('', [Validators.required]),
-        active: new FormControl(),
-    };
-
-    ngOnInit() {
-        this.form = new FormGroup(this.controls);
-
-        this.form.valueChanges.subscribe((values) => {
-            console.log("The new values are")
-            console.log(values)
-        })
-    }
+export class MyComponentName {
+    form = new FormGroup({
+        name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+        active: new FormControl(false, { nonNullable: true }),
+    });
 }
 ```
 ### Checkup
-* Set up a state manager for list handling from - https://reqres.in/api/users?page=2 where page number is set buy you
+* Set up a state manager for list handling from - https://jsonplaceholder.typicode.com/posts?_page=1&_limit=10 where the page number is set by you
 * Show requested data in a angular material table
 * Set up an angular material input field where the user enters a number
 * Add a button that requests the data with page number that is set in the input field
