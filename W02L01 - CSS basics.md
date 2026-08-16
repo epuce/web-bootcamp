@@ -90,6 +90,34 @@
 | :root | :root | As we can use component approach, there is a possibility that the higher level element is not html, so :root can style the parent element depending on scope | 
 | :not(element) | a:not(.noStyle) | Styles all elements except chosen ones |
 
+### Custom properties (CSS variables)
+* Declare reusable values once (usually on `:root`) and reference them with `var()`. This is how
+  themes and design tokens are built.
+```css
+:root {
+    --brand: #0066ff;
+    --space: 8px;
+}
+
+.button {
+    background: var(--brand);
+    padding: var(--space) calc(var(--space) * 2);
+}
+```
+
+### Modern selectors
+| Selector | Example | Explanation |
+|----------|---------|-------------|
+| :is() | `:is(h1, h2, h3)` | Matches any selector in the list, keeps rules short |
+| :where() | `:where(.a, .b) p` | Like `:is()` but zero specificity, so it is easy to override |
+| :has() | `label:has(input:checked)` | The "parent" selector, matches an element that contains a match |
+| :nth-child() | `tr:nth-child(even)` | Every even row, every third item, and so on |
+
+### Logical properties (direction-aware)
+* Prefer `margin-inline`, `padding-block`, `inset` over the physical `left/right/top/bottom` so a
+  layout adapts to right-to-left languages, e.g. `margin-inline: auto;` centres regardless of writing
+  direction. [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
+
 ### Full list of all CSS selectors
 [Link][link]
 
@@ -108,4 +136,4 @@
 9. Add style to an element when it's hovered
 10. Use a state selector that is not mentioned in this file, choose from [link]
 
-[solution](local-env-setup/src/W02L01-solution.css)
+[solution](local-env-setup/src/W02L01_css_selectors/W02L01-solution.css)
