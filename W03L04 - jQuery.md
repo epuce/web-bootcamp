@@ -1,12 +1,18 @@
 ## jQuery - JavaScript library
 
-* Using $ means that we are referring to a jquery selector
+> **2026 note:** jQuery is **legacy**. It was created to paper over inconsistent, verbose browser
+> APIs, but modern browsers made most of it unnecessary: `querySelectorAll`, `classList`,
+> `addEventListener` and `fetch` now do natively what jQuery wrapped. You still meet it in older
+> codebases (and WordPress), so it is worth recognising, but in new code reach for the native APIs
+> (or a framework). The AJAX section below pairs the jQuery with its vanilla equivalent.
+
+* Using $ means that we are referring to a jQuery selector
 
 ### Initialization
 ```HTML
 <head>
     <!-- other head scripts/tags-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- other head scripts/tags-->
 </head>
 ```
@@ -92,7 +98,7 @@ $('body').scrollTop(100) // Scroll 100 pixels down
 * .append()/.appendTo() add element as last in HTML parent element list
 * .insertAfter()/.insertBefore()
 ```JavaScript
-var $cloneEl = $('selector').clone() // Clone element
+const $cloneEl = $('selector').clone() // Clone element
 
 // These two do the same only from what element reference point
 // The element that is set in the new element is set as the last one
@@ -118,28 +124,45 @@ $cloneEl.prependTo($('selector'))
 ```JavaScript
 $('selector').on('click', function() {}) // Adds the function to all elements
 
-// same as:
-var allElements = document.getElementsByTagName('selector');
-for (var i = 0; i < allElements.length; i++) {
-    allElements[i].addEventListener('click', function() {})
-}
+// same as (vanilla):
+document.querySelectorAll('selector').forEach((el) => {
+    el.addEventListener('click', () => {});
+});
 ```
 
 ```JavaScript
-// Request to the server
+// Request to the server (jQuery)
 $.ajax({
   method: "GET",
-  url: "https://reqres.in/api/users"
+  url: "https://jsonplaceholder.typicode.com/users"
 })
 .done(function( response ) {
     $('body').append('<ul class="new-list"></ul>')
 
-    response.data.forEach(function(val) {
+    response.forEach(function(val) {
         $('.new-list').append('<li>'+val.email+'</li>')
     })
 });
 ```
-* good API for playing around - [link](https://reqres.in)
+
+The same request with the native **fetch** API and async/await, no jQuery:
+```JavaScript
+async function loadUsers() {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    const users = await res.json();
+
+    const list = document.createElement('ul');
+    list.className = 'new-list';
+    for (const user of users) {
+        const li = document.createElement('li');
+        li.textContent = user.email; // textContent (not innerHTML) avoids HTML injection
+        list.append(li);
+    }
+    document.body.append(list);
+}
+loadUsers();
+```
+* good API for playing around - [link](https://jsonplaceholder.typicode.com)
 * public API - [link](https://github.com/public-apis/public-apis)
   
 ### All jQuery options: [cheat-sheet](https://oscarotero.com/jquery/)
