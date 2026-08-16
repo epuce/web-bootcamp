@@ -1,11 +1,14 @@
-### Summary & tips and tricks
+# 💡 summary & tips and tricks
+
 A grab-bag of extras that did not need a full lesson but are worth knowing.
 
-### CSS animations
+## CSS animations
+
 * Transitions: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions)
 * Keyframe animations: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations)
 * Prefer animating `transform` and `opacity` (GPU-composited, cheap) over `width`/`top`/`left`, which
   trigger layout. Respect `@media (prefers-reduced-motion: reduce)` for users who ask for less motion.
+
 ```HTML
 <div class="loader">
     <div class="dot"></div>
@@ -101,21 +104,27 @@ A grab-bag of extras that did not need a full lesson but are worth knowing.
 }
 </style>
 ```
-### iframes
+
+## iframes
+
 * Embeds another document; sandbox it and be explicit about what it may do.
 * [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
+
 ```HTML
 <iframe src="edit.html" width="400" height="200" loading="lazy" sandbox="allow-scripts"></iframe>
 ```
 
-### canvas
+## canvas
+
 * Draws 2D/3D graphics from JavaScript; complexity grows fast, so reach for a library (PixiJS, three.js) for anything real.
 * [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 * [Example](local-env-setup/src/W08L01/index.html)
 
-### video
+## video
+
 * Native media playback, no plugin. Offer more than one `<source>` format and a captions `<track>`.
 * [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
+
 ```HTML
 <video controls width="640" preload="metadata" poster="cover.jpg">
     <source src="clip.webm" type="video/webm">
@@ -125,9 +134,11 @@ A grab-bag of extras that did not need a full lesson but are worth knowing.
 </video>
 ```
 
-### Doctrine (PHP ORM)
+## Doctrine (PHP ORM)
+
 * An ORM maps database rows to typed PHP objects, so you work with objects instead of raw SQL strings (and get prepared statements for free). A repository runs the queries.
 * [Doctrine ORM](https://www.doctrine-project.org/projects/orm.html)
+
 ```PHP
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'user')]
@@ -145,5 +156,6 @@ $user = $entityManager->getRepository(User::class)->find($id);
 echo $user->getEmail();
 ```
 
-### AI with JavaScript
+## AI with JavaScript
+
 * Build a neural network from scratch in JS: [Neural network from scratch](https://observablehq.com/@mpj/neural-network-from-scratch-part-1)
