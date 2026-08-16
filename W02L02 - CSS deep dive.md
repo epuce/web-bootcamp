@@ -8,6 +8,14 @@
     * border
     * margin
 
+* Almost every project starts by setting `box-sizing: border-box` on everything, so `width` includes
+  padding and border (far more predictable than the default `content-box`):
+```CSS
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+```
+
 * Best practices
     * Order your code based on one structure
     ![css property order](img/W02L02-css_propery_order.png)
