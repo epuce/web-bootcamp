@@ -1,5 +1,9 @@
-### PHP + HTML
+# 🔄 CRUD (Create, Read, Update, Delete)
+
+## PHP + HTML
+
 * Displaying data directly in HTML
+
 ```php
 // index.php
 <?php
@@ -10,6 +14,7 @@ $stmt = $pdo->query('SELECT id, name, profession FROM Users');
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 ```
+
 ```html
 <table class="table">
     <thead>
@@ -34,22 +39,27 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </tbody>
 </table>
 ```
-### CRUD
+
+## CRUD
+
 * [C - create](local-env-setup/src/W05L01_CRUD/add.php)
 * [R - read](local-env-setup/src/W05L01_CRUD/index.php)
 * [U - update](local-env-setup/src/W05L01_CRUD/edit.php)
 * [D - delete](local-env-setup/src/W05L01_CRUD/delete.php)
 
-### Data manipulation with API requests
+## Data manipulation with API requests
+
 * [Requests with fetch](local-env-setup/src/W05L01_CRUD/scripts.js)
 * [PUT - update](local-env-setup/src/W05L01_CRUD/src/put.php)
 * [POST - create](local-env-setup/src/W05L01_CRUD/src/post.php)
 * [DELETE](local-env-setup/src/W05L01_CRUD/src/delete.php)
 
-### Checkup
-1. Create a new data table with minimum 2 fields
-2. Add all 4 data manipulation functions with PHP
-    * CREATE
-    * READ
-    * UPDATE
-    * DELETE
+> [!TIP]
+> **Checkup**
+>
+> 1. Create a new data table with minimum 2 fields
+> 2. Add all 4 data manipulation functions with PHP
+>     * CREATE
+>     * READ
+>     * UPDATE
+>     * DELETE
