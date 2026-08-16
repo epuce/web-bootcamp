@@ -27,17 +27,20 @@ root_folder/
 ```PHP
 // UserModel.php
 <?php
-require_once __DIR__ . '/../../database-wrapper.php';
-
 class UserModel
 {
-	public function getAllUsers() {
-		return DB::run('SELECT * FROM Users');
+	public function __construct(private PDO $pdo) {}
+
+	public function getAllUsers(): array
+	{
+		return $this->pdo->query('SELECT id, name, profession FROM Users')->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	public function createUser(User $user)
+	public function createUser(User $user): void
 	{
-		return DB::run("INSERT INTO Users (name, profession) VALUES ('" . $user->name. "', '" . $user->profession . "')");
+		// Placeholders (?) keep user data out of the SQL string, so there is no injection
+		$stmt = $this->pdo->prepare('INSERT INTO Users (name, profession) VALUES (?, ?)');
+		$stmt->execute([$user->name, $user->profession]);
 	}
 }
 ```
@@ -62,17 +65,16 @@ class UserModel
 ```
 ### Controllers
 ```PHP
-controllers/users/index.php
+// controllers/users/index.php
 <?php
-// Make your model available
-include '../../models/UserModel.php';
+require __DIR__ . '/../../vendor/autoload.php'; // PSR-4 autoloading, no per-file require (see the PHP basics lesson)
 
-// Create an instance
-$userModel = new UserModel();
+// $pdo is a single shared database connection
+$userModel = new UserModel($pdo);
 $users = $userModel->getAllUsers();
 
 // Show the view
-require_once __DIR__ . '/../../views/user-list.php';
+require __DIR__ . '/../../views/user-list.php';
 ```
 
 ### Entities
@@ -80,31 +82,19 @@ require_once __DIR__ . '/../../views/user-list.php';
 // User.php
 <?php
 class User {
-	public $name;
-	public $profession;
-	public $id;
+	public ?int $id = null;
+	public string $name = '';
+	public string $profession = '';
 
-	public function __construct() {
-	}
-
-	/**
-	 * @param mixed $id
-	 */
-	public function setId($id) {
+	public function setId(int $id): void {
 		$this->id = $id;
 	}
 
-	/**
-	 * @param mixed $name
-	 */
-	public function setName($name) {
+	public function setName(string $name): void {
 		$this->name = $name;
 	}
 
-	/**
-	 * @param mixed $profession
-	 */
-	public function setProfession($profession) {
+	public function setProfession(string $profession): void {
 		$this->profession = $profession;
 	}
 }
