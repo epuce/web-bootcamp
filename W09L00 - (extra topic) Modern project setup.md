@@ -1,4 +1,7 @@
-### Project Structure
+# 📦 Modern project setup
+
+## Project Structure
+
 * Front-end source folder
   * Usually named as web, front-end, any other self explaining choice
   * If npm is used then there is a node_modules folder, package.json and package-lock.json files
@@ -21,7 +24,7 @@
 * Public - the part that is loaded to the browser
   * index file
   * all actively loaded scripts
-  * main css file 
+  * main css file
 
 * Extra-resources
   * Cron jobs
@@ -32,10 +35,11 @@
 * README.md
 
 * .gitignore
-  
+
 * local.config.php or .env files
 
-### Node.js + npm & composer setup
+## Node.js + npm & composer setup
+
 * [Node.js + npm](https://nodejs.org/en/download/) - install the current LTS
   * run `npm init` inside the project directory and walk through the steps (or scaffold a whole
     project directly, e.g. `npm create vite@latest`)
@@ -46,12 +50,14 @@
 
 * [Composer](https://getcomposer.org/doc/00-intro.md) - the same idea for PHP dependencies.
 
-### Build tools (bundlers)
+## Build tools (bundlers)
+
 Browsers can load ES modules directly, but real apps still bundle: to compile TS/JSX/SCSS, split
 code, hash filenames for caching, and tree-shake dead code out.
 
 * **Vite** is the modern default: a dev server with instant hot-module-reload, using `esbuild` and
   `Rollup` under the hood. A minimal setup:
+
 ```JavaScript
 // vite.config.js
 import { defineConfig } from 'vite';
@@ -60,6 +66,7 @@ export default defineConfig({
     build: { outDir: 'dist' },
 });
 ```
+
 ```JSON
 // package.json scripts
 {
@@ -70,12 +77,14 @@ export default defineConfig({
     }
 }
 ```
+
 * You will still meet **Webpack** in older projects (a big hand-written `webpack.config.js` with a
   `ProvidePlugin` for jQuery/lodash was the previous standard). Other tools: **esbuild** and
   **Rollup** (great for libraries), **Turbopack** (Next.js). The **Gulp**/**Grunt** task runners are
   legacy.
 
-### Good code style checkup
+## Good code style checkup
+
 ```CSS
 .menu{
  background:grey;
@@ -90,6 +99,7 @@ position: fixed;
 left:0; bottom:0;
     }
 ```
+
 ```JavaScript
 var az = {
   a       : 0,
@@ -110,6 +120,7 @@ Object.keys(az).map((aza) {
     return aza * 3;
 })
 ```
+
 ```HTML
 <div>
             <center>My heading!</center>
