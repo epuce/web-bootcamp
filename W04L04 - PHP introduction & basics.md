@@ -1,4 +1,7 @@
-### PHP basics
+# 🐘 PHP introduction & basics
+
+## PHP basics
+
 1. What do we need?
    1. Web server
    2. Back End language/technologies
@@ -8,12 +11,14 @@
 3. Check if mysql has bene installed if not install it - globally on your machine (if not using docker)
 
 4. Start a web server (if not using docker)
+
 ```PHP
 // Run the command in terminal
 // The localhost:8000 can be any link that is used to access the server
 // The router.php is your created router file, using "-t path/to/folder" can be used to specify a folder where the servers starting point is set  
 php -S localhost:8000 router.php
 ```
+
 ```PHP
 // router.php - not mandatory, is needed to ask for hte correct file, based on requested URL
 <?php
@@ -45,7 +50,8 @@ switch ($_SERVER["REQUEST_URI"]) {
 ?>
 ```
 
-### Debugger - xdebug
+## Debugger - xdebug
+
 * Listens to all the requests to the server and stops the scrip execution where the breaking point in the file was set
 * vscode setup:
     * in project root folder, under .vscode create a file *launch.json* with this content
@@ -93,10 +99,10 @@ switch ($_SERVER["REQUEST_URI"]) {
             * xdebug.start_with_request = yes
             * xdebug.idekey = VSCODE
     * In chrome, open this [link](chrome://settings/cookies/detail?site=localhost&search=cookies), if there is a cookie name "XDEBUG_SESSION" then everything is fine, if not, then [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) chrome plugin is not set up correctly or turned on
-    * 
+    *
 
+## PHP usage
 
-### PHP usage
 * Most of BE technologies can be implemented directly in HTML
     ```HTML
     <form action="get.php" method="get">
@@ -173,29 +179,35 @@ switch ($_SERVER["REQUEST_URI"]) {
     }
     ```
 
-### Composer & autoloading
+## Composer & autoloading
+
 * [Composer](https://getcomposer.org/) is PHP's package manager (the `npm` of PHP). `composer.json`
   lists dependencies; `composer install` fetches them into `vendor/`.
 * It also gives you **PSR-4 autoloading**, so you never `require` class files by hand: map a namespace
   to a folder and classes load on demand.
+
 ```json
 {
     "require": { "vlucas/phpdotenv": "^5.6" },
     "autoload": { "psr-4": { "App\\": "src/" } }
 }
 ```
+
 ```PHP
 require __DIR__ . '/vendor/autoload.php'; // one require, then just use your classes
 use App\Models\User;
 ```
 
-### Modern PHP (8.x)
+## Modern PHP (8.x)
+
 * The server-side examples in this course target **PHP 8.3+**. Worth knowing beyond the basics above:
   typed properties (`private int $id;`), `enum`s, the `match` expression, constructor property
   promotion, named arguments and attributes (`#[Route(...)]`).
 * Reference: [php.net documentation](https://www.php.net/docs.php).
 
-### Checkup
-1. Create an array, loop thru it and print the values to the browser with some extra text for each value
-2. Create a form, trigger an action that sends the data to server and returns a modified value
-3. Create a script that writes the data you pass as arguments to a file
+> [!TIP]
+> **Checkup**
+>
+> 1. Create an array, loop thru it and print the values to the browser with some extra text for each value
+> 2. Create a form, trigger an action that sends the data to server and returns a modified value
+> 3. Create a script that writes the data you pass as arguments to a file
