@@ -2,26 +2,25 @@
 * Angular uses typescript when handling component data manipulations
 * If there are actions that are special to a data type and the type is not shown, the code compilator can't generate the code
   
-``` JavaScript
+```TypeScript
+// Define your own shapes with an interface (or a class)
+interface User {
+  name: string;
+  age: number;
+  childNames: string[];
+}
+
 export class MyComponent {
-  myText: string;
-  myNumber: number;
-  myArray: [];
-  myBool: boolean;
-  anyData: any;
-  myFunction: void;
+  myText: string = '';
+  myNumber: number = 0;
+  myBool: boolean = false;
+  anyData: any;                 // "any" opts out of type checking, avoid it
 
-  numberArray1: number[];
+  numberArray1: number[] = [];
   // OR
-  numberArray2: Array<number>;
+  numberArray2: Array<number> = [];
 
-  export class User() {
-    name: string;
-    age: number;
-    child_names: string[];
-  }
-
-  userEdmunds: User; // We assign the placeholders form User class for userEdmunds 
+  userEdmunds!: User;           // typed with the interface above
 }
 ```
 ``` JavaScript
@@ -36,65 +35,41 @@ array.map((num) => {
 })
 ```
 
-### server requests
-``` JavaScript
+### Server requests
+`HttpClient` returns an RxJS **Observable**. `.toPromise()` was removed in recent Angular, so convert
+with `firstValueFrom()` (or subscribe, or expose it as a signal with `toSignal`).
+```TypeScript
+import { Component, inject, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+
+interface User { id: number; name: string; email: string; }
+
 export class MyComponent implements OnInit {
-  list: any;
+  private http = inject(HttpClient);   // modern DI, no constructor boilerplate
+  list: User[] = [];
 
-  constructor(
-    private http: HttpClient,
-  ) {
+  async ngOnInit() {
+    try {
+      const res = await firstValueFrom(
+        this.http.get<User[]>('https://jsonplaceholder.typicode.com/users'),
+      );
+      this.list = res;
+    } catch {
+      // show an error that the request was not successful
+    }
+
+    await this.calculateData();
   }
 
-  ngOnInit() {
-    this.http.get('https://reqres.in/api/users?page=2').toPromise().then(
-      (response) => {
-        // Do something with the data
-        this.list = response
-      }
-      (rejection) => {
-        // Show an error that the request was not successful
-      }
-    )
-
-    // Alternative for request handling;
-    this.getData()
-    this.calculateData();
-  }
-
-  async getData() {
-    const request = new Promise((resolve, reject) => {
-      resolve(this.http.get('https://reqres.in/api/users?page=2').toPromise());
-    });
-
-    this.list = await request;
-  }
-
-  // The power of async
+  // The power of async: run independent work concurrently with Promise.all
   async calculateData() {
-    const number1 = new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Math.random() * 100), 1000);
-    });
+    const delay = (ms: number) =>
+      new Promise<number>((resolve) => setTimeout(() => resolve(Math.random() * 100), ms));
 
-    const number2 = new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Math.random() * 100), 3000);
-    });
-
-    const number3 = new Promise((resolve, reject) => {
-      setTimeout(() => resolve(Math.random() * 100), 6000);
-    });
-
-    const awaitValue1 = await number1;
-    const awaitValue2 = await number2;
-    const awaitValue3 = await number3;
-
-    console.log(awaitValue1, new Date());
-    console.log(awaitValue2, new Date());
-    console.log(awaitValue3, new Date());
-
-    const sum = Number(awaitValue1) + Number(awaitValue2) + Number(awaitValue3);
-
-    console.log(sum);
+    // ~6s total, not 1+3+6=10s, because they run at the same time
+    const [a, b, c] = await Promise.all([delay(1000), delay(3000), delay(6000)]);
+    console.log(a + b + c);
   }
 }
 ```
