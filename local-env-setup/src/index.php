@@ -1,32 +1,27 @@
 <?php
-    if (strpos($_SERVER["REQUEST_URI"], '/final-project/') === 0) {
-        if (preg_match('/^\/api/', $_SERVER["REQUEST_URI"])) {
-            $path = $_SERVER["SCRIPT_NAME"];
-            require_once(__DIR__."/final-project/$path");
-        } else if (preg_match('/^[^\.]+$/', $_SERVER["REQUEST_URI"])) {
-            echo file_get_contents(__DIR__."/final-project/public/index.html");
-        } else {
-            $path = explode('/', $_SERVER["REQUEST_URI"]);
-            echo file_get_contents(__DIR__."/final-project/public/".end($path));
-        }
-    } else {
-        switch ($_SERVER["REQUEST_URI"]) {
-            case "/CRUD/":
-            case "/CRUD":
-                require_once __DIR__ . "/examples/CRUD/controllers/index.php";
-            break;
-            case "/CRUD/add":
-            case "/CRUD/add/":
-                require_once __DIR__ . "/examples/CRUD/controllers/add.php";
-            break;
-            case preg_match('/^[^\examples]+$/', $_SERVER["REQUEST_URI"]):
-                require_once __DIR__ . "/examples/web-bootcamp-app/public/index.html";
-            break;
-                
-            default:
-                $path = $_SERVER["REQUEST_URI"];
-                echo "<h1 style='text-align: center'>404: The requested URL: $path can't be found</h1>";
-                echo phpinfo();
-            break;
-        }
-    }
+
+// Minimal front router for the PHP examples served by the Apache container.
+// Real projects use a framework router (Slim, Laravel, Symfony); this stays tiny
+// on purpose so the examples are reachable at http://localhost:8000/.
+
+$uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+
+switch (true) {
+    case $uri === '/' || $uri === '':
+        echo '<h1>web-bootcamp examples</h1>';
+        echo '<p>Try <a href="/CRUD">/CRUD</a>.</p>';
+        break;
+
+    case $uri === '/CRUD' || $uri === '/CRUD/':
+        require __DIR__ . '/examples/CRUD/controllers/index.php';
+        break;
+
+    case $uri === '/CRUD/add' || $uri === '/CRUD/add/':
+        require __DIR__ . '/examples/CRUD/controllers/add.php';
+        break;
+
+    default:
+        http_response_code(404);
+        echo "<h1 style='text-align: center'>404: " . htmlspecialchars($uri) . " not found</h1>";
+        break;
+}
