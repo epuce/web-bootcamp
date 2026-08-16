@@ -1,7 +1,11 @@
+# 🧪 PHP unit tests
+
 ## Setup
+
 * Step by step setup for our docker (composer+phpunit) - [link](https://linuxize.com/post/how-to-install-and-use-composer-on-ubuntu-18-04/)
 
-#### All commands have to be run in docker console
+### All commands have to be run in docker console
+
 * Composer (php package manager)
     1. php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     2. apt-get install wget
@@ -32,10 +36,12 @@
     4. run: `composer dump-autoload`
     5. to run the tests: `./vendor/bin/phpunit --testdox tests`
 
-# Look at the user that he could use your system like this
+## Look at the user that he could use your system like this
+
 ![Testers VS Users gif](img/testers-VS-users.gif)
 
-### Logic
+## Logic
+
 * We will specify a folder that will contain all the tests, only files that end with Test.php will be treated as tests
 * The tests are written so we imitate the function (or function group) by passing different parameters and expecting some specific result
 * Tests are usually written based on the amount of code we cover (test)
@@ -82,7 +88,9 @@ final class UserTest extends TestCase
 Two habits worth calling out: give tests their **own database** (or mock the data layer) so they never
 depend on production data, and for pure logic (no DB, no network, like the date helper below) no setup
 is needed at all, just call the function and assert.
-### Example
+
+## Example
+
 ```PHP
 // Function to test - get how many months are in use between two dates
 public static function getMonthsSelectedCount($date1, $date2){
@@ -151,6 +159,9 @@ public function testGetMonthsSelectedCount() {
     $this->assertEquals(3, HF::getMonthsSelectedCount($date1, $date2));
 }
 ```
-### Checkup 
-1. Create Product CRUD logic (DB + PHP) and one not database related function
-2. Create test for each of the CRUD logic and the extra function, test for valid and invalid response
+
+> [!TIP]
+> **Checkup**
+>
+> 1. Create Product CRUD logic (DB + PHP) and one not database related function
+> 2. Create test for each of the CRUD logic and the extra function, test for valid and invalid response
