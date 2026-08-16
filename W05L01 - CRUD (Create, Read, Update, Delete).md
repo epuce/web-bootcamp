@@ -5,7 +5,9 @@
 <?php
 require_once __DIR__ . "/path-to/database-wrapper.php";
 
-$response = DB::run($sql);
+// Building the prepared-statement habit even with no user input here (see W04L02)
+$stmt = $pdo->query('SELECT id, name, profession FROM Users');
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 ```
 ```html
@@ -18,33 +20,31 @@ $response = DB::run($sql);
     </tr>
     </thead>
     <tbody>
-    <?php
-    while($row = mysqli_fetch_array($response)) {
-        echo "<tr>";
-        echo "<td>".$row['NAME']."</td>";
-        echo "<td>".$row['PROFESSION']."</td>";
-        echo "<td>
-                <a class=\"btn btn-primary\" href=\"edit.php?id=$row[id]\">Edit</a> 
-                <a class=\"btn btn-danger\" href=\"delete.php?id=$row[id]\">Delete (PHP)</a>
-                <a class=\"btn btn-danger delete\" data-id=\"$row[id]\">Delete (jQuery)</a>
-              </td>";
-        echo "</tr>";
-    }
-    ?>
+    <?php foreach ($users as $row): ?>
+        <tr>
+            <td><?= htmlspecialchars($row['name']) ?></td>
+            <td><?= htmlspecialchars($row['profession']) ?></td>
+            <td>
+                <a class="btn btn-primary" href="edit.php?id=<?= (int) $row['id'] ?>">Edit</a>
+                <a class="btn btn-danger" href="delete.php?id=<?= (int) $row['id'] ?>">Delete (PHP)</a>
+                <button class="btn btn-danger delete" data-id="<?= (int) $row['id'] ?>">Delete (fetch)</button>
+            </td>
+        </tr>
+    <?php endforeach ?>
     </tbody>
 </table>
 ```
 ### CRUD
-* [C - create](local-env-setup/src/W05L01/add.php)
-* [R - read](local-env-setup/src/W05L01/index.php)
-* [U - update](local-env-setup/src/W05L01/edit.php)
-* [D - delete](local-env-setup/src/W05L01/delete.php)
+* [C - create](local-env-setup/src/W05L01_CRUD/add.php)
+* [R - read](local-env-setup/src/W05L01_CRUD/index.php)
+* [U - update](local-env-setup/src/W05L01_CRUD/edit.php)
+* [D - delete](local-env-setup/src/W05L01_CRUD/delete.php)
 
 ### Data manipulation with API requests
-* [Requests with jQuery](local-env-setup/src/W05L01/scripts.js)
-* [PUT - update](local-env-setup/src/W05L01/src/put.php)
-* [POST - create](local-env-setup/src/W05L01//src/post.php)
-* [DELETE](local-env-setup/src/W05L01//src/delete.php)
+* [Requests with fetch](local-env-setup/src/W05L01_CRUD/scripts.js)
+* [PUT - update](local-env-setup/src/W05L01_CRUD/src/put.php)
+* [POST - create](local-env-setup/src/W05L01_CRUD/src/post.php)
+* [DELETE](local-env-setup/src/W05L01_CRUD/src/delete.php)
 
 ### Checkup
 1. Create a new data table with minimum 2 fields
