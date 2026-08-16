@@ -1,25 +1,14 @@
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
-
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
-
-  }
-
-  logOut() {
-    this.http.get('http://localhost:8000/angular/api/users/logOut.php').toPromise()
-    .then(() => {
-      this.router.navigate(['/login']);
-    })
-  }
+  title = 'angular';
 }
