@@ -7,13 +7,20 @@
 window.location
 ```
 
-<!-- TODO add more info about localStorage with Array and Object examples -->
-* localStorage & sessionStorage - place to store browser related data
+* localStorage & sessionStorage - key/value store in the browser (localStorage persists; sessionStorage clears when the tab closes)
 ```JavaScript
-// Only first level objects can be stored in localStorage & sessionStorage
-window.localStorage.open_time = new Date();
+// Values are always strings, so use setItem / getItem
+localStorage.setItem('openTime', new Date().toISOString());
+console.log(localStorage.getItem('openTime'));
 
-console.log(window.localStorage.open_time) // logs "Thu Aug 19 2019 15:23:49 GMT+0300 (Eastern European Summer Time)" to console
+// For arrays and objects, serialise with JSON
+const user = { name: 'Ed', roles: ['admin', 'editor'] };
+localStorage.setItem('user', JSON.stringify(user));
+
+const saved = JSON.parse(localStorage.getItem('user'));
+console.log(saved.roles[0]); // 'admin'
+
+localStorage.removeItem('user'); // delete one key
 ```
 * innerHeight/innerWidth - reads the window dimensions
 ```JavaScript
@@ -28,23 +35,20 @@ window.innerWidth
   * focus()
   * other - [link](https://www.w3schools.com/jsref/obj_window.asp)
 
-<!-- TODO add more detail to window open -->
 ```JavaScript
-// window.open(URL, name, specs, replace)
-var myWindow = window.open("https://google.com");
+// window.open(URL, name, specs)
+const myWindow = window.open("https://google.com");
 
 myWindow.resizeTo(500, 300);
+myWindow.moveTo(100, 100);
 myWindow.focus();
-myWindow.(100, 100);
 myWindow.close();
 ```
 ### document - object describing the DOM (HTML)
 
-* write() & writeln()
+* write() & writeln() - avoid in modern code; called after load it wipes the whole page. Build nodes instead (querySelector + createElement / textContent, below).
 ```JavaScript
-// Writes writes the newly stated content
-document.write('<p>This is a write document function test</p>');
-// writeln adds a newline at the end of written statement
+document.write('<p>This is a write document function test</p>'); // legacy, do not use
 ```
 
 * cookie
@@ -68,9 +72,13 @@ document.activeElement // Returns currently active element
   * getElementsByClassName()
   * getElementsByName()
   * getElementsByTagName()
+  * **querySelector() / querySelectorAll()** - the modern, preferred way: they take any CSS selector
 ```JavaScript
-document.getElementById('footer') // Returns a single object
-document.getElementsByClassName('font-small') // Returns an array with all elements that have this class
+document.getElementById('footer') // Returns a single element
+
+// Prefer querySelector / querySelectorAll - one API, any CSS selector
+document.querySelector('#footer')          // first match (or null)
+document.querySelectorAll('.font-small')   // a NodeList of all matches, loop it with forEach
 ```
 
 * addEventListener()
@@ -79,7 +87,7 @@ document.getElementsByClassName('font-small') // Returns an array with all eleme
 document.getElementById('email').addEventListener('click', function(){})
 
 // Triggers a function when the element body is active and a keyup event is triggered
-document.getElementsByTagName('body')[0].addEventListener('keyup', function() {})
+document.body.addEventListener('keyup', function() {})
 ```
 * others - [link](https://www.w3schools.com/js/js_htmldom_document.asp)
 
@@ -94,7 +102,7 @@ document.getElementsByTagName('ul')[0].firstChild
 * childNodes
 ```JavaScript
 // Selects all body child elements
-document.getElementsByTagName('body')[0].childNodes
+document.body.childNodes
 ```
 
 * nextSibling
@@ -125,10 +133,13 @@ document.getElementById('scroll-wrapper').addEventListener('scroll', function() 
 // Trigger a function when the window is resized
 window.addEventListener("resize", function(){});
 ```
-* load
+* load / DOMContentLoaded
 ```JavaScript
-// It is called when the DOM is ready which can be prior to images and other external content is loaded
-document.addEventListener("load", function(){});
+// DOMContentLoaded fires as soon as the HTML is parsed (before images finish) - usually what you want
+document.addEventListener("DOMContentLoaded", function(){});
+
+// load fires once everything (images, styles) is done, and it lives on window
+window.addEventListener("load", function(){});
 ```
 * keyup/keydown/keypress
 ```JavaScript
