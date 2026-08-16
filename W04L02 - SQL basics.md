@@ -3,7 +3,7 @@
     * unix 
         - sudo apt-get install mysql-server
         - sudo mysql
-        - ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'my_root_password';
+        - ALTER USER 'root'@'localhost' IDENTIFIED BY 'my_root_password'; -- MySQL 8 defaults to caching_sha2_password; the old mysql_native_password plugin is deprecated
         - mysql -u root -p
     * windows
         - [step by step instructions](https://mid.as/kb/00145/install-configure-mysql-on-windows)
@@ -58,6 +58,11 @@
         * XML -stores xml data
         * JSON - stores JSON data
         
+> **Never build SQL by pasting user input into the string** (`"... WHERE name='" . $_GET['name'] . "'"`).
+> That is the classic SQL-injection hole. From application code you always use **placeholders /
+> prepared statements** (PDO in PHP, parameterised queries in Node), see the CRUD lesson. The raw
+> queries below are what you type into a SQL tool to learn the language itself.
+
 * Creating/updating records
     ```sql
     INSERT INTO TableName (column1, column2, ...) VALUES (value1, value2, ...), (other_value1, other_value2, ...)
