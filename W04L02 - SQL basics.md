@@ -1,6 +1,9 @@
-### SQL database basics
+# 🗄️ SQL basics
+
+## SQL database basics
+
 * Install mysql server locally (if not using docker)
-    * unix 
+    * unix
         - sudo apt-get install mysql-server
         - sudo mysql
         - ALTER USER 'root'@'localhost' IDENTIFIED BY 'my_root_password'; -- MySQL 8 defaults to caching_sha2_password; the old mysql_native_password plugin is deprecated
@@ -57,7 +60,7 @@
         * BLOB - binary large objects
         * XML -stores xml data
         * JSON - stores JSON data
-        
+
 > **Never build SQL by pasting user input into the string** (`"... WHERE name='" . $_GET['name'] . "'"`).
 > That is the classic SQL-injection hole. From application code you always use **placeholders /
 > prepared statements** (PDO in PHP, parameterised queries in Node), see the CRUD lesson. The raw
@@ -77,12 +80,12 @@
     ```sql
     SELECT * FROM Users
     ```
-    
+
     * All data with conditions
     ```sql
     SELECT * FROM Users WHERE profession='Programmer'
     ```
-    
+
     * Stated columns with conditions
     ```sql
     SELECT name FROM Users WHERE profession='Programmer'
@@ -101,19 +104,22 @@
     MODIFY profession varchar(30);
     ```
 
-### Other commands
+## Other commands
+
 [SQL commands codeacademy](https://www.codecademy.com/articles/sql-commands)
 
 [SQL commands w3school](https://www.w3schools.com/sql/default.asp)
 
-### Checkup
-Save all the scripts for further debugging
-1. Crate a table with 3 different data type columns
-2. Populate the data with at least 10 rows, so that the data in them is different
-3. Write the fallowing queries
-    * retrieve all data from the table
-    * retrieve data based on a WHERE condition
-    * retrieve only some columns from the table based on a condition
-4. Add a new column to the table
-5. Edit an existing column
-6. Delete some rows
+> [!TIP]
+> **Checkup**
+>
+> Save all the scripts for further debugging
+> 1. Crate a table with 3 different data type columns
+> 2. Populate the data with at least 10 rows, so that the data in them is different
+> 3. Write the fallowing queries
+>     * retrieve all data from the table
+>     * retrieve data based on a WHERE condition
+>     * retrieve only some columns from the table based on a condition
+> 4. Add a new column to the table
+> 5. Edit an existing column
+> 6. Delete some rows
