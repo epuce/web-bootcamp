@@ -3,54 +3,38 @@
     * After initial page lode, only extra data that is needed for the new page to load is loaded. So the static page elements, styles, scripts and others are not loaded again.
     * [documentation](https://angular.io/guide/router)
 
-```JavaScript
-const routes: Routes = [
+```TypeScript
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+    { path: 'login', component: LoginComponent },
     {
-        path: 'login',
-        component: LoginComponent
-    }, {
         path: '',
-        loadChildren: './index/index.module#IndexModule',
-        canLoad: [AccessControlService]
-    }, {
-        path: '**',
-        redirectTo: 'login'
-    }
+        // Lazy-load a standalone component with a dynamic import
+        // (the old string "./x.module#XModule" syntax was removed)
+        loadComponent: () => import('./index/index.component').then((m) => m.IndexComponent),
+        canMatch: [accessGuard],   // CanLoad is deprecated; use CanMatch
+    },
+    { path: '**', redirectTo: 'login' },
 ];
 
-@NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-})
-export class AppRoutingModule {
-}
+// Wired up without NgModule, in main.ts:
+//   bootstrapApplication(AppComponent, { providers: [provideRouter(routes)] });
 ```
 
-```JavaScript
-export class AccessControlService implements CanLoad {
-    constructor(
-        private router: Router
-    ) {
-    }
-    
-    // For component handling
-    canActivate() {
-        if (localStorage.loggedIn === "true") {
-            return true;
-        }
+```TypeScript
+import { CanMatchFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
 
-        this.router.navigate(['login']);
-    }
+// Guards are now plain functions, not classes; inject whatever they need
+export const accessGuard: CanMatchFn = () => {
+    const router = inject(Router);
 
-    // For child lazy loading
-    canLoad() {
-        if (localStorage.loggedIn === "true") {
-            return true;
-        }
-
-        this.router.navigate(['login']);
+    if (localStorage.getItem('loggedIn') === 'true') {
+        return true;
     }
-}
+    return router.parseUrl('/login'); // returning a UrlTree performs the redirect
+};
 ```
 
 ### Checkup
@@ -61,13 +45,13 @@ export class AccessControlService implements CanLoad {
 
 ### Angular form handling
 
-* Add form control module import to app.module.ts
-```JavaScript
-"imports": [
-    ...
-    FormsModule,
-    ReactiveFormsModule,
-    ...
+* Import `ReactiveFormsModule` in the standalone component's `imports` (there is no app.module.ts anymore)
+```TypeScript
+@Component({
+    standalone: true,
+    imports: [ReactiveFormsModule],
+    // ...
+})
 ```
 
 ```HTML
@@ -81,22 +65,18 @@ export class AccessControlService implements CanLoad {
 </label>
 ```
 
-```JavaScript
-// JavaScript
-export class MyComponentName implements OnInit {
-    form: FormGroup;
-    controls: any = {
-        name: new FormControl('', [Validators.required]),
-        active: new FormControl(),
-    };
+```TypeScript
+export class MyComponentName {
+    // Typed reactive form; nonNullable keeps the values non-null
+    form = new FormGroup({
+        name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+        active: new FormControl(false, { nonNullable: true }),
+    });
 
-    ngOnInit() {
-        this.form = new FormGroup(this.controls);
-
+    constructor() {
         this.form.valueChanges.subscribe((values) => {
-            console.log("The new values are")
-            console.log(values)
-        })
+            console.log('The new values are', values);
+        });
     }
 }
 ```
