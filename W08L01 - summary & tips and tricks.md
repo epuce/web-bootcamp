@@ -1,7 +1,11 @@
-<!-- TODO add a short questions/answer summary -->
-### css animations
-* All animation options: [link](https://www.w3schools.com/css/css3_animations.asp) 
-* All transition options: [link](https://www.w3schools.com/cssref/css3_pr_transition.asp)
+### Summary & tips and tricks
+A grab-bag of extras that did not need a full lesson but are worth knowing.
+
+### CSS animations
+* Transitions: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions)
+* Keyframe animations: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations)
+* Prefer animating `transform` and `opacity` (GPU-composited, cheap) over `width`/`top`/`left`, which
+  trigger layout. Respect `@media (prefers-reduced-motion: reduce)` for users who ask for less motion.
 ```HTML
 <div class="loader">
     <div class="dot"></div>
@@ -98,21 +102,48 @@
 </style>
 ```
 ### iframes
-* Call to a different html with all the related logic
-* [Documentation](https://www.w3schools.com/html/html_iframe.asp)
+* Embeds another document; sandbox it and be explicit about what it may do.
+* [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
 ```HTML
-<iframe src="edit.html" width="400" height="200"></iframe>
+<iframe src="edit.html" width="400" height="200" loading="lazy" sandbox="allow-scripts"></iframe>
 ```
 
 ### canvas
-* Canvas draws a 2d or 3d model based on passed parameters, they tend to become quite complex really fast
-* [Documentation](https://www.w3schools.com/tags/ref_canvas.asp)
+* Draws 2D/3D graphics from JavaScript; complexity grows fast, so reach for a library (PixiJS, three.js) for anything real.
+* [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 * [Example](local-env-setup/src/W08L01/index.html)
 
-### video tag
+### video
+* Native media playback, no plugin. Offer more than one `<source>` format and a captions `<track>`.
+* [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
 ```HTML
+<video controls width="640" preload="metadata" poster="cover.jpg">
+    <source src="clip.webm" type="video/webm">
+    <source src="clip.mp4" type="video/mp4">
+    <track kind="captions" src="clip.en.vtt" srclang="en" label="English">
+    Your browser does not support the video tag.
+</video>
 ```
-### doctrine
+
+### Doctrine (PHP ORM)
+* An ORM maps database rows to typed PHP objects, so you work with objects instead of raw SQL strings (and get prepared statements for free). A repository runs the queries.
+* [Doctrine ORM](https://www.doctrine-project.org/projects/orm.html)
 ```PHP
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: 'user')]
+class User
+{
+    #[ORM\Id, ORM\GeneratedValue, ORM\Column]
+    private int $id;
+
+    #[ORM\Column(length: 180)]
+    private string $email;
+}
+
+// Fetching through the repository, no SQL in sight
+$user = $entityManager->getRepository(User::class)->find($id);
+echo $user->getEmail();
 ```
-### AI with JavaScript https://observablehq.com/@mpj/neural-network-from-scratch-part-1
+
+### AI with JavaScript
+* Build a neural network from scratch in JS: [Neural network from scratch](https://observablehq.com/@mpj/neural-network-from-scratch-part-1)
