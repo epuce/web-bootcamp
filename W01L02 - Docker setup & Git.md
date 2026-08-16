@@ -58,8 +58,8 @@ Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-doc
     * add the kay in github [link](https://github.com/settings/keys)
 
 * Set global git parameters - user and password (if needed)
-    * git config --global user.name "Vārds Uzvārds"
-    * git config --global user.email e-pasts@domēns.com
+    * git config --global user.name "Firstname Lastname"
+    * git config --global user.email email@domain.com
 
 * Create github page https://pages.github.com/
     * Repository name - username.github.io
