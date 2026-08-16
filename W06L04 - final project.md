@@ -1,4 +1,7 @@
-### Create  a todo list
+# 🏗️ final project
+
+## Create  a todo list
+
 1. Create a page where we show a input field where we can add a to-do item
 2. When submitted the item is shown in a list under the input
 3. Before the item, there is a checkbox, when checked - the item goes to a second list under the first one. This action can be reversed.
@@ -10,11 +13,14 @@
 6. Allow to order the items in unchecked list
 7. Add a login page and track the list based on the user
 
-### Example
+## Example
+
 ![Final project example image](img/final-project.png)
+
 ![Final project example gif](img/final-project.gif)
 
-### Things to note
+## Things to note
+
 1. Data has to be saved to a database
 2. Show the best skills you have in all the addressed topics (front-end, back-end, database);
 3. Use clean code styling (spaces, new lines, variable placement, nesting, don't repeat yourself)
@@ -22,6 +28,7 @@
 5. Structured CSS
 6. Easy to read/understand back-end code & SQL
 7. Include database structure as a separate file or note it down somewhere, like:
+
 ```SQL
 CREATE TABLE list (
     description varchar(20),
@@ -35,5 +42,6 @@ CREATE TABLE users (
 );
 ```
 
-# You will show a working system in the last lesson by explaining/showing the "engine" under it
-# Say some words about challenges/obstacles on the way
+## You will show a working system in the last lesson by explaining/showing the "engine" under it
+
+## Say some words about challenges/obstacles on the way
