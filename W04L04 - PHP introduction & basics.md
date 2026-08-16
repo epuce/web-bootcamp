@@ -60,7 +60,7 @@ switch ($_SERVER["REQUEST_URI"]) {
                 "name": "Listen for XDebug",
                 "type": "php",
                 "request": "launch",
-                "port": 9001,
+                "port": 9003,
                 "pathMappings": {
                     "/var/www/html": "${workspaceFolder}/src"
                 },
@@ -71,25 +71,26 @@ switch ($_SERVER["REQUEST_URI"]) {
                 "request": "launch",
                 "program": "${file}",
                 "cwd": "${fileDirname}",
-                "port": 9001
+                "port": 9003
             }
         ]
     }
     ```
-    * get "PHP debug" extension for chrome
-    * get the [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) extension 
-    * start the debugger by clicking F5 or under the debug extension section (if asked, select the "Listen for XDebug" option)
-    * add a breaking point (red dot) in an php file to test if the debugger work
+    * get the **PHP Debug** extension for VS Code (felixfbecker.php-debug)
+    * get the [Xdebug helper](https://chromewebstore.google.com/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) browser extension (it sets the `XDEBUG_SESSION` cookie)
+    * start the debugger by clicking F5 or under the Run and Debug section (if asked, select the "Listen for XDebug" option)
+    * add a breaking point (red dot) in a php file to test if the debugger works
 
 * Troubleshooting
-    * Create a php file, like phpinfo.php that can be accessed by loclahost:8000/phpinfo.php, set the content to (open the link):
+    * Create a php file, like phpinfo.php that can be accessed at localhost:8000/phpinfo.php, set the content to:
         ```PHP
-        <?= phpinfo() >
+        <?php phpinfo(); ?>
         ```
-        * find the xdebug header and look if the correct values are set
-            * xdebug.remote_port = 9000
-            * xdebug.remote_host = host.docker.internal
-            * xdebug.remote_enable = on
+        * find the xdebug section and check the values (Xdebug 3 renamed these keys from the old Xdebug 2 ones)
+            * xdebug.mode = debug
+            * xdebug.client_port = 9003
+            * xdebug.client_host = host.docker.internal
+            * xdebug.start_with_request = yes
             * xdebug.idekey = VSCODE
     * In chrome, open this [link](chrome://settings/cookies/detail?site=localhost&search=cookies), if there is a cookie name "XDEBUG_SESSION" then everything is fine, if not, then [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) chrome plugin is not set up correctly or turned on
     * 
@@ -153,7 +154,7 @@ switch ($_SERVER["REQUEST_URI"]) {
     * NULL
 
 * Commands
-    * print/println
+    * print
     * echo
     * array_pop/array_push/array_search
     * fopen/fclose/file_get_contents/etc. - file reading, [link](https://teamtreehouse.com/library/reading-files-into-a-string-or-array)
@@ -171,6 +172,29 @@ switch ($_SERVER["REQUEST_URI"]) {
         throw new Exception("Writing to ".$file." failed");
     }
     ```
+
+### Composer & autoloading
+* [Composer](https://getcomposer.org/) is PHP's package manager (the `npm` of PHP). `composer.json`
+  lists dependencies; `composer install` fetches them into `vendor/`.
+* It also gives you **PSR-4 autoloading**, so you never `require` class files by hand: map a namespace
+  to a folder and classes load on demand.
+```json
+{
+    "require": { "vlucas/phpdotenv": "^5.6" },
+    "autoload": { "psr-4": { "App\\": "src/" } }
+}
+```
+```PHP
+require __DIR__ . '/vendor/autoload.php'; // one require, then just use your classes
+use App\Models\User;
+```
+
+### Modern PHP (8.x)
+* The server-side examples in this course target **PHP 8.3+**. Worth knowing beyond the basics above:
+  typed properties (`private int $id;`), `enum`s, the `match` expression, constructor property
+  promotion, named arguments and attributes (`#[Route(...)]`).
+* Reference: [php.net documentation](https://www.php.net/docs.php).
+
 ### Checkup
 1. Create an array, loop thru it and print the values to the browser with some extra text for each value
 2. Create a form, trigger an action that sends the data to server and returns a modified value
