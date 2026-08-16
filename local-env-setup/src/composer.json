@@ -1,9 +1,18 @@
 {
+    "name": "epuce/web-bootcamp-examples",
+    "description": "Example code for the web-bootcamp course",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
     "autoload": {
         "classmap": ["./"]
     },
-    "require-dev": {
-        "phpunit/phpunit": "^9",
-        "polarising/bcrypt": "^1.0"
+    "config": {
+        "platform": {
+            "php": "8.3"
+        }
     }
 }
