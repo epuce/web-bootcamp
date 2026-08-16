@@ -1,4 +1,7 @@
-### Other BE languages
+# ⚙️ other BE solutions
+
+## Other BE languages
+
 * NodeJs (JavaScript based data handling engine)
     ```javascript
     import express from 'express';                 // Node.js framework (ES modules)
@@ -27,6 +30,7 @@
 
 * Unit / API tests (the same idea applies across languages and frameworks)
     * JS - Node ships a built-in test runner (`node --test`), no extra library needed
+
 ```javascript
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
@@ -72,7 +76,9 @@ describe('Users', () => {
         * Cassandra - originally built at Facebook, now an Apache project, for very large distributed data
         * Redis - C-based, the most used in-memory key-value store (caching, queues, sessions)
         * HBase - Apache, modeled on Google's Bigtable, for huge sparse tables
-        
-### Checkup
-* Create CRUD functionality with nodejs
-* Create tests for successful and failed login and user delete
+
+> [!TIP]
+> **Checkup**
+>
+> * Create CRUD functionality with nodejs
+> * Create tests for successful and failed login and user delete
