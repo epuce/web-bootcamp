@@ -3,7 +3,7 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
 
 ### HTML basics - tags
 * DOM
-* Tag types and differences - https://www.w3schools.com/tags/default.asp
+* Tag types and differences - [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
     * Regular tags
     * Self Closing tags
     * Tag naming and their differences
@@ -106,7 +106,7 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
         </ul>
     </li>
 </ol>
-``
+```
 
 * other commonly used tags
     * a - for links to inner ot outer sources
@@ -115,3 +115,9 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
     * span - just a inline wrapper
     * br -  self closing new line tag
     * <!--...--> comment tag (not displayed in browser)
+
+### Semantic HTML (prefer these over bare div/span)
+* `<header> <nav> <main> <section> <article> <aside> <footer>` describe *what* a region is, for
+  browsers, screen readers and search engines. Reach for a semantic element first; fall back to
+  `<div>`/`<span>` only when nothing fits.
+* [MDN element reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
