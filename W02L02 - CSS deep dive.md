@@ -1,4 +1,6 @@
-### Box model
+# 💅 CSS deep dive
+
+## Box model
 
 ![box model](https://s3.amazonaws.com/viking_education/web_development/web_app_eng/css_box_model_chrome.png)
 
@@ -10,6 +12,7 @@
 
 * Almost every project starts by setting `box-sizing: border-box` on everything, so `width` includes
   padding and border (far more predictable than the default `content-box`):
+
 ```CSS
 *, *::before, *::after {
     box-sizing: border-box;
@@ -18,10 +21,12 @@
 
 * Best practices
     * Order your code based on one structure
+
     ![css property order](img/W02L02-css_propery_order.png)
 
     * Group related selectors
         * Bad example
+
         ```CSS
         .header {
             font-size: 24px        }
@@ -64,7 +69,8 @@
             font-size: 24px;    
         }
         ```
-### Full property guideline and real life usage (only desktop based)
+
+## Full property guideline and real life usage (only desktop based)
 
 1. fixed navigation bar at the top with extra buttons [solution](local-env-setup/src/W02L02/solution-1.html)
     * some type of logo that leads to homepage
