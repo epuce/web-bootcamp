@@ -1,31 +1,19 @@
 <?php
+
 class User {
-	public $name;
-	public $profession;
-	public $id;
+    public ?int $id = null;
+    public string $name = '';
+    public string $profession = '';
 
-	public function __construct() {
-	}
+    public function setId(int $id): void {
+        $this->id = $id;
+    }
 
-	/**
-	 * @param mixed $id
-	 */
-	public function setId($id) {
-		$this->id = $id;
-	}
+    public function setName(string $name): void {
+        $this->name = $name;
+    }
 
-	/**
-	 * @param mixed $name
-	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
-
-	/**
-	 * @param mixed $profession
-	 */
-	public function setProfession($profession) {
-		$this->profession = $profession;
-	}
+    public function setProfession(string $profession): void {
+        $this->profession = $profession;
+    }
 }
-

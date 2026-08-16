@@ -1,24 +1,22 @@
 <?php
+require_once __DIR__ . '/../../helpers/db.php';
+require_once __DIR__ . '/../../models/UserModel.php';
 
-if (isset($_POST['login'])) {
-	include_once '../../models/UserModel.php';
+$message = '';
 
-	$userModel = new UserModel();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userModel = new UserModel(db());
+    $user = $userModel->getUserByName($_POST['name'] ?? '');
 
-	$users = $userModel->getUser($_POST);
-
-	$result = $db->responseToArray($users);
-
-	if (!json_decode($result, true)[0]) {
-		echo "No user with this login";
-	} else if (password_verify($_POST['password'] . 'salt', json_decode($result, true)[0]['password'])) {
-		echo "You have been logged in";
-
-		session_start();
-		$_SESSION['id'] = json_decode($result, true)[0]['id'];
-	} else {
-		echo "Wrong password";
-	}
+    if ($user === null) {
+        $message = 'No user with this login';
+    } elseif (password_verify($_POST['password'] ?? '', $user['password'])) {
+        session_start();
+        $_SESSION['id'] = $user['id'];
+        $message = 'You have been logged in';
+    } else {
+        $message = 'Wrong password';
+    }
 }
 
-include '../../views/login-form.php';
+require __DIR__ . '/../../views/login-form.php';

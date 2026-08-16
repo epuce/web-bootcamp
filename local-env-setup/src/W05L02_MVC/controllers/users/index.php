@@ -1,12 +1,9 @@
 <?php
-include_once '../../helpers/database-wrapper.php';
+require_once __DIR__ . '/../../helpers/db.php';
+require_once __DIR__ . '/../../models/UserModel.php';
 
-// Make your model available
-include '../../models/UserModel.php';
-
-// Create an instance
-$userModel = new UserModel();
+$userModel = new UserModel(db());
 $users = $userModel->getAllUsers();
 
 // Show the view
-include '../../views/user-list.php';
+require __DIR__ . '/../../views/user-list.php';

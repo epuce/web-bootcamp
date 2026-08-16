@@ -1,36 +1,26 @@
 <?php
 
-namespace CRUD\models;
-
-use CRUD\entity\User;
-use DB\DB;
-
-require_once __DIR__ . "/../../database-wrapper.php";
 class UserModel
-{	
+{
+    public function __construct(private PDO $pdo) {}
 
-	public static function getAllUsers() {
-		return DB::run('SELECT * FROM users');
-	}
+    public function getAllUsers(): array
+    {
+        return $this->pdo->query('SELECT id, name, profession FROM users')->fetchAll();
+    }
 
-	public static function createUser(User $user)
-	{
-		return DB::run("INSERT INTO users (name, profession) VALUES ('" . $user->name. "', '" . $user->profession . "')");
-	}
+    public function getUserByName(string $name): ?array
+    {
+        // Placeholder keeps the input out of the SQL string (no injection)
+        $stmt = $this->pdo->prepare('SELECT id, name, password FROM users WHERE name = ?');
+        $stmt->execute([$name]);
 
-	public static function getUser($user) {
-		return DB::run("SELECT * FROM users WHERE name='". $user['name'] ."'");
-	}
+        return $stmt->fetch() ?: null;
+    }
 
-	public static function addUser() {
-		
-	}
-
-	public static function deleteUserById() {
-
-	}
-
-	public static function getUserById() {
-
-	}
+    public function createUser(User $user, string $passwordHash): void
+    {
+        $stmt = $this->pdo->prepare('INSERT INTO users (name, profession, password) VALUES (?, ?, ?)');
+        $stmt->execute([$user->name, $user->profession, $passwordHash]);
+    }
 }
