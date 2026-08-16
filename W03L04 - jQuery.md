@@ -1,4 +1,4 @@
-## jQuery - JavaScript library
+# ⚡ jQuery - JavaScript library
 
 > **2026 note:** jQuery is **legacy**. It was created to paper over inconsistent, verbose browser
 > APIs, but modern browsers made most of it unnecessary: `querySelectorAll`, `classList`,
@@ -8,7 +8,8 @@
 
 * Using $ means that we are referring to a jQuery selector
 
-### Initialization
+## Initialization
+
 ```HTML
 <head>
     <!-- other head scripts/tags-->
@@ -29,7 +30,8 @@ $(document).ready(function() {
 })
 ```
 
-### Selectors (almost same as for css)
+## Selectors (almost same as for css)
+
 * \* - wild selector (all elements)
 * .class - based on stated class
 * tag - based on tag name
@@ -46,7 +48,8 @@ $('.my-class, table') // no equivalent for plain JavaScript
 $('span.font-small') // combined selector similar to document.querySelectorAll('span .font-small')
 ```
 
-### Pseudo-selectors
+## Pseudo-selectors
+
 * :visible/:hidden - based on the element state
 * [type="email"] - attribute based (close to css)
 * .find() - find in child nodes
@@ -66,12 +69,14 @@ $('li').filter('.active') // Looks between li elements and select those that hav
 $('div').eq(1) // same as document.getElementsByClassName('div')[1]
 ```
 
-### CSS related
+## CSS related
+
 * .addClass()
 * .removeClass()
 * .css()
 * .hasClass()
 * .toggleClass()
+
 ```JavaScript
 $('selector').css('property', value) // Set a single property
 $('selector').css({
@@ -85,6 +90,7 @@ $('selector').css('property') // Read the property value
 * .position()
 * .scrollTop()/.scrollLeft() - manage element scroll
 * .height()/.width() - get element dimensions
+
 ```JavaScript
 $('selector').offset() // gets the element placement according to documents
 $('selector').position() // gets the element placement according to parent element
@@ -92,11 +98,13 @@ $('selector').position() // gets the element placement according to parent eleme
 $('body').scrollTop(100) // Scroll 100 pixels down
 ```
 
-### Manipulations
+## Manipulations
+
 * .clone()
 * .prepend()/.prependTo() - add element as first in HTML parent element list
 * .append()/.appendTo() add element as last in HTML parent element list
 * .insertAfter()/.insertBefore()
+
 ```JavaScript
 const $cloneEl = $('selector').clone() // Clone element
 
@@ -111,12 +119,14 @@ $('selector').prepend($cloneEl)
 $cloneEl.prependTo($('selector'))
 ```
 
-### Visual effects
+## Visual effects
+
 * .hide()/.show()/.toggle() - handles css display property
 * .fadeIn()/.fadeOut()/.fadeToggle() - time can be specified how fast does the element showup or hides
 * .slideDown()/.slideUp()/.slideToggle() - slide animation to show/hide element
 
-### Event Handling
+## Event Handling
+
 * .on('event', function(){}) - adds event to the element
 * .ajax(params) - communicate with server
   * jQuery wrapper that handles the communication with server
@@ -146,6 +156,7 @@ $.ajax({
 ```
 
 The same request with the native **fetch** API and async/await, no jQuery:
+
 ```JavaScript
 async function loadUsers() {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -162,13 +173,16 @@ async function loadUsers() {
 }
 loadUsers();
 ```
+
 * good API for playing around - [link](https://jsonplaceholder.typicode.com)
 * public API - [link](https://github.com/public-apis/public-apis)
-  
-### All jQuery options: [cheat-sheet](https://oscarotero.com/jquery/)
 
-### Checkup
-1. Add an click event to a button that toggles it's class (add some style to the class)
-2. Create an HTML element, append a new one to it and one before
-3. Add a button to an element that when clicked scrolls 50% of the element height;
-4. Create an ajax request that prints response data to the page (style it, make it look nice)
+## All jQuery options: [cheat-sheet](https://oscarotero.com/jquery/)
+
+> [!TIP]
+> **Checkup**
+>
+> 1. Add an click event to a button that toggles it's class (add some style to the class)
+> 2. Create an HTML element, append a new one to it and one before
+> 3. Add a button to an element that when clicked scrolls 50% of the element height;
+> 4. Create an ajax request that prints response data to the page (style it, make it look nice)
