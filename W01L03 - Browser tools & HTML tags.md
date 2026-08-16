@@ -1,14 +1,19 @@
-### Browser tools
+# 🧰 Browser tools & HTML tags
+
+## Browser tools
+
 https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5rpw/edit?usp=sharing
 
-### HTML basics - tags
+## HTML basics - tags
+
 * DOM
 * Tag types and differences - [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
     * Regular tags
     * Self Closing tags
     * Tag naming and their differences
     * Purpose tags
-### Basic HTML structure
+
+## Basic HTML structure
 
 ```html
 <!DOCTYPE html>
@@ -35,8 +40,10 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
         * https://htmlhead.dev/
     * body - contains tags that can be displayed in the browser
 
-### Tags and their special relationships
+## Tags and their special relationships
+
 * table and it's childe elements
+
 ```html
 <table>
 <thead>
@@ -86,6 +93,7 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
 ```
 
 * list and it's child's
+
 ```html
 <ol>
     <li>
@@ -116,7 +124,8 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
     * br -  self closing new line tag
     * <!--...--> comment tag (not displayed in browser)
 
-### Semantic HTML (prefer these over bare div/span)
+## Semantic HTML (prefer these over bare div/span)
+
 * `<header> <nav> <main> <section> <article> <aside> <footer>` describe *what* a region is, for
   browsers, screen readers and search engines. Reach for a semantic element first; fall back to
   `<div>`/`<span>` only when nothing fits.
