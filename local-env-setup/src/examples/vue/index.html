@@ -3,25 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue 3 Example</title>
 </head>
 <body>
-    <div id="vue-wrapper">
-        <h1>{{ text }}</h1>
-        <h2>You have clicked {{ clickCount }} times</h2>
-        <button v-on:click="addOne">Add one</button>
-        <button v-on:click="removeOne">Remove one</button>
-
-        <my-btn text="Button 1"></my-btn>
-        <my-btn text="Other btn"></my-btn>
-    </div>
-
-    <input id="text">
-    <input id="text">
-
-    <label for="text">click</label>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
 </body>
-<script src="./vue.js"></script>
 </html>
