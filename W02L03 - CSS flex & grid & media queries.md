@@ -1,4 +1,7 @@
-### Flex model
+# 📐 CSS flex & grid & media queries
+
+## Flex model
+
 ```css
     .wrapper {
         display: flex;
@@ -39,7 +42,8 @@
         align-self: special values;
     }
 ```
-### Grid model
+
+## Grid model
 
 ```css
     .wrapper {
@@ -111,7 +115,8 @@
         align-self: special-value;
     }
 ```
-### Media queries
+
+## Media queries
 
 ```css
 /* When the width is between 1000px and 1500px and a specific orientation is set */
@@ -148,7 +153,9 @@ body {
 }
 /* ----------------------------------- */
 ```
-### Container queries (respond to a parent's size, not the viewport)
+
+## Container queries (respond to a parent's size, not the viewport)
+
 ```css
 .card-list { container-type: inline-size; }
 
@@ -157,20 +164,22 @@ body {
 }
 ```
 
-### clamp() — fluid sizing without a media query
+## clamp() — fluid sizing without a media query
+
 ```css
 /* min, preferred, max: scales with the viewport but never past the bounds */
 h1 { font-size: clamp(1.5rem, 4vw, 3rem); }
 ```
 
-### Flex checkup
+## Flex checkup
+
 1. Create a block that distributes 5 images equally spaced;
 2. Set that if there is no space for the images they jump to a new row;
 3. Create another block with different images and align them vertically so that the space between them it distributed equally
 4. Order the second list so that it is not the same order as stated in HTML
 5. Create a third block that centers vertically and horizontally it's content
 
-### Grid checkup
+## Grid checkup
 
 1. Create a grid element that looks like this:
 
@@ -178,7 +187,8 @@ h1 { font-size: clamp(1.5rem, 4vw, 3rem); }
 
 [solution](local-env-setup/src/grid.html)
 
-### Media query checkup
+## Media query checkup
+
 1. Create a media query that changes changes the default font size if the screen is smaller than 1024px;
 2. Create a media query that shows a hidden element it he screen is between 320px and 1024px;
 3. Create a media query that aligns items vertically when in portrait (that means that the default state is that they are aligned horizontally)
