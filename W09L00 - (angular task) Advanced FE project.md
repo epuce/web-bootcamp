@@ -1,9 +1,9 @@
-## Crate a Angular based system based on these rules
+## Create an Angular based system based on these rules (use modern standalone components, signals and the @if / @for control flow)
 1. Create three components - header, index page, login page
 2. Make header static so it is shown in both pages
    1. Add links to both pages in the header
 3. Make index page accessible only when some type of trigger is active in login page (checkbox checked, form filled filled, etc.)
-4. In index page request a list from - https://restcountries.eu/rest/v2/currency/usd
+4. In index page request a list from - https://restcountries.com/v3.1/currency/usd (the old restcountries.eu is gone)
 5. Add three actions for the list:
    1. copy - the list row that is copied is shown after the one you copied
    2. delete - the row will be removed from the list
@@ -11,9 +11,9 @@
 6. Style the created items with angular material
 
 ## Example (it's more like inspiration and visual task representation)
-![List](extra-resources/task-2/assets/list.png)
-![Access check screen](extra-resources/task-2/assets/login.png)
-![video](extra-resources/task-2/assets/task-2-example.gif)
+![List](img/W09-angular-task-list.png)
+![Access check screen](img/W09-angular-task-login.png)
+![video](img/W09-angular-task-example.gif)
 
 ### What to take in account
 1. Correct Angular infrastructure usage
