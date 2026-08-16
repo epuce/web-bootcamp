@@ -1,4 +1,7 @@
+# ⚛️ React & Angular & others
+
 ## How to choose
+
 * Which is better for my next web app development project?
 * Which framework or library offers the best performance?
 * Which is the most suitable for me?
@@ -7,7 +10,8 @@
 **React** is scaffolded with **Vite** today (a fast dev server + build tool); **Angular** ships its own
 CLI (`ng`). The old CDN `<script>` tags and `create-react-app` setups are legacy.
 
-### Angular
+## Angular
+
 * Scaffold a project: `npm install -g @angular/cli` then `ng new my-app` (Angular has its own CLI and
   build system, it is not Vite based).
 * Templates use bindings `[prop]`, events `(event)`, two-way `[(ngModel)]`, and the built-in control
@@ -35,7 +39,8 @@ export class CounterComponent {
 }
 ```
 
-### React 18/19
+## React 18/19
+
 * Scaffold a project: `npm create vite@latest my-app -- --template react` (or use a framework like
   **Next.js**). `create-react-app` is deprecated and unmaintained.
 * Modern React is **function components + hooks** (`useState`, `useEffect`, ...). Class components and
@@ -60,24 +65,28 @@ function Counter() {
 export default Counter;
 ```
 
-### CMS
+## CMS
+
 * WordPress - most popular and widely used
 * Joomla
 * PrestaShop / WooCommerce - good setups for building a shop
 * etc.
 
-### Hosted site builders
+## Hosted site builders
+
 * Wix
 * Squarespace
 * Webflow
 * etc.
 
-### Other JS frameworks worth knowing
+## Other JS frameworks worth knowing
+
 * Svelte / SvelteKit - a compiler, no virtual DOM
 * SolidJS - fine-grained reactivity, JSX syntax
 * Astro - content-first, ships almost no JS by default
 * Vue - covered in the previous lessons
 * Meta-frameworks: Next.js (React), Nuxt (Vue), Remix
 
-# React vs Vue vs Angular
+## React vs Vue vs Angular
+
 ![React vs Vue vs Angular](img/W07L04.png)
