@@ -1,6 +1,9 @@
-### JavaScript Loops
+# 🔁 JavaScript looping & functions & prototypes
+
+## JavaScript Loops
 
 * **for** loop
+
 ```JavaScript
 // define the starting value
 // set the condition for executing the loop
@@ -15,7 +18,7 @@ for (let i = 0; i < 3; i++) {
 ```
 
 * **while** loop
-  
+
 ```JavaScript
 // define the starting value outside the loop
 // set the condition for executing the loop
@@ -52,6 +55,7 @@ array.forEach(function(value, index) {
 ```
 
 * **map** loop - can be applied only for arrays (modifies it self)
+
 ```JavaScript
 const array = [1, 2, 3, 4];
 
@@ -63,6 +67,7 @@ console.log(sqrtArray)
 // This will console log:
 // [1, 4, 9, 16]
 ```
+
 * Other useful array/object iteration (all on MDN)
   * [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) - the modern way to loop the values of an array
   * [for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) - loop the keys of an object
@@ -71,15 +76,19 @@ console.log(sqrtArray)
   * [find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) / [findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) - first match / its index
   * [some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) / [every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) - test if any / all match
 
-### JavaScript functions
+## JavaScript functions
+
 * Anonymous - no name to refer to
+
 ```JavaScript
 // The function that is executed is an anonymous one
 document.body.addEventListener('click', function() {
     console.log('you just did a click')
 })
 ```
+
 * Declared - there is a name to refer to
+
 ```JavaScript
 // The function that is executed on the click and does not matter where in the fil it has been declared
 function onClick() {
@@ -88,6 +97,7 @@ function onClick() {
 
 document.body.addEventListener('click', onClick)
 ```
+
 * Declared and assigned to a variable - only introduced to the scope when declared
 
 ```JavaScript
@@ -103,15 +113,17 @@ document.body.addEventListener('click', onClick);
 ```
 
 * ES6 arrow functions (same, but different, but still the same)
+
 ```JavaScript
 let customFn = () => {
     // Do something
 }
 ```
 
-#### Function parameters
+### Function parameters
+
 * We can pass parameters to function to change the conditions how to execute the function
-  
+
 ```JavaScript
 function sayHelloTo(name) {
     alert('Hello ' + name)
@@ -161,7 +173,7 @@ myData({name: 'Ed', surname: 'Pūce', isActive:true});
 // true
 ```
 
-### JavaScript classes (and prototypes)
+## JavaScript classes (and prototypes)
 
 Every JS value has a **prototype**, a shared object it inherits properties and methods from. The
 built-in types each have one:
@@ -210,16 +222,18 @@ boss.notifyAdmin(); // Hey Alex, you have admin rights
 boss.getPassword(); // inherited from User
 ```
 
-### Checkup
-1. create a loop that prints every second number starting from 10 and ending with 20
-2. loop thru an array and print out it's content
-3. modify array of numbers by multiplying the numbers by itself
-4. Declare a function that can be called even if it's defined after it is called
-5. define a function that can be called only after it has been declared
-6. create an arrow function with two or more parameters
-7. create a function with unknown amount of parameters
-8. create a function that accepts object as an parameters and reads assigns it's key/value pairs to function variables
-9. Use two of built in prototype functions
-10. Create your own prototype
-    1. create new instance
-    2. call a function from it 
+> [!TIP]
+> **Checkup**
+>
+> 1. create a loop that prints every second number starting from 10 and ending with 20
+> 2. loop thru an array and print out it's content
+> 3. modify array of numbers by multiplying the numbers by itself
+> 4. Declare a function that can be called even if it's defined after it is called
+> 5. define a function that can be called only after it has been declared
+> 6. create an arrow function with two or more parameters
+> 7. create a function with unknown amount of parameters
+> 8. create a function that accepts object as an parameters and reads assigns it's key/value pairs to function variables
+> 9. Use two of built in prototype functions
+> 10. Create your own prototype
+>     1. create new instance
+>     2. call a function from it
