@@ -1,4 +1,7 @@
-### Docker setup
+# 🐳 Docker setup & Git
+
+## Docker setup
+
 1. Download Docker Desktop - [link](https://www.docker.com/products/docker-desktop)
     * On Windows, enable the WSL2 backend (Docker Desktop sets this up for you). The old Docker Toolbox is deprecated and no longer needed.
 
@@ -35,21 +38,22 @@
 
 16. add PHP configuration file for vscode under debug section, settings, php (can be done later)
 
-### Some know issues:
+## Some know issues:
+
 * Windows setup shows `forbidden` in the browser - allow access to disk C: under docker program settings
 
 * command `ls` does not show the index.html file - be sure that the paths you stated under point 3. and 4. are correct
 
 Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-docker/)
 
-### Git Work flow
+## Git Work flow
 
 * If docker set up did not work download git locally on your machine
 
 * Set up git account @ github.com
 
 * Add the ssh key
-    * log in to docker container "docker exec -it apache_php bash -l" or open the terminal it the docker set up was not successful 
+    * log in to docker container "docker exec -it apache_php bash -l" or open the terminal it the docker set up was not successful
     * run `ssh-keygen -t ed25519 -C "your_email@example.com"` [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
     * press enter on all the questions
     * run "eval "$(ssh-agent -s)"
@@ -68,7 +72,7 @@ Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-doc
 
 * Get local changes to main
 
-    * git add . 
+    * git add .
     * git commit -m "Your message"
     * git push origin main
 
@@ -100,7 +104,7 @@ Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-doc
 * .gitignore
     * file where we state the files, directories are stated to be ignored from git (cache, logs, packages)
 
-### More about git
+## More about git
 
 * Git tools (hooks)
     * Git actions can trigger different functions (builds, tests, audits, notifications)
@@ -110,7 +114,8 @@ Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-doc
     * good work flow example - [link](https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc)
     * github page possibilities - [link](https://pages.github.com/)
 
-### Git checkup
+## Git checkup
+
 * Create new project
 * Get it locally on your machine
 * Create a new file
