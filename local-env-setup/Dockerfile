@@ -1,33 +1,28 @@
-# TODO add unit test setup and create php router
-# Improve the build to be fool proof
-FROM php:7.3-apache
+FROM php:8.3-apache
 
 EXPOSE 80
-RUN mkdir -p src
-COPY ./src /var/www/html
-RUN apt-get update
-RUN apt-get install -y git nano wget gnupg nodejs unzip
-RUN curl -L https://npmjs.org/install.sh | sh
 
-# Install mongodb
-RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
-RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-RUN apt-get update
-RUN apt-get install -y mongodb-org
-RUN mkdir -p /data/db
+COPY ./src/ /var/www/html/
 
-# Install xdebug
-RUN pecl install -f xdebug \
-&& echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-&& echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-&& echo "xdebug.remote_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini \
-&& echo "xdebug.remote_host=192.168.2.192" >> /usr/local/etc/php/conf.d/xdebug.ini \
-# && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/xdebug.ini \
-&& echo "xdebug.idekey=VSCODE" >> /usr/local/etc/php/conf.d/xdebug.ini
+# System tools + Node.js 20 LTS (so npm builds can run inside the container)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends git nano wget curl gnupg unzip ca-certificates \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y --no-install-recommends nodejs \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install SQL db
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+# PHP extensions for MySQL access
+RUN docker-php-ext-install pdo_mysql mysqli
 
-# Allow external user to be the owner
-RUN chmod -R 777 ./
+# Xdebug 3 (the client_* / mode keys replaced the old Xdebug 2 remote_* ones)
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && { \
+        echo "xdebug.mode=debug"; \
+        echo "xdebug.client_host=host.docker.internal"; \
+        echo "xdebug.client_port=9003"; \
+        echo "xdebug.start_with_request=yes"; \
+        echo "xdebug.idekey=VSCODE"; \
+    } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 RUN a2enmod rewrite
