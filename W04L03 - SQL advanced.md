@@ -1,4 +1,7 @@
-### SQL database advanced
+# 🗃️ SQL advanced
+
+## SQL database advanced
+
 1. Joining tables
     ```sql
     CREATE TABLE purchases
@@ -113,13 +116,15 @@
     SELECT * FROM Users WHERE email LIKE '%@gmail.com' --- Will select all rows that end with @gmail.com
     ```
 
-### Checkup
-Save all the scripts for further debugging
-1. Crate a two tables and join them together
-2. Populate both tables with at least 10 rows
-3. Write the fallowing queries
-    * retrieve data from table two based on table one
-    * retrieve all data from both tables that belong to the primary key
-    * retrieve only some columns from table number one and table number two based on a condition
-4. Create a new table and write a function that populates the table based on some data from one of the first tables
-5. Set up some data validation
+> [!TIP]
+> **Checkup**
+>
+> Save all the scripts for further debugging
+> 1. Crate a two tables and join them together
+> 2. Populate both tables with at least 10 rows
+> 3. Write the fallowing queries
+>     * retrieve data from table two based on table one
+>     * retrieve all data from both tables that belong to the primary key
+>     * retrieve only some columns from table number one and table number two based on a condition
+> 4. Create a new table and write a function that populates the table based on some data from one of the first tables
+> 5. Set up some data validation
