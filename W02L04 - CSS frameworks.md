@@ -1,7 +1,7 @@
 ## CSS Frameworks
 
 ### Bootstrap
-[link](https://getbootstrap.com/)
+[link](https://getbootstrap.com/) (Bootstrap 5, no jQuery dependency anymore)
 
 * Layout (Grid - not the same as css display: grid)
 * Content (Native styling, images, code, tables, figures)
@@ -14,7 +14,7 @@
 - Can stye as any other font (size, color, etc.)
 ``` html
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <style>
@@ -46,31 +46,34 @@
 </style>
 
 <body>    
-    <i class="fa fa-camera"></i>
-    <i class="fa fa-smile-wink"></i>
-    <i class="fa fa-code"></i>
+    <i class="fa-solid fa-camera"></i>
+    <i class="fa-solid fa-face-smile-wink"></i>
+    <i class="fa-solid fa-code"></i>
 </body>
 ```
 result:
 
 ![Font Awesome icons example](img/W02L04-FA-icons.png)
 
-### Google material design & Angular material
-[Google material design](https://material.io)
+### Google Material Design & Angular Material
+[Material Design 3](https://m3.material.io)
 
-[Angular material](https://material.angular.io/)
+[Angular Material](https://material.angular.io/)
 
-### Other:
-* [Foundation](https://foundation.zurb.com)
-* [Zimit](https://firezenk.github.io/zimit/)
-* [InK](http://ink.sapo.pt/)
-* [HTML KickStart](http://www.99lime.com/elements/)
-* [Kickstrap](http://getkickstrap.com.s3-website-us-east-1.amazonaws.com/)
-* [Pure](https://purecss.io/)
-* [HTML5 Boilerplate](https://html5boilerplate.com/)
-* [YUI](https://yuilibrary.com/)
+### Utility-first: Tailwind CSS
+[link](https://tailwindcss.com/)
+* Instead of writing CSS files you compose small utility classes in the markup
+  (`class="flex gap-4 p-6 rounded-lg"`). The dominant approach in 2026, and it pairs well with
+  component frameworks like React/Vue.
+* It is a build-time tool, so it strips unused classes and ships a tiny stylesheet.
+
+### Other living CSS libraries
+* [Bulma](https://bulma.io/) - modern, Flexbox-based, no JavaScript
+* [Pico CSS](https://picocss.com/) - classless, styles semantic HTML out of the box
+* [Open Props](https://open-props.style/) - a set of design tokens as CSS variables
+* [Foundation](https://get.foundation/) - the long-standing Bootstrap alternative
 
 ### Bootstrap checkup
 * Using this file as the html structure, fill out all the empty classes (class="") with a correct bootstrap or font-awesome class or class combination to get the result in the picture
-* [task template](local-env-setup/src/W02L04/template.html)
+* [task template](local-env-setup/src/W02L04_bootstrap/template.html)
 ![Bootstrap task](img/W02L04.png)
