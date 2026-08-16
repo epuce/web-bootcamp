@@ -88,25 +88,24 @@
     ORDER BY project_name;		
     ```
 7. SQL data validation
-    * When setting up data types and properties we create database validations, it means we can't save not valid data
-    * It means that the whole row wont be saved
+    * Setting data types and constraints creates database-level validation, so invalid data cannot be saved (the whole row is rejected).
     * Examples:
-        * ```sql
-            CREATE TABLE countries
-            (
-                country_code char(3) NOT NULL,
-            );
-        
-        * ```sql
-            CREATE TABLE events
-            (
-                event_day ENUM ('Mon','Tue','Wed','Thu','Fri','Sat','Sun'),
-            );
-        * ```sql
-            CREATE TABLE cars
-            (
-                min_range int, CHECK (min_range > 0)
-            )
+    ```sql
+    -- NOT NULL: the column must always have a value
+    CREATE TABLE countries (
+        country_code char(3) NOT NULL
+    );
+
+    -- ENUM: only one of the listed values is allowed
+    CREATE TABLE events (
+        event_day ENUM ('Mon','Tue','Wed','Thu','Fri','Sat','Sun')
+    );
+
+    -- CHECK: the value must satisfy a condition
+    CREATE TABLE cars (
+        min_range int, CHECK (min_range > 0)
+    );
+    ```
 
 8. Wild card selectors
     ```sql
