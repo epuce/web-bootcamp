@@ -17,6 +17,9 @@
 
         /* How to align the items vertically */
         align-content: special values;
+
+        /* Spacing between items, works in both flex and grid (prefer it over margins) */
+        gap: 16px;
     }
 
     .child:first-child {
@@ -36,7 +39,6 @@
         align-self: special values;
     }
 ```
-![flex support for browsers](img/W02L03-flex-support.png)
 ### Grid model
 
 ```css
@@ -52,11 +54,8 @@
         /* Can set the grid layout based on grid-area naming*/
         grid-template-areas: grid-area list;
 
-        /* Sets the spacing between grid columns */
-        grid-column-gap: line-size;
-
-        /* Sets the spacing between grid rows */
-        grid-row-gap: line-size;
+        /* Spacing between tracks; modern shorthand (the old grid-column-gap / grid-row-gap still work) */
+        gap: row-gap column-gap; /* example: 16px 24px */
 
         /* align all items in it's grid position cell horizontally */
         justify-items: special-value;
@@ -112,7 +111,6 @@
         align-self: special-value;
     }
 ```
-![grid support for browsers](img/W02L03-grid-support.png)
 ### Media queries
 
 ```css
@@ -150,7 +148,20 @@ body {
 }
 /* ----------------------------------- */
 ```
-![media queries support for browsers](img/W02L03-media_queries-support.png)
+### Container queries (respond to a parent's size, not the viewport)
+```css
+.card-list { container-type: inline-size; }
+
+@container (min-width: 400px) {
+    .card { display: grid; grid-template-columns: 120px 1fr; }
+}
+```
+
+### clamp() — fluid sizing without a media query
+```css
+/* min, preferred, max: scales with the viewport but never past the bounds */
+h1 { font-size: clamp(1.5rem, 4vw, 3rem); }
+```
 
 ### Flex checkup
 1. Create a block that distributes 5 images equally spaced;
