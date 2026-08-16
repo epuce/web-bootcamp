@@ -1,4 +1,7 @@
+# 🏆 Advanced FE project
+
 ## Create a Vue based system based on these rules (use modern Single File Components, the Composition API with `<script setup>`, and the v-if / v-for control flow)
+
 1. Create three components - header, index page, login page
 2. Make header static so it is shown in both pages
    1. Add links to both pages in the header
@@ -11,11 +14,15 @@
 6. Style the created items with Vuetify
 
 ## Example (it's more like inspiration and visual task representation)
+
 ![List](img/W09-angular-task-list.png)
+
 ![Access check screen](img/W09-angular-task-login.png)
+
 ![video](img/W09-angular-task-example.gif)
 
-### What to take in account
+## What to take in account
+
 1. Correct Vue infrastructure usage
    1. routing (Vue Router)
    2. access control
