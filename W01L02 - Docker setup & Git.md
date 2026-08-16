@@ -1,15 +1,15 @@
 ### Docker setup
-1. Download docker - [link](https://www.docker.com/products/docker-desktop)
-    * For older operating systems, docker toolbox - [link](https://github.com/docker/toolbox/releases)
+1. Download Docker Desktop - [link](https://www.docker.com/products/docker-desktop)
+    * On Windows, enable the WSL2 backend (Docker Desktop sets this up for you). The old Docker Toolbox is deprecated and no longer needed.
 
 2. Create a folder that will hold the docker setup, something like "web_bootcamp_env" (try not to use spaces and separate words with _)
     * Create an other folder under the one you just created now, something like "src"
 
-3. Create a file in the first folder you created named "Docker", copy the content from the [link](https://raw.githubusercontent.com/epuce/web-bootcamp/improvements/local-env-setup/Dockerfile)
+3. Create a file in the first folder you created named `Dockerfile`, copy the content from [this repo's `local-env-setup/Dockerfile`](https://raw.githubusercontent.com/epuce/web-bootcamp/master/local-env-setup/Dockerfile)
     * Replace "COPY ./src /var/www/html" the ./src part with the name of the second folder you created under the first one (where this files are, like "./myFolderName")
 
-4. Create a file next to the first one named `docker-compose.yml`, copy the content from [link](https://raw.githubusercontent.com/epuce/web-bootcamp/improvements/local-env-setup/docker-compose.yml)
-    * replace the line under `volumes:` with `-/full/path/to/the/secondFolder`, like `- C:\edmunds\Public\web_bootcamp_dev:/var/www/html/`
+4. Create a file next to the first one named `docker-compose.yml`, copy the content from [this repo's `local-env-setup/docker-compose.yml`](https://raw.githubusercontent.com/epuce/web-bootcamp/master/local-env-setup/docker-compose.yml)
+    * It mounts `./src` (relative to the compose file) into the container, so just keep your source in a `src` folder next to it, there is no absolute path to edit.
 
 5. Start the docker application by clicking on the icon of the program, if everything is ok then continue, if not, we are doomed :D (no, not for real)
 
@@ -19,7 +19,7 @@
 
 8. with terminal "cd" function, navigate to the first folder we created, or open the vscode in that folder and open terminal
 
-9. Run `docker-compose up --build`
+9. Run `docker compose up --build` (older setups used the hyphenated `docker-compose`)
 
 10. If not installed get the docker extension form the left setting block with for squares
 
@@ -50,11 +50,11 @@ Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-doc
 
 * Add the ssh key
     * log in to docker container "docker exec -it apache_php bash -l" or open the terminal it the docker set up was not successful 
-    * run "ssh-keygen -t rsa -b 4096 -C "your_email@example.com" [link](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+    * run `ssh-keygen -t ed25519 -C "your_email@example.com"` [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
     * press enter on all the questions
     * run "eval "$(ssh-agent -s)"
-    * run "ssh-add ~/.ssh/id_rsa"
-    * copy all the content printed out "cat ~/.ssh/id_rsa.pub"
+    * run `ssh-add ~/.ssh/id_ed25519`
+    * copy all the content printed out `cat ~/.ssh/id_ed25519.pub`
     * add the kay in github [link](https://github.com/settings/keys)
 
 * Set global git parameters - user and password (if needed)
@@ -66,11 +66,11 @@ Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-doc
 
 * Create index file - index.html (add some content)
 
-* Get local changes to master
+* Get local changes to main
 
     * git add . 
     * git commit -m "Your message"
-    * git push origin master 
+    * git push origin main
 
 * Forking
     * choose the repository to get a private clone - fork button in GUI
@@ -78,7 +78,7 @@ Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-doc
 * Team work
     * cd to the project folder
     * git checkout -b your branch name
-    * perform steps from - Get local changes to master
+    * perform steps from - Get local changes to main
     * open github.com, navigate to newly created branch
     * create pull (merge) request
     * resolve conflicts if needed
@@ -114,11 +114,11 @@ Step by step setup - [link](http://blog.adnansiddiqi.me/getting-started-with-doc
 * Create new project
 * Get it locally on your machine
 * Create a new file
-* Push two different commits to origin/master
-* Create new branch based on current master
+* Push two different commits to origin/main
+* Create new branch based on current main
 * Add one commit to newly created branch
 * Push to newly created branch
 * Create pull (merge) request and merge the changes
-* Switch back to local master branch
+* Switch back to local main branch
 * Get newly merged changes
-* Push new commit to origin/master
+* Push new commit to origin/main
