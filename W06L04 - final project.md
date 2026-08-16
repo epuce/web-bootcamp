@@ -18,10 +18,10 @@
 1. Data has to be saved to a database
 2. Show the best skills you have in all the addressed topics (front-end, back-end, database);
 3. Use clean code styling (spaces, new lines, variable placement, nesting, don't repeat yourself)
-3. Appropriate HTML tag and attribute usage, logical class, id, etc. naming
-4. Structured CSS
-5. Easy to read/understand PHP & SQL
-6. Include database structure as a separate file or note it down somewhere, like:
+4. Appropriate HTML tag and attribute usage, logical class, id, etc. naming
+5. Structured CSS
+6. Easy to read/understand back-end code & SQL
+7. Include database structure as a separate file or note it down somewhere, like:
 ```SQL
 CREATE TABLE list (
     description varchar(20),
