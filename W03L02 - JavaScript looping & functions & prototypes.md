@@ -20,7 +20,7 @@ for (let i = 0; i < 3; i++) {
 // define the starting value outside the loop
 // set the condition for executing the loop
 // inside the loop function modify the starting value variable
-var i = 3;
+let i = 3;
 while (i > 0) {
     console.log('Hello Nr' + i)
     i--
@@ -34,7 +34,7 @@ while (i > 0) {
 * **forEach** loop - can be applied only for arrays
 
 ```JavaScript
-var array = [true, true, false, true];
+const array = [true, true, false, true];
 
 array.forEach(function(value, index) {
     if (value) {
@@ -53,9 +53,9 @@ array.forEach(function(value, index) {
 
 * **map** loop - can be applied only for arrays (modifies it self)
 ```JavaScript
-var array = [1, 2, 3, 4];
+const array = [1, 2, 3, 4];
 
-var sqrtArray = array.map(function(value) {
+const sqrtArray = array.map(function(value) {
     return value**2 // modifies the number to the power of two
 });
 
@@ -63,21 +63,19 @@ console.log(sqrtArray)
 // This will console log:
 // [1, 4, 9, 16]
 ```
-<!-- TODO add links -->
-* Other
-  * for/in loop [link]()
-  * for/of loop [link]()
-  * reduce loop [link]()
-  * filter action [link]()
-  * find action [link]()
-  * findIndex action [link]()
-  * etc. 
+* Other useful array/object iteration (all on MDN)
+  * [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) - the modern way to loop the values of an array
+  * [for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) - loop the keys of an object
+  * [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) - fold an array into a single value
+  * [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) - keep only the items that match
+  * [find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) / [findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) - first match / its index
+  * [some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) / [every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) - test if any / all match
 
 ### JavaScript functions
 * Anonymous - no name to refer to
 ```JavaScript
 // The function that is executed is an anonymous one
-document.getElementsByTagName('body')[0].addEventListener('click', function() {
+document.body.addEventListener('click', function() {
     console.log('you just did a click')
 })
 ```
@@ -88,20 +86,20 @@ function onClick() {
     console.log('you just did a click')
 }
 
-document.getElementsByTagName('body')[0].addEventListener('click', onClick)
+document.body.addEventListener('click', onClick)
 ```
 * Declared and assigned to a variable - only introduced to the scope when declared
 
 ```JavaScript
-// The declared function is not seen by the event listener as it is assigned to a variable later in the file
-document.getElementsByTagName('body')[0].addEventListener('click', onClick) 
+// With const/let this THROWS a ReferenceError: onClick is used before it is declared (the "temporal dead zone")
+document.body.addEventListener('click', onClick);
 
-var onClick = function() {
-    console.log('you just did a click')
-}
+const onClick = function() {
+    console.log('you just did a click');
+};
 
-// This event listener sees the function and can execute it
-document.getElementsByTagName('body')[0].addEventListener('click', onClick)
+// From here on it works, the listener below can see the function
+document.body.addEventListener('click', onClick);
 ```
 
 * ES6 arrow functions (same, but different, but still the same)
@@ -163,7 +161,10 @@ myData({name: 'Ed', surname: 'Pūce', isActive:true});
 // true
 ```
 
-### JavaScript prototypes - group of properties and actions that can be executed on the corresponding type
+### JavaScript classes (and prototypes)
+
+Every JS value has a **prototype**, a shared object it inherits properties and methods from. The
+built-in types each have one:
 
 * Built in
   * Object
@@ -172,34 +173,41 @@ myData({name: 'Ed', surname: 'Pūce', isActive:true});
   * Number
   * Date
 
-* Create your own
-```JavaScript
-function User(username, email, password){
-    this.username = username;
-    this.email = email;
-    this.password = password;
+Since ES6 you define your own types with the **`class`** keyword, cleaner syntax over that same
+prototype mechanism. This is the modern way (the old `function User() { this.x = ... }` constructor
+style still works, but you will rarely write it).
 
-    this.getPassword = function() {
+```JavaScript
+class User {
+    constructor(username, email, password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    getPassword() {
         console.log(this.password);
     }
 }
 
-let userNr1 = new User("Ed", "edm.puce@gmail.com", "qwerty");
+const userNr1 = new User("Ed", "edm.puce@gmail.com", "qwerty");
+userNr1.getPassword(); // logs: qwerty
 
-userNr1.getPassword();
-// This will console log the password: qwerty
+// `extends` inherits everything from User; `super(...)` calls its constructor
+class Admin extends User {
+    constructor(username, email, password) {
+        super(username, email, password);
+        this.isAdmin = true;
+    }
 
-
-// Extend User class allows us to implement all the same things that are there
-function Admin() {
-    User.apply(this, arguments);
-
-    this.isAdmin = true;
-    
-    this.notifyAdmin = () => {
-        console.log("Hey " + this.username, " you " + this.isAdmin ? "" : "don't " + "have admin tights");
+    notifyAdmin() {
+        console.log(`Hey ${this.username}, you have admin rights`);
     }
 }
+
+const boss = new Admin("Alex", "alex@example.com", "secret");
+boss.notifyAdmin(); // Hey Alex, you have admin rights
+boss.getPassword(); // inherited from User
 ```
 
 ### Checkup
