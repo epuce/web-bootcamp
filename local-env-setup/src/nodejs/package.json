@@ -1,21 +1,17 @@
 {
-  "name": "nodejs",
+  "name": "nodejs-example",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "bcrypt": "5.0.0",
-    "body-parser": "1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongodb": "^3.6.3",
-    "mysql": "2.18.1",
-    "require": "2.4.20"
+  "description": "Modern ES-modules Express users REST API (W06L01)",
+  "type": "module",
+  "main": "app.js",
+  "engines": {
+    "node": ">=20"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "node --test"
   },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "express": "^4.19"
+  }
 }

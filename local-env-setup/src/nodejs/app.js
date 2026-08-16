@@ -1,83 +1,18 @@
-const express = require('express');
-const mysql = require('mysql');
-const cors = require('cors');
-const bodyParser = require('body-parser')
-const userRoutes = require('./routes/user.route');
-const mongodb = require('mongodb').MongoClient;
+import express from 'express';
+import userRoutes from './routes/user.route.js';
 
-const app = new express();
-app.use(cors());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}))
+export const app = express();
 
-const router = express.Router();
+app.use(express.json());
 
-router.get('', (reject, response) => {
-    console.log('Response was sent to the browser');
-    response.send("Requested route does not exist");
-})
+app.use('/api/users', userRoutes);
 
-const mongoRouter = express.Router();
-mongoRouter.get('', (request, response) => {
-    mongodb.connect('mongodb://root:root_password@localhost:27017', (err, db) => {
-        if (err) {
-            console.log(err)
-        }
-
-        const dbInstance = db.db('shop');
-
-        const product = {
-            name: "Cool book",
-            category: "books"    
-        }
-        const product1 = {
-            name: "Steel",
-            category: "books",
-            pages: 300,    
-        }
-        const product2 = {
-            name: "Lord of the Rings",
-            categry: "books",
-            pages: 500,       
-        }
-
-        dbInstance.collection("products").insertMany([product, product1, product2], (err, res) => {
-            if (err) {
-                console.log(err);
-            }
-        })
-
-        dbInstance.collection("products").find({
-            pages: 500
-        }, (err, res) => {
-            if (err) err;
-
-            res.toArray().then((data) => {
-                response.send(data);
-            })
-        })
-    })
-    
-})
-
-app.use('/mongo', mongoRouter);
-app.use('/users', userRoutes);
-app.use('*', router);
-
-const db = mysql.createConnection({
-    host: 'localhost',
-    port: '8082',
-    user: 'root',
-    password: 'root_password',
-    database: 'shop'
-})
-
-db.connect((error) => {
-    console.log("Connected to database")
-})
-
-app.listen(8002, () => {
-    console.log('Server is up on http://localhost:8002')
-})
-
-exports.db = db;
+// Start listening only when this module is run directly (e.g. `node app.js`),
+// so tests can import `app` without a server port being bound.
+const isMain = import.meta.url === `file://${process.argv[1]}`;
+if (isMain) {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server listening on http://localhost:${port}`);
+  });
+}
