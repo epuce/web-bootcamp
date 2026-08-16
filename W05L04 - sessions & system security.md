@@ -1,7 +1,11 @@
-### PHP session and other security methods
+# 🔐 sessions & system security
+
+## PHP session and other security methods
+
 * PHP session
     * Is set up on the system level
     * Can be manipulated (restarted, paused, data destroyed, etc.)
+
 ```PHP
 <?php
 session_start(); // Start PHP session (introduce the $_SESSION variable)
@@ -12,6 +16,7 @@ $_SESSION['user_id'] = 12;
 
 session_abort(); // Remove all variables set up for the session, finish the session
 ```
+
 ```PHP
 // Creating PHP session timeout, if user has not been active for 10min, on next request the session will be terminated
 <?php
@@ -24,7 +29,9 @@ if (isset($_SESSION['LAST_ACTIVE']) && ($start_time - $_SESSION['LAST_ACTIVE']) 
 // Update (or set) LAST_ACTIVE session variable on action
 $_SESSION['LAST_ACTIVE'] = $start_time;
 ```
+
 [Full list of session functions](https://www.php.net/manual/en/ref.session.php)
+
 * tokens
     * Some kind of identifier that is not tied to the PHP session, if a valid token is passed to the request, access to data is granted
     * This token is created on login or by the system owner and it's stored in the database. As long as the token in valid (exists in database, has an access granted field active)
@@ -68,6 +75,7 @@ $_SESSION['LAST_ACTIVE'] = $start_time;
       app. A secret token that only your page knows, checked on every state-changing request, stops it.
     * Generate it from a **cryptographically secure** source (`random_bytes`, not `rand`), and compare
       with **`hash_equals`** (constant-time, so it does not leak the answer through timing).
+
 ```PHP
 <?php
 session_start();
@@ -84,6 +92,7 @@ $token = $_SESSION['csrf'];
     <button type="submit">Reset Password</button>
 </form>
 ```
+
 ```PHP
 // action.php
 session_start();
@@ -93,7 +102,9 @@ if (isset($_POST['token']) && hash_equals($_SESSION['csrf'], $_POST['token'])) {
     http_response_code(403); // reject the request
 }
 ```
-### Task (Done together)
+
+## Task (Done together)
+
 1. Create user table that stores username and password and a third field (or edit existing one, to match the structure)
 2. Add a form that saves a new user, hashing the password with password_hash() (it salts automatically)
 3. Add a login form, that checks the username and password match
