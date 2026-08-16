@@ -1,10 +1,14 @@
-### MVC & Entities
+# 🏛️ MVC (Models, Views, Controllers)
+
+## MVC & Entities
+
 * M - models
 * V - views
 * C - controllers
 * Entities
 
-### Project structure
+## Project structure
+
 ```PHP
 // Project tree
 root_folder/
@@ -23,7 +27,9 @@ root_folder/
 ----user-form.php
 ----user-list.php
 ```
-### Models
+
+## Models
+
 ```PHP
 // UserModel.php
 <?php
@@ -44,7 +50,9 @@ class UserModel
 	}
 }
 ```
-### Views
+
+## Views
+
 ```PHP
 // user-list.php
 <table>
@@ -63,7 +71,9 @@ class UserModel
 	<?php endforeach ?>
 </table>
 ```
-### Controllers
+
+## Controllers
+
 ```PHP
 // controllers/users/index.php
 <?php
@@ -77,7 +87,8 @@ $users = $userModel->getAllUsers();
 require __DIR__ . '/../../views/user-list.php';
 ```
 
-### Entities
+## Entities
+
 ```PHP
 // User.php
 <?php
@@ -100,10 +111,11 @@ class User {
 }
 ```
 
-### Checkup
-* Create new table in database
-* Using MVC and Entity model
-    * Create two different screens
-    * On of the screen has some type of data manipulation (create, update, filter by parameter, etc.)
-    * Use setters for Entity management
-
+> [!TIP]
+> **Checkup**
+>
+> * Create new table in database
+> * Using MVC and Entity model
+>     * Create two different screens
+>     * On of the screen has some type of data manipulation (create, update, filter by parameter, etc.)
+>     * Use setters for Entity management
