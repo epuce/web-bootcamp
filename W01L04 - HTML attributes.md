@@ -3,7 +3,7 @@
 <tag attribute="value" attribute2="other-value" attribute3>
   Content
 </tag>
-````
+```
 
 * Types of attributes:
 
@@ -23,7 +23,8 @@
 * lang - Sets the language of the element's content
 * tabindex - Sets the tabbing order of an element
 * title - Sets extra information about an element
-* contextmenu - Sets a context menu for an element. The context menu appears when a user right-clicks on the element (Fire fox example - https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_contextmenu)
+* data-* - custom data attributes you name yourself, read from JS via `element.dataset`
+* aria-* / role - accessibility hints for screen readers (e.g. `aria-label`, `role="dialog"`)
 * etc. 
 
 ### Tag specific
@@ -46,8 +47,8 @@
 * 
 ### List of all attributes, the usage and description
 
-https://html-css-js.com/html/tutorial/html-tag-attributes.php
-https://www.cs.princeton.edu/courses/archive/fall07/cos109/labs/html/tags.html
+* [MDN HTML attribute reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
+* [MDN global attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes)
 
 ### HTML check up task
 create page using only html and it's attributes based on the image under your username.github.io project and push it to github.
