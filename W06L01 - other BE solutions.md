@@ -1,25 +1,23 @@
 ### Other BE languages
 * NodeJs (JavaScript based data handling engine)
     ```javascript
-    const express = require('express'); // NodeJs framework
-    const bodyParser = require('body-parser'); // Request / Response data parser
+    import express from 'express';                 // Node.js framework (ES modules)
+    import userRoutes from './routes/user.route.js';
 
-    const user = require('./routes/user.route'); // For API routing (user created)
+    const app = express();
 
-    const app = express(); // Create new app
+    // Body parsing is built into Express now (no separate body-parser package)
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
 
-    // Setup the data parser
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: false}));
+    app.use('/api/users', userRoutes);             // Mount the user routes
 
-    app.use('/api/users', user);// Add specific API routing for user
-
-    // Create the NodeJs server
-    app.listen(8000, () => {
-        console.log('Server is up and running on localhost:' + 8000);
+    const PORT = 8000;
+    app.listen(PORT, () => {
+        console.log(`Server is up and running on http://localhost:${PORT}`);
     });
 
-    // run node app.js in the terminal to start the app
+    // "type": "module" in package.json enables import syntax; run: node app.js
     ```
 * Others
     * Ruby
@@ -27,39 +25,37 @@
     * Python
     * etc.
 
-* Unit tests (can be applied for almost all structures/languages/frameworks)
-    * JS
+* Unit / API tests (the same idea applies across languages and frameworks)
+    * JS - Node ships a built-in test runner (`node --test`), no extra library needed
 ```javascript
-// can be 
-require('should'); // For testing data validity
-const http = require('http'); // For communicating with the server
+import { test, describe } from 'node:test';
+import assert from 'node:assert/strict';
 
-// Describe the data that will be tested
 describe('Users', () => {
+    test('should show a list of users', async () => {
+        const res = await fetch('http://localhost:8000/api/users');
+        const users = await res.json();
 
-    // Add the test description that is corresponding to the descriptions
-	it('should show list of users', (done) => {
-        // The test checking data validity is added here
-        // You have to call done()  as the callback for the test to finish
-		done();
-	});
-    
-    // Test all needed functionality
-	it('should create an user', (done) => {
-        // The test checking data validity is added here
-        // You have to call done()  as the callback for the test to finish
-		done();
-	});
+        assert.equal(res.status, 200);
+        assert.ok(Array.isArray(users));
+    });
 
-    // A good practise is to add false positive tests
-    // Example: when user adds false data for login, the login does not happen 
+    // Also write "negative" tests: logging in with bad data must fail
+    test('rejects login with bad credentials', async () => {
+        const res = await fetch('http://localhost:8000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: 'x', password: 'wrong' }),
+        });
+        assert.equal(res.status, 401);
+    });
 });
 ```
 
 * NoSQL data handling
     * MongoDB - JSON like structure
     * Start the database server (in docker) - `mongod`
-    * Start the MongoDB shell - `mongo`
+    * Start the MongoDB shell - `mongosh` (the old `mongo` shell is retired)
     * Create database - `use your-db-name`
     * Create database table - `db.createCollection("users")`
     * [All commands](https://docs.mongodb.com/manual/reference/method/js-collection/)
@@ -73,9 +69,9 @@ describe('Users', () => {
         );  
     ```
     * Others:
-        * Cassandra - developed by Facebook, created for large data structuring
-        * Redis - C language based, most used key-value store
-        * HBase - Google developed, based on
+        * Cassandra - originally built at Facebook, now an Apache project, for very large distributed data
+        * Redis - C-based, the most used in-memory key-value store (caching, queues, sessions)
+        * HBase - Apache, modeled on Google's Bigtable, for huge sparse tables
         
 ### Checkup
 * Create CRUD functionality with nodejs
