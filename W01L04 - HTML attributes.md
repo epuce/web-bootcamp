@@ -1,4 +1,5 @@
-### HTML attributes
+# 🏷️ HTML attributes
+
 ```HTML
 <tag attribute="value" attribute2="other-value" attribute3>
   Content
@@ -14,7 +15,7 @@
 * attributes change the way elements are displayed and handled in the browser
 * some of the attribute added effects can be handled with css or the effect can't be styled with css
 
-### Global
+## Global
 
 * id - Sets a unique id for an element
 * class - Sets one or more classnames for an element (refers to a class in a style sheet)
@@ -25,9 +26,9 @@
 * title - Sets extra information about an element
 * data-* - custom data attributes you name yourself, read from JS via `element.dataset`
 * aria-* / role - accessibility hints for screen readers (e.g. `aria-label`, `role="dialog"`)
-* etc. 
+* etc.
 
-### Tag specific
+## Tag specific
 
 * value (button, input, li, option, meter, progress, param) - describes elements value, usually not the same as visible part
 * required (input, select, textarea) - referring to form, if this input is required (filled) for the form to be valid
@@ -44,13 +45,15 @@
 * href (a, area, base, link) - sets the URL that the page goes to when used
 * alt (area, img, input)- alternate text when the original element fails to display (if input type is outdated, media does not load)
 * action
-* 
-### List of all attributes, the usage and description
+*
+
+## List of all attributes, the usage and description
 
 * [MDN HTML attribute reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
 * [MDN global attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes)
 
-### HTML check up task
+## HTML check up task
+
 create page using only html and it's attributes based on the image under your username.github.io project and push it to github.
 
 ![Example to aim for](img/W01L04.png)
