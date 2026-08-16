@@ -1,0 +1,25 @@
+name: Regenerate README
+
+on:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate README.md from the lesson files
+        run: php local-env-setup/src/regenerate-README.php
+      - name: Commit and push if it changed
+        run: |
+          if ! git diff --quiet; then
+            git config user.email "edm.puce@gmail.com"
+            git config user.name "epuce"
+            git add README.md
+            git commit -m "chore: regenerate README.md"
+            git push
+          fi
