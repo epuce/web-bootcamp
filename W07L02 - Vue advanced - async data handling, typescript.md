@@ -1,4 +1,7 @@
-### TypeScript
+# 🔷 Vue advanced - async data handling, typescript
+
+## TypeScript
+
 * Vue works great with TypeScript — add `lang="ts"` to `<script setup>` and type your refs, props and data.
 * If an action is specific to a data type and the type is unknown, the compiler can't check the code and you lose autocomplete + safety.
 
@@ -23,6 +26,7 @@ const numberArray2 = ref<Array<number>>([]);
 
 const userEdmunds = ref<User>();     // typed with the interface above
 ```
+
 ```ts
 let array: number[]; // If the variable has not been set, always add a data type
 
@@ -35,10 +39,12 @@ array.map((num) => {
 });
 ```
 
-### Server requests
+## Server requests
+
 Vue has no built-in HTTP client — use the browser's `fetch` (or a library like **axios**). Fire the
 request in the `onMounted` lifecycle hook and store the result in a `ref` so the template updates
 reactively.
+
 ```vue
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
@@ -69,7 +75,10 @@ async function calculateData() {
 }
 </script>
 ```
-### Checkup
-1. Create a component
-2. Make a request to a public API that has image links in it
-3. Print the images to the newly created component
+
+> [!TIP]
+> **Checkup**
+>
+> 1. Create a component
+> 2. Make a request to a public API that has image links in it
+> 3. Print the images to the newly created component
