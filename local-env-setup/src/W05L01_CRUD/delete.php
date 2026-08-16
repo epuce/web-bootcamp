@@ -1,13 +1,11 @@
 <?php
+require_once __DIR__ . '/db.php';
 
-if (isset($_GET['id'])) {
-    require_once __DIR__ . "/../database-wrapper.php";
+$id = (int) ($_GET['id'] ?? 0);
 
-    $id = $_GET['id'];
-
-    $sql = "DELETE FROM Users WHERE id=$id";
-
-    DB:run($sql);
+if ($id > 0) {
+    $stmt = db()->prepare('DELETE FROM Users WHERE id = ?');
+    $stmt->execute([$id]);
 }
 
-header("Location: index.php");
+header('Location: index.php');

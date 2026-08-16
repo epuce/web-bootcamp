@@ -1,9 +1,8 @@
 <?php
+require_once __DIR__ . '/../db.php';
+header('Content-Type: application/json');
 
-require_once __DIR__ . "/../../database-wrapper.php";
+$stmt = db()->prepare('INSERT INTO Users (name, profession) VALUES (?, ?)');
+$stmt->execute([$_POST['name'] ?? '', $_POST['profession'] ?? '']);
 
-$sql = sprintf("INSERT INTO Users (name, profession) VALUES ('%s', '%s')", $_POST['name'], $_POST['profession']);
-
-$response = DB::getArrayResult($sql);
-
-echo $response;
+echo json_encode(['id' => (int) db()->lastInsertId()]);

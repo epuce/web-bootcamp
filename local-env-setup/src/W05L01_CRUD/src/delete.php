@@ -1,17 +1,8 @@
 <?php
+require_once __DIR__ . '/../db.php';
+header('Content-Type: application/json');
 
-echo $_GET;
+$stmt = db()->prepare('DELETE FROM Users WHERE id = ?');
+$stmt->execute([(int) ($_GET['id'] ?? 0)]);
 
-if (isset($_GET['id'])) {
-    require_once __DIR__ . "/../../database-wrapper.php";
-
-
-    $id = $_GET['id'];
-
-    $sql = "DELETE FROM Users WHERE id=$id";
-
-    $response = DB::getArrayResult($sql);
-
-    echo $database;
-}
-
+echo json_encode(['deleted' => $stmt->rowCount()]);

@@ -1,48 +1,25 @@
-$(function () {
-    var $submit = $('#submit');
-    var $delete = $('.delete');
-    var $form = $('#form');
+// Vanilla fetch replaces the old jQuery $.ajax version.
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('#form');
+    const submitBtn = document.querySelector('#submit');
+    const deleteButtons = document.querySelectorAll('.delete');
 
-    $submit.on('click', function (e) {
-        e.preventDefault();
+    // Add / update through the JSON API in src/
+    submitBtn?.addEventListener('click', async () => {
+        const data = new FormData(form);
+        const action = data.get('id') ? 'put' : 'post';
 
-        var $this = $(this);
-        var formArray = $form.serializeArray();
-        var action = null;
-
-        switch ($this[0].name) {
-            case 'update':
-                action = 'put';
-                break;
-            case 'submit':
-                action = 'post';
-                break;
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: 'src/' + action +'.php',
-            data: {
-                name: formArray[0] && formArray[0].value,
-                profession: formArray[1] && formArray[1].value,
-                id: formArray[2] && formArray[2].value,
-            }
-        }).then(function (response) {
-            console.log(response);
-            // window.location = window.location.origin;
-        });
+        const res = await fetch(`src/${action}.php`, { method: 'POST', body: data });
+        console.log(await res.json());
+        window.location = 'index.php';
     });
 
-    $delete.on('click', function () {
-        $.ajax({
-            type: 'GET',
-            url: 'src/delete.php',
-            data: {
-                id: $(this).attr('data-id'),
-            }
-        }).then(function (response) {
-            console.log(response);
-            window.location = window.location.origin;
+    // Delete through the JSON API
+    deleteButtons.forEach((btn) => {
+        btn.addEventListener('click', async () => {
+            const res = await fetch(`src/delete.php?id=${encodeURIComponent(btn.dataset.id)}`);
+            console.log(await res.json());
+            window.location = 'index.php';
         });
-    })
+    });
 });

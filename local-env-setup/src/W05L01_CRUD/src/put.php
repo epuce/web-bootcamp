@@ -1,13 +1,8 @@
 <?php
-require_once __DIR__ . "/../../database-wrapper.php";
+require_once __DIR__ . '/../db.php';
+header('Content-Type: application/json');
 
+$stmt = db()->prepare('UPDATE Users SET name = ?, profession = ? WHERE id = ?');
+$stmt->execute([$_POST['name'] ?? '', $_POST['profession'] ?? '', (int) ($_POST['id'] ?? 0)]);
 
-$id = $_POST['id'];
-$name = $_POST['name'];
-$profession = $_POST['profession'];
-
-$sql = "UPDATE Users SET name='$name', profession='$profession' WHERE id=$id";
-
-$response = DB::getArrayResult($sql);
-
-echo $response;
+echo json_encode(['updated' => $stmt->rowCount()]);
