@@ -2,133 +2,77 @@
 * Which is better for my next web app development project?
 * Which framework or library offers the best performance?
 * Which is the most suitable for me?
-* What is virtual DOM?
+* What is the virtual DOM (and how does Vue/Solid's fine-grained reactivity differ)?
 
-### Vue - Based on AngularJS/Angular
-* Installation
-  * direct link - `<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>`
-  * node package manager - npm install vue
-    * import the file as you would any other. `node_modules/vue/dist/vue.js` file
+All three frameworks below are scaffolded with **Vite** today (a fast dev server + build tool). The
+old CDN `<script>` tags and `create-react-app` setups are legacy.
 
-* vue specific commands start with "v-"
-  * v-bind:title
-  * v-on:click
-  * v-model
-* examples - [link](https://vuejs.org/v2/examples/svg.html) 
+### Vue 3
+* Scaffold a project: `npm create vue@latest` (Vite based).
+* Template directives start with `v-`: `v-bind` (shorthand `:`), `v-on` (shorthand `@`), `v-model`.
+* Modern Vue uses the **Composition API** with `<script setup>` and reactive `ref()`s (the old
+  Options API + global `Vue.component` still works but is not how new code is written).
+* Docs & examples - [link](https://vuejs.org/examples/)
 
-* Fiddle - [link](https://jsfiddle.net/chrisvfritz/50wL7mdz/)
+```vue
+<!-- Counter.vue -->
+<script setup>
+import { ref } from 'vue';
 
-```HTML
-<div id="body-wrapper">
-  <h1>{{ heading }} {{ clickCount || ''}}</h1>
+const heading = ref('This is how Vue binds data to HTML');
+const clickCount = ref(0);
+const addCount = () => clickCount.value++;
+</script>
 
-  <button v-on:click="addCount">Add one</button>
-
-  <my-btn text="This is my btn"></my-btn>
-</div>
-```
-```JavaScript
-Vue.component('my-btn', {
-  props: {
-    text: {
-      type: String,
-      default: ''
-    },
-  },
-  methods: {
-    changeText: function() {
-			this.extraText = "The btn was clicked"
-    }
-  },
-  data() {
-   return {
-       extraText: ""
-   };
-  },
-  template: `
-		<span>
-      <button v-on:click="changeText">{{ text }}</button>
-    	{{ extraText }}
-    </span>
-  `
-})
-
-new Vue({
-  el: '#body-wrapper',
-  data: {
-    heading: 'This is how Vue binds data to html',
-    clickCount: 0
-  },
-  methods: {
-    addCount: function() {
-    	this.clickCount ++;
-    }
-  }
-})
+<template>
+  <h1>{{ heading }} {{ clickCount || '' }}</h1>
+  <button @click="addCount">Add one</button>
+</template>
 ```
 
-### React - Facebook created
-* Installation
-  * direct link:
-  ```html
-  <!-- head -->
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+### React 18/19
+* Scaffold a project: `npm create vite@latest my-app -- --template react` (or use a framework like
+  **Next.js**). `create-react-app` is deprecated and unmaintained.
+* Modern React is **function components + hooks** (`useState`, `useEffect`, ...). Class components and
+  the in-browser Babel + UMD `<script>` setup are legacy. Note the old class example mutated a plain
+  field instead of state, the whole point of `useState` is that changing it re-renders the component.
+* Docs - [link](https://react.dev/)
 
-  <!-- after body -->
-  <script type = "text/babel" src="./your-react-js-file.js"></script>
-  ```
-  * `npx create-react-app my-app-name` (npx is an npm package runner)
-    * This crates the full app structure and will behave different from just importing the files
+```jsx
+import { useState } from 'react';
 
-* Fiddle - [link](https://jsfiddle.net/reactjs/69z2wepo/)
+function Counter() {
+  const [count, setCount] = useState(0);
 
-```JavaScript
-(function() {
-  class CompHtml extends React.Component {
+  return (
+    <div>
+      <h1>This is how React binds data to HTML {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Add one</button>
+    </div>
+  );
+}
 
-    constructor(props) {
-      super(props);
-      this.count = 0;
-      this.onClick = this.onClick.bind(this);
-    }
-
-    onClick() {
-      this.setState(() => this.count += 1);
-    }
-
-    render() {
-      return (
-      <div>
-        <h1>{ this.props.heading } { this.count }</h1>
-
-        <button onClick={this.onClick}>Add one</button>
-      </div>
-      );
-    }
-  }
-
-  const html = <CompHtml heading="This is how ReactJs binds data to html" />;
-
-  ReactDOM.render(html, document.getElementById('container'));
-})();
+export default Counter;
 ```
+
 ### CMS
 * WordPress - most popular and widely used
 * Joomla
-* PrestaShop - A good setup for shop creation
+* PrestaShop / WooCommerce - good setups for building a shop
 * etc.
 
-### Web based solutions
+### Hosted site builders
 * Wix
 * Squarespace
+* Webflow
 * etc.
-  
-### Other JS framework
-* Ember
-* Backbone
-* etc.
+
+### Other JS frameworks worth knowing
+* Svelte / SvelteKit - a compiler, no virtual DOM
+* SolidJS - fine-grained reactivity, JSX syntax
+* Astro - content-first, ships almost no JS by default
+* Angular - covered in the previous lessons
+* Meta-frameworks: Next.js (React), Nuxt (Vue), Remix
 
 # React vs Vue vs Angular
 ![React vs Vue vs Angular](img/W07L04.png)
