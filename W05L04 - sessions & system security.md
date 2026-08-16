@@ -37,101 +37,65 @@ $_SESSION['LAST_ACTIVE'] = $start_time;
     ```javascript
     ['ROLE_USER_EDIT', 'ROLE_USER_VIEW', 'ROLE_USER_DELETE']
     ```
-* Hashing 
-    * Used for hidden data, that has to be understandable when referred to a string
-    
-    * PHP built in
+* Password hashing
+    * Never store passwords in plain text, and never "encrypt" them (encryption is reversible). Store a
+      one-way **hash**.
+    * Use PHP's built-in `password_hash()` / `password_verify()`. They pick a strong algorithm (bcrypt by
+      default, Argon2id available) and **generate and store a unique random salt for you**, so you never
+      manage salts by hand.
     ```PHP
     <?php
-    echo password_hash('root_password', PASSWORD_DEFAULT);
-    
-    // Save the hash to database
-    // When user inputs the string, get the hash and compare with string
-    $hash = $db->execute('SELECT password FROM users WHERE id=1');
-    
-    if (password_verify('root_password', $hash)) {
+    // On registration: hash and store the result (a 60+ char string that already includes the salt)
+    $hash = password_hash($plainPassword, PASSWORD_DEFAULT);      // or PASSWORD_ARGON2ID
+    // INSERT INTO users (username, password) VALUES (?, ?)   with [$username, $hash]
+
+    // On login: fetch the stored hash for that user, then verify
+    if (password_verify($plainPassword, $storedHash)) {
         echo 'Password is valid!';
+        // Optionally upgrade the stored hash if the default cost/algorithm has since changed
+        if (password_needs_rehash($storedHash, PASSWORD_DEFAULT)) {
+            // re-hash $plainPassword and update the row
+        }
     } else {
         echo 'Invalid password.';
     }
     ```
-    * Bcrypt
-    ```PHP
-    <?php
-    $bcrypt = new Bcrypt(10);
-      
-    $bcrypt->hash('root_password'); // Save to database
-    $hash = ''; // Get from database
-    $bcrypt->verify('root_password', $hash); // Compare when logging in
-    ```
-    * MD5 - usually used for multiple field hashing
-    ```PHP
-    <?php
-    // Binary compare
-    $name = 'Ed';
-    $surname = 'Puce';
-    $birthDay = '11.11.2011';
-  
-    $hash = md5($name . $surname . $birthDay);
-    ```
-    * Others
-        * PHPASS
-        * PasswordLib
-        * Zend
-        * Crypt
-        * etc.
-* Salt
-    * Used to manipulate readable data to be harder to crack
-    * Static salt - always the same
-    * Dynamic salt - can changed on conditions, the salted data has to be regenerated if salt changes
-    ```PHP
-    <?php
-    $password = "root_password";
-    $salt = 'S-@/l*tt';
-  
-    $saltedPassword = $password . $salt;
-    ```
+    * **Do NOT** roll your own scheme: MD5/SHA-1 are broken for passwords, and hand-made "static salts"
+      (`$password . 'S-@/l*tt'`) are exactly what `password_hash()` was built to replace. Finding them in
+      old code is a bug to fix, not a pattern to copy.
 * CSRF token
-    * Cross-site request forgery
-    * As it is possible to trigger cross site requests, this is the way we secure our self from actions like these.
+    * Cross-site request forgery: another site tricks the logged-in user's browser into POSTing to your
+      app. A secret token that only your page knows, checked on every state-changing request, stops it.
+    * Generate it from a **cryptographically secure** source (`random_bytes`, not `rand`), and compare
+      with **`hash_equals`** (constant-time, so it does not leak the answer through timing).
 ```PHP
-// helper function to generate the token
 <?php
-function getToken($length) { 
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
-    $randomString = ''; 
-  
-    for ($i = 0; $i < $length; $i++) { 
-        $index = rand(0, strlen($characters) - 1); 
-        $randomString .= $characters[$index]; 
-    } 
-  
-    return $randomString; 
-};
-  
 session_start();
-$_SESSION['token'] = getToken(16);
-$token = $_SESSION['token'];
 
-echo "<form action=\"action.php\">";
-echo "<input type=\"text\" name=\"new_password\"";
-echo "<input type=\"text\" name=\"token\" value=\"<?=$token?>\"/>";
-echo "<button type=\"submit\">Reset Password</button>";
-echo "</form>";
-
-
-// action.php
-if ($_SESSION['token'] == $_POST['token']) {
-    // Valid token, execute the function
-    // Delete or reset the token
-} else {
-    // Don't allow the action
-    // If needed, investigate the attack
+// Generate once per session (or per form)
+if (empty($_SESSION['csrf'])) {
+    $_SESSION['csrf'] = bin2hex(random_bytes(32));
 }
-``` 
+$token = $_SESSION['csrf'];
+?>
+<form action="action.php" method="post">
+    <input type="password" name="new_password">
+    <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+    <button type="submit">Reset Password</button>
+</form>
+```
+```PHP
+// action.php
+session_start();
+if (isset($_POST['token']) && hash_equals($_SESSION['csrf'], $_POST['token'])) {
+    // Valid token: execute the action, then rotate the token
+} else {
+    http_response_code(403); // reject the request
+}
+```
 ### Task (Done together)
 1. Create user table that stores username and password and a third field (or edit existing one, to match the structure)
-2. Add a from that saves a new user, salt the password and save it hashed
+2. Add a form that saves a new user, hashing the password with password_hash() (it salts automatically)
 3. Add a login form, that checks the username and password match
 4. If User password match
     * start a new session
