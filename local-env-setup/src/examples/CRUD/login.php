@@ -59,43 +59,45 @@ function getToken($length) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login — web-bootcamp CRUD</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" 
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/bootcamp-theme.css">
 </head>
-<body class="p-3">
-    <div class="d-flex justify-content-center">
-        <form action="/CRUD/login.php" method="post">
-            <div class="form-group">
-                <label>
-                    Name
-
-                    <input class="form-control" name="name">
+<body>
+    <main class="bc-shell" style="max-width:420px;min-height:100vh;display:flex;flex-direction:column;justify-content:center">
+        <div class="bc-brand" style="justify-content:center;margin-bottom:20px">
+            <span class="mark">&lt;/&gt;</span>
+            <span>web-bootcamp<small>CRUD login</small></span>
+        </div>
+        <div class="bc-card">
+            <h1 style="font-size:1.5rem;margin:0 0 4px">Welcome back</h1>
+            <p class="bc-muted" style="margin:0 0 22px;font-size:.95rem">Sign in to edit the users list.</p>
+            <form action="/CRUD/login.php" method="post">
+                <label class="bc-field">
+                    <span>Name</span>
+                    <input class="form-control" name="name" autocomplete="username">
                 </label>
-            </div>
-            <div class="form-group">
-                <label>
-                    Password
-
-                    <input class="form-control" 
-                           name="password">
+                <label class="bc-field">
+                    <span>Password</span>
+                    <input class="form-control" type="password" name="password" autocomplete="current-password">
                 </label>
-            </div>
 
+                <!-- Add hidden token field -->
+                <input name="csftToken" value="<?= $token ?>" hidden>
+                <!-- ---- -->
 
-
-            <!-- Add hidden token field -->
-            <input name="csftToken" value="<?= $token ?>" hidden>
-            <!-- ---- -->
-
-
-
-            <button class="btn btn-primary" type="submit" name="submit">Login (PHP)</button>
-        </form>
-    </div>
+                <button class="btn btn-primary" type="submit" name="submit" style="width:100%;justify-content:center;margin-top:6px">Login (PHP)</button>
+            </form>
+        </div>
+        <p style="text-align:center;margin-top:20px"><a href="/CRUD">← Back to users</a></p>
+    </main>
 </body>
 </html>

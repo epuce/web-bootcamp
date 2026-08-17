@@ -1,21 +1,32 @@
+/* localStorage example — layered on top of /assets/bootcamp-theme.css */
+
 .input-wrapper {
-    max-width: 300px;
+    max-width: 340px;
+    margin-bottom: 14px;
 }
 
-input {
-    width: 100%;
-    /* max-width: 300px; */
-    /* display: block; */
-    border: 1px solid #444;
-    border-radius: 4px;
-    height: 30px;
-    padding-left: 5px;
-    padding-right: 5px;
-    outline: none;
+.input-wrapper label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 6px;
 }
 
 .error-msg {
-    height: 12px;
-    font-size: 10px;
-    color: #AA0000;
+    min-height: 16px;
+    margin-top: 5px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--danger);
+}
+
+/* Rows the JS clones from .tr-example become visible table rows. */
+#users-table .username {
+    font-weight: 600;
+    color: var(--heading);
+}
+
+#users-table .email {
+    color: var(--muted);
 }

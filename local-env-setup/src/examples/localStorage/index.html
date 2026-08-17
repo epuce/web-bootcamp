@@ -4,51 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>localStorage users — web-bootcamp</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/bootcamp-theme.css">
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="index.js"></script>
 </head>
 
 <body>
-    <form id="user-form" novalidate>
-        <div class="input-wrapper">
-            <label>
-                Username:
-                <input name="username">
-            </label>
-            <div class="error-msg username"></div>
+    <main class="bc-shell" style="max-width:760px">
+        <header class="bc-header" style="justify-content:flex-start">
+            <div class="bc-brand">
+                <span class="mark">&lt;/&gt;</span>
+                <span>localStorage users<small>persist without a server</small></span>
+            </div>
+        </header>
+
+        <div class="bc-card" style="margin-bottom:22px">
+            <form id="user-form" novalidate>
+                <div class="input-wrapper">
+                    <label>
+                        Username
+                        <input name="username" autocomplete="off">
+                    </label>
+                    <div class="error-msg username"></div>
+                </div>
+                <div class="input-wrapper">
+                    <label>
+                        Email
+                        <input type="email" name="email" autocomplete="off">
+                    </label>
+                    <div class="error-msg email"></div>
+                </div>
+
+                <input type="hidden" name="user-id">
+
+                <button type="button" id="save-btn" class="btn btn-primary">Save</button>
+            </form>
         </div>
-        <div class="input-wrapper">
-            <label>
-                Email:
-                <input type="email" name="email">
-            </label>
-            <div class="error-msg email"></div>
+
+        <div class="bc-card" style="padding:0;overflow:hidden">
+            <table id="users-table" class="table" style="margin:0">
+                <thead>
+                    <tr>
+                        <td>Username</td>
+                        <td>Email</td>
+                        <td style="text-align:right">Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="display: none" class="tr-example">
+                        <td class="username"></td>
+                        <td class="email"></td>
+                        <td style="text-align:right;white-space:nowrap">
+                            <button class="edit-btn btn btn-secondary">Edit</button>
+                            <button class="delete-btn btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <input type="hidden" name="user-id">
-
-        <button type="button" id="save-btn">Save</button>
-    </form>
-
-    <table id="users-table">
-        <thead>
-            <td>Username</td>
-            <td>Email</td>
-        </thead>
-        <tbody>
-            <tr style="display: none" class="tr-example">
-                <td class="username"></td>
-                <td class="email"></td>
-                <td>
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <p class="bc-foot">Built for the <b>web-bootcamp</b> course.</p>
+    </main>
 </body>
 
 </html>
