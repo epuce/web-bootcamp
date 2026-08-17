@@ -49,8 +49,8 @@
 
 ## List of all attributes, the usage and description
 
-* [MDN HTML attribute reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
-* [MDN global attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes)
+* [MDN HTML attribute reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes)
+* [MDN global attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes)
 
 ## HTML check up task
 

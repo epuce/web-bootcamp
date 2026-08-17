@@ -7,7 +7,7 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
 ## HTML basics - tags
 
 * DOM
-* Tag types and differences - [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+* Tag types and differences - [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)
     * Regular tags
     * Self Closing tags
     * Tag naming and their differences
@@ -129,4 +129,4 @@ https://docs.google.com/presentation/d/1MNBR_8x_nU3wEJfrXEBfxc5BH-2DnLRREw0ofJr5
 * `<header> <nav> <main> <section> <article> <aside> <footer>` describe *what* a region is, for
   browsers, screen readers and search engines. Reach for a semantic element first; fall back to
   `<div>`/`<span>` only when nothing fits.
-* [MDN element reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+* [MDN element reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)

@@ -15,7 +15,7 @@
         );
     ```
 
-2. Getting joined data - join types [link](http://www.sql-join.com/sql-join-types)
+2. Getting joined data - join types [link](https://www.w3schools.com/sql/sql_join.asp)
     ```sql
     SELECT u.name 
     FROM Purchases as p INNER JOIN Users as u

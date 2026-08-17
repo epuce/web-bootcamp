@@ -106,7 +106,7 @@
 
 ## Other commands
 
-[SQL commands codeacademy](https://www.codecademy.com/articles/sql-commands)
+[SQL commands codeacademy](https://www.codecademy.com/article/sql-commands)
 
 [SQL commands w3school](https://www.w3schools.com/sql/default.asp)
 

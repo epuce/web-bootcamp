@@ -4,8 +4,8 @@ A grab-bag of extras that did not need a full lesson but are worth knowing.
 
 ## CSS animations
 
-* Transitions: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions)
-* Keyframe animations: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations)
+* Transitions: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Transitions/Using)
+* Keyframe animations: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Animations/Using)
 * Prefer animating `transform` and `opacity` (GPU-composited, cheap) over `width`/`top`/`left`, which
   trigger layout. Respect `@media (prefers-reduced-motion: reduce)` for users who ask for less motion.
 
@@ -108,7 +108,7 @@ A grab-bag of extras that did not need a full lesson but are worth knowing.
 ## iframes
 
 * Embeds another document; sandbox it and be explicit about what it may do.
-* [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)
+* [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe)
 
 ```HTML
 <iframe src="edit.html" width="400" height="200" loading="lazy" sandbox="allow-scripts"></iframe>
@@ -123,7 +123,7 @@ A grab-bag of extras that did not need a full lesson but are worth knowing.
 ## video
 
 * Native media playback, no plugin. Offer more than one `<source>` format and a captions `<track>`.
-* [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
+* [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/video)
 
 ```HTML
 <video controls width="640" preload="metadata" poster="cover.jpg">

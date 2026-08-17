@@ -2,7 +2,7 @@
 
 ## Setup
 
-* Step by step setup for our docker (composer+phpunit) - [link](https://linuxize.com/post/how-to-install-and-use-composer-on-ubuntu-18-04/)
+* Step by step setup for our docker (composer+phpunit) - [link](https://getcomposer.org/doc/00-intro.md)
 
 ### All commands have to be run in docker console
 

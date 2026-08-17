@@ -6,7 +6,7 @@
 2. Make header static so it is shown in both pages
    1. Add links to both pages in the header
 3. Make index page accessible only when some type of trigger is active in login page (checkbox checked, form filled filled, etc.)
-4. In index page request a list from - https://restcountries.com/v3.1/currency/usd (the old restcountries.eu is gone)
+4. In index page request a list from - https://countriesnow.space/api/v0.1/countries/currency (returns countries with their currency; restcountries.eu and the free restcountries.com API are both gone)
 5. Add three actions for the list:
    1. copy - the list row that is copied is shown after the one you copied
    2. delete - the row will be removed from the list

@@ -175,7 +175,7 @@ window.addEventListener("load", function(){});
 document.addEventListener("keyup", function(){});
 ```
 
-* others - [link](https://developer.mozilla.org/en-US/docs/Web/Events)
+* others - [link](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Events)
 
 > [!TIP]
 > **Checkup**

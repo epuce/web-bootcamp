@@ -124,13 +124,13 @@
 
 * Prefer `margin-inline`, `padding-block`, `inset` over the physical `left/right/top/bottom` so a
   layout adapts to right-to-left languages, e.g. `margin-inline: auto;` centres regardless of writing
-  direction. [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
+  direction. [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values)
 
 ## Full list of all CSS selectors
 
 [Link][link]
 
-[link]: https://www.w3schools.com/cssref/css_selectors.asp
+[link]: https://www.w3schools.com/cssref/css_selectors.php
 
 ## Task - using previous lessons html select and style these elements
 

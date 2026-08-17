@@ -62,7 +62,7 @@ describe('Users', () => {
     * Start the MongoDB shell - `mongosh` (the old `mongo` shell is retired)
     * Create database - `use your-db-name`
     * Create database table - `db.createCollection("users")`
-    * [All commands](https://docs.mongodb.com/manual/reference/method/js-collection/)
+    * [All commands](https://www.mongodb.com/docs/manual/reference/method/)
     ```javascript
         db.users.insertMany([{name: "Ed", profession: "Programmer"}, {name: "Jim", age: 10}])
         db.users.find({}) // Get all

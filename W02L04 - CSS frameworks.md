@@ -64,7 +64,7 @@ result:
 
 [Material Design 3](https://m3.material.io)
 
-[Angular Material](https://material.angular.io/)
+[Angular Material](https://material.angular.dev/)
 
 ## Utility-first: Tailwind CSS
 

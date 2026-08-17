@@ -98,7 +98,7 @@ switch ($_SERVER["REQUEST_URI"]) {
             * xdebug.client_host = host.docker.internal
             * xdebug.start_with_request = yes
             * xdebug.idekey = VSCODE
-    * In chrome, open this [link](chrome://settings/cookies/detail?site=localhost&search=cookies), if there is a cookie name "XDEBUG_SESSION" then everything is fine, if not, then [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) chrome plugin is not set up correctly or turned on
+    * In chrome, open this [link](chrome://settings/cookies/detail?site=localhost&search=cookies), if there is a cookie name "XDEBUG_SESSION" then everything is fine, if not, then [Xdebug helper](https://chromewebstore.google.com/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) chrome plugin is not set up correctly or turned on
     *
 
 ## PHP usage
