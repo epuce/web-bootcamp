@@ -2,7 +2,7 @@
 
 ## Box model
 
-![box model](https://s3.amazonaws.com/viking_education/web_development/web_app_eng/css_box_model_chrome.png)
+![box model](img/W02L02-box-model.png)
 
 * From inner to outer level
     * width X height
